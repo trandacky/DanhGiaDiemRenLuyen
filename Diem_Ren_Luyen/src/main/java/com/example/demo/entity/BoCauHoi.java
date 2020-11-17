@@ -22,7 +22,7 @@ public class BoCauHoi {
 	@Column(name = "tenBoCauHoi")
 	private String tenBoCauhoi;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "boCauHoi")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "boCauHoi", cascade = CascadeType.ALL)
 	private List<CauHoi> cauHoi;
 
 	public long getIdBoCauHoi() {
