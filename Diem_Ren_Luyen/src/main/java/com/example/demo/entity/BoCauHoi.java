@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,7 +23,7 @@ public class BoCauHoi {
 	@Column(name = "tenBoCauHoi")
 	private String tenBoCauhoi;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "boCauHoi", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "boCauHoi")
 	private List<CauHoi> cauHoi;
 
 	public long getIdBoCauHoi() {

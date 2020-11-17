@@ -18,7 +18,7 @@ public class CauHoi {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idCauHoi;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="idBoCauHoi", nullable = false)
 	private BoCauHoi boCauHoi;
 	
