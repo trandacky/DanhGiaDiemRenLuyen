@@ -10,7 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+
 @Entity
+
 @Table(name = "CauHoi")
 public class CauHoi {
 	@Id
@@ -18,7 +20,7 @@ public class CauHoi {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idCauHoi;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="idBoCauHoi", nullable = false)
 	private BoCauHoi boCauHoi;
 	
@@ -27,6 +29,16 @@ public class CauHoi {
 	
 	@Column(name = "diemToiDa")
 	private int diemToiDa;
+	@Column(name="tinhTrang")
+	private boolean tinhTrang;
+	
+	public boolean isTinhTrang() {
+		return tinhTrang;
+	}
+
+	public void setTinhTrang(boolean tinhTrang) {
+		this.tinhTrang = tinhTrang;
+	}
 
 	public long getIdCauHoi() {
 		return idCauHoi;
