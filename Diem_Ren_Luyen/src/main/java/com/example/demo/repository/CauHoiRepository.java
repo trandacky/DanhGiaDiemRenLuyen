@@ -12,8 +12,9 @@ import com.example.demo.entity.CauHoi;
 public interface CauHoiRepository extends JpaRepository<CauHoi, Long>{
 
 	// ví dụ 1 cái về việc tùy chỉnh
-	@Query(value="SELECT * "
-			+"FROM public.cauhoi where idCauHoi=:id",nativeQuery = true)
-	Optional<CauHoi> getByID(@Param("id") Long id)	;
+	/*
+	 * @Query(value="SELECT * " +"FROM public.cauhoi where idCauHoi=:id",nativeQuery
+	 * = true) Optional<CauHoi> getByID(@Param("id") Long id) ;
+	 */
 	
 }

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.entity.BoCauHoi;
 import com.example.demo.service.BoCauHoiService;
 @RestController
-@CrossOrigin(origins = "http://localhost:4200/")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/bocauhoi")
 public class BoCauHoiController {
 	@Autowired
@@ -40,7 +40,8 @@ public class BoCauHoiController {
 	@PostMapping("/create")
 	public BoCauHoi createBoCauHoi() {
 		BoCauHoi boCauHoi = new BoCauHoi();
-		boCauHoi.setTenBoCauhoi("Hoạt động xã hội");
+		boCauHoi.setTenBoCauHoi("Câu hỏi mới");
+		boCauHoi.setTinhTrang(true);
 		// khi có giao diện thì lấy dữ liệu qua đây
 		return boCauHoiService.setData(boCauHoi);
 
@@ -50,7 +51,7 @@ public class BoCauHoiController {
 	public Optional<BoCauHoi> updateBoCauHoi(@PathVariable Long id) {
 		BoCauHoi boCauHoi = new BoCauHoi();
 		boCauHoi.setIdBoCauHoi(id);
-		boCauHoi.setTenBoCauhoi("Rèn luyện đoàn viên");
+		boCauHoi.setTenBoCauHoi("Rèn luyện đoàn viên");
 		return boCauHoiService.update(boCauHoi);
 
 	}

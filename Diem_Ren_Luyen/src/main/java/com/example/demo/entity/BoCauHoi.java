@@ -21,9 +21,12 @@ public class BoCauHoi {
 	private long idBoCauHoi;
 
 	@Column(name = "tenBoCauHoi")
-	private String tenBoCauhoi;
-
-	@OneToMany(mappedBy = "boCauHoi", cascade = CascadeType.ALL)
+	private String tenBoCauHoi;
+	
+	@Column(name = "tinhTrang")
+	private boolean tinhTrang;
+	
+	@OneToMany(mappedBy = "idBoCauHoi", cascade = CascadeType.ALL)
 	private List<CauHoi> cauHoi;
 
 	public long getIdBoCauHoi() {
@@ -34,12 +37,12 @@ public class BoCauHoi {
 		this.idBoCauHoi = idBoCauHoi;
 	}
 
-	public String getTenBoCauhoi() {
-		return tenBoCauhoi;
+	public String getTenBoCauHoi() {
+		return tenBoCauHoi;
 	}
 
-	public void setTenBoCauhoi(String tenBoCauhoi) {
-		this.tenBoCauhoi = tenBoCauhoi;
+	public void setTenBoCauHoi(String tenBoCauHoi) {
+		this.tenBoCauHoi = tenBoCauHoi;
 	}
 
 	/*
@@ -50,5 +53,15 @@ public class BoCauHoi {
 	public void setCauHoi(List<CauHoi> cauHoi) {
 		this.cauHoi = cauHoi;
 	}
+
+	public boolean isTinhTrang() {
+		return tinhTrang;
+	}
+
+	public void setTinhTrang(boolean tinhTrang) {
+		this.tinhTrang = tinhTrang;
+	}
+
+
 
 }
