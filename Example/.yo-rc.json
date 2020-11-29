@@ -1,0 +1,38 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.qnu.cnttk40a"
+    },
+    "jhipsterVersion": "6.10.5",
+    "applicationType": "monolith",
+    "baseName": "PhieuRenLuyen",
+    "packageName": "com.qnu.cnttk40a",
+    "packageFolder": "com/qnu/cnttk40a",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ZmI3YTkzNGMwYzdmZjE0MGUzODgzNTQ1NjcxMTBjMzA4ZGIxODE4MzNhOTliNzMzNzY1ZDNiMDZlNDBiMWQ4ODQwMzExMjEyNjIwNDg5YjlmMGZjMjQ5MjgyZWEwZTc3YWVhNTExMmYwYzFmYjNhYzVhOWEwZmVmMzY3ZTE1NGU=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "skipClient": true,
+    "creationTimestamp": 1606625613768,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "blueprints": []
+  }
+}
