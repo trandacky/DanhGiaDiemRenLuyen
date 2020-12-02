@@ -30,6 +30,7 @@ public class TaiKhoan {
 	@Column(name = "tinhTrang")
 	private boolean tinhTrang;
 
+	
 	public long getMaSinhVien() {
 		return maSinhVien;
 	}

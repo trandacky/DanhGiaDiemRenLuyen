@@ -19,6 +19,11 @@ logging:
     io.github.jhipster: DEBUG
     com.qnu.cnttk40a: DEBUG
 
+management:
+  health:
+    elasticsearch:
+      enabled: false
+
 spring:
   profiles:
     active: dev
@@ -37,15 +42,20 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/PhieuRenLuyen
-    username: PhieuRenLuyen
-    password:
+    url: jdbc:postgresql://localhost:5432/example
+    username: postgres
+    password: 123
     hikari:
       poolName: Hikari
       auto-commit: false
   jpa:
     database-platform: io.github.jhipster.domain.util.FixedPostgreSQL10Dialect
     show-sql: true
+  data:
+    elasticsearch:
+      properties:
+        path:
+          home: target/elasticsearch
   liquibase:
     # Remove 'faker' if you do not want the sample data to be loaded automatically
     contexts: dev, faker
@@ -85,7 +95,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
-        base64-secret: ZmI3YTkzNGMwYzdmZjE0MGUzODgzNTQ1NjcxMTBjMzA4ZGIxODE4MzNhOTliNzMzNzY1ZDNiMDZlNDBiMWQ4ODQwMzExMjEyNjIwNDg5YjlmMGZjMjQ5MjgyZWEwZTc3YWVhNTExMmYwYzFmYjNhYzVhOWEwZmVmMzY3ZTE1NGU=
+        base64-secret: ZWI1YjliYjY2MGJmZTU4MWRjYzhhZjE4Zjg3NjM3YWFiNjM5YmVhODBkMDQ5ZmY5YzZhNWVjODExN2RmNTkzYmZmZDExYmI0Mzk0NGIwZDcyZjIwYmVkNjQ4NWVkMmE3Y2ZkYmFmMDc3ZjJjMGFiMzk1ZjhlMzcyNjBmMjc3MjY=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000

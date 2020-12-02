@@ -1,0 +1,36 @@
+{
+  "name": "Lop",
+  "fields": [
+    {
+      "fieldName": "tenLop",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "khoa",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "khoaHoc",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "taiKhoan",
+      "otherEntityRelationshipName": "idLop",
+      "relationshipName": "taiKhoan"
+    }
+  ],
+  "changelogDate": "20201129062546",
+  "entityTableName": "lop",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

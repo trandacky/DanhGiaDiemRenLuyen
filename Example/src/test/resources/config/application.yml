@@ -47,6 +47,11 @@ spring:
       hibernate.generate_statistics: false
       hibernate.hbm2ddl.auto: validate
       hibernate.jdbc.time_zone: UTC
+  data:
+    elasticsearch:
+      properties:
+        path:
+          home: target/elasticsearch
   liquibase:
     contexts: test
   mail:
@@ -97,14 +102,23 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 (you can type `echo 'secret-key'|base64` on your command line)
-        base64-secret: ZmI3YTkzNGMwYzdmZjE0MGUzODgzNTQ1NjcxMTBjMzA4ZGIxODE4MzNhOTliNzMzNzY1ZDNiMDZlNDBiMWQ4ODQwMzExMjEyNjIwNDg5YjlmMGZjMjQ5MjgyZWEwZTc3YWVhNTExMmYwYzFmYjNhYzVhOWEwZmVmMzY3ZTE1NGU=
+        base64-secret: ZWI1YjliYjY2MGJmZTU4MWRjYzhhZjE4Zjg3NjM3YWFiNjM5YmVhODBkMDQ5ZmY5YzZhNWVjODExN2RmNTkzYmZmZDExYmI0Mzk0NGIwZDcyZjIwYmVkNjQ4NWVkMmE3Y2ZkYmFmMDc3ZjJjMGFiMzk1ZjhlMzcyNjBmMjc3MjY=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
   metrics:
     logs: # Reports metrics in the logs
       enabled: true
       report-frequency: 60 # in seconds
-
+kafka:
+  bootstrap-servers: localhost:9092
+  consumer:
+    key.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    value.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    group.id: phieu-ren-luyen
+    auto.offset.reset: earliest
+  producer:
+    key.serializer: org.apache.kafka.common.serialization.StringSerializer
+    value.serializer: org.apache.kafka.common.serialization.StringSerializer
 # ===================================================================
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class

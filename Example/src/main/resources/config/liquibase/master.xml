@@ -14,7 +14,17 @@
     <property name="uuidType" value="uuid" dbms="h2, postgresql"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201129062346_added_entity_BoCauHoi.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201129062446_added_entity_CauHoi.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201129062546_added_entity_Lop.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201129062646_added_entity_TaiKhoan.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201129062746_added_entity_PhieuRenLuyen.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201129062846_added_entity_TongDiem.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201129062946_added_entity_ChiTietPhieuRenLuyen.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20201129062446_added_entity_constraints_CauHoi.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201129062646_added_entity_constraints_TaiKhoan.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201129062746_added_entity_constraints_PhieuRenLuyen.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

@@ -1,0 +1,50 @@
+{
+  "name": "CauHoi",
+  "fields": [
+    {
+      "fieldName": "tenCauHoi",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "diemToiDa",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "tinhTrang",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "phieuRenLuyen",
+      "otherEntityRelationshipName": "idCauHoi",
+      "relationshipName": "phieuRenLuyen"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "boCauHoi",
+      "otherEntityRelationshipName": "cauHoi",
+      "relationshipName": "idBoCauHoi",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "boCauHoi",
+      "otherEntityRelationshipName": "cauHoi",
+      "relationshipName": "idBoCauHoi",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201129062446",
+  "entityTableName": "cau_hoi",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

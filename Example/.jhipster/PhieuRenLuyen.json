@@ -1,0 +1,70 @@
+{
+  "name": "PhieuRenLuyen",
+  "fields": [
+    {
+      "fieldName": "namHoc",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "hocKy",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "tongDiem",
+      "otherEntityRelationshipName": "phieuRenLuyen",
+      "relationshipName": "tongDiem",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "chiTietPhieuRenLuyen",
+      "otherEntityRelationshipName": "phieuRenLuyen",
+      "relationshipName": "chiTietPhieuRenLuyen",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "taiKhoan",
+      "otherEntityRelationshipName": "phieuRenLuyen",
+      "relationshipName": "maSinhVien",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cauHoi",
+      "otherEntityRelationshipName": "phieuRenLuyen",
+      "relationshipName": "idCauHoi",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "taiKhoan",
+      "otherEntityRelationshipName": "phieuRenLuyen",
+      "relationshipName": "maSinhVien",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cauHoi",
+      "otherEntityRelationshipName": "phieuRenLuyen",
+      "relationshipName": "idCauHoi",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201129062746",
+  "entityTableName": "phieu_ren_luyen",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

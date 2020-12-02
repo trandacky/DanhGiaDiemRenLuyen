@@ -48,6 +48,17 @@ public class CacheConfiguration {
             createCache(cm, com.qnu.cnttk40a.domain.User.class.getName());
             createCache(cm, com.qnu.cnttk40a.domain.Authority.class.getName());
             createCache(cm, com.qnu.cnttk40a.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.qnu.cnttk40a.domain.BoCauHoi.class.getName());
+            createCache(cm, com.qnu.cnttk40a.domain.BoCauHoi.class.getName() + ".cauHois");
+            createCache(cm, com.qnu.cnttk40a.domain.CauHoi.class.getName());
+            createCache(cm, com.qnu.cnttk40a.domain.CauHoi.class.getName() + ".phieuRenLuyens");
+            createCache(cm, com.qnu.cnttk40a.domain.Lop.class.getName());
+            createCache(cm, com.qnu.cnttk40a.domain.Lop.class.getName() + ".taiKhoans");
+            createCache(cm, com.qnu.cnttk40a.domain.TaiKhoan.class.getName());
+            createCache(cm, com.qnu.cnttk40a.domain.TaiKhoan.class.getName() + ".phieuRenLuyens");
+            createCache(cm, com.qnu.cnttk40a.domain.PhieuRenLuyen.class.getName());
+            createCache(cm, com.qnu.cnttk40a.domain.TongDiem.class.getName());
+            createCache(cm, com.qnu.cnttk40a.domain.ChiTietPhieuRenLuyen.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

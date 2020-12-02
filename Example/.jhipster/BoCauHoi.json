@@ -1,0 +1,32 @@
+{
+  "name": "BoCauHoi",
+  "fields": [
+    {
+      "fieldName": "tenBoCauHoi",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tinhTrang",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "cauHoi",
+      "otherEntityRelationshipName": "idBoCauHoi",
+      "relationshipName": "cauHoi"
+    }
+  ],
+  "changelogDate": "20201129062346",
+  "entityTableName": "bo_cau_hoi",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
