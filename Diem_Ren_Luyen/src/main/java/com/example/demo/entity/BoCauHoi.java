@@ -1,39 +1,33 @@
 package com.example.demo.entity;
 
-import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "BoCauHoi")
-public class BoCauHoi {
-	@Id
-	@Column(name = "idBoCauHoi")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idBoCauHoi;
+@Table(name = "bo_cau_hoi")
+public class BoCauHoi{
 
-	@Column(name = "tenBoCauHoi")
-	private String tenBoCauHoi;
-	
-	@Column(name = "tinhTrang")
-	private boolean tinhTrang;
-	
-	@OneToMany(mappedBy = "idBoCauHoi", cascade = CascadeType.ALL)
-	private List<CauHoi> cauHoi;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idBoCauHoi;
 
-	public long getIdBoCauHoi() {
+    @Column(name = "ten_bo_cau_hoi")
+    private String tenBoCauHoi;
+
+    @Column(name = "tinh_trang")
+    private Boolean tinhTrang;
+
+    @OneToMany(mappedBy = "idBoCauHoi",cascade = CascadeType.ALL)
+    private Set<CauHoi> cauHois = new HashSet<>();
+
+	public Long getIdBoCauHoi() {
 		return idBoCauHoi;
 	}
 
-	public void setIdBoCauHoi(long idBoCauHoi) {
+	public void setIdBoCauHoi(Long idBoCauHoi) {
 		this.idBoCauHoi = idBoCauHoi;
 	}
 
@@ -45,23 +39,21 @@ public class BoCauHoi {
 		this.tenBoCauHoi = tenBoCauHoi;
 	}
 
-	/*
-	 *để tránh dính đệ quy khi get CauHoi cần comment lại
-	 * public List<CauHoi> getCauHoi() { return cauHoi; }
-	 */
-
-	public void setCauHoi(List<CauHoi> cauHoi) {
-		this.cauHoi = cauHoi;
-	}
-
-	public boolean isTinhTrang() {
+	public Boolean getTinhTrang() {
 		return tinhTrang;
 	}
 
-	public void setTinhTrang(boolean tinhTrang) {
+	public void setTinhTrang(Boolean tinhTrang) {
 		this.tinhTrang = tinhTrang;
 	}
 
+	public Set<CauHoi> getCauHois() {
+		return cauHois;
+	}
+
+	/*
+	 * public void setCauHois(Set<CauHoi> cauHois) { this.cauHois = cauHois; }
+	 */
 
 
 }

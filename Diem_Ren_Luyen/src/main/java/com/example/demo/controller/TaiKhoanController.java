@@ -40,11 +40,10 @@ public class TaiKhoanController {
 	@PostMapping("/create")
 	public TaiKhoan createTaiKhoan() {
 		TaiKhoan taiKhoan = new TaiKhoan();
-		taiKhoan.setMaSinhVien(405105);
+		taiKhoan.setMaSinhVien((long)405105);
 		taiKhoan.setMatKhau("123");
-		taiKhoan.setQuyen("ADMIN");
+		taiKhoan.setQuyen(1);
 		taiKhoan.setTen("Trần Đắc Kỳ");
-		taiKhoan.setTinhTrang(true);
 		// khi có giao diện thì lấy dữ liệu qua đây
 		return TaiKhoanService.setData(taiKhoan);
 

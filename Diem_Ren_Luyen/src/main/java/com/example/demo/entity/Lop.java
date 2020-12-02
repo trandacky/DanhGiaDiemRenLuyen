@@ -12,6 +12,7 @@ import java.util.Set;
 @Entity
 @Table(name = "lop")
 public class Lop{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idLop;
@@ -23,19 +24,11 @@ public class Lop{
     private String khoa;
 
     @Column(name = "khoa_hoc")
-    private int khoaHoc;
+    private Integer khoaHoc;
 
-    @OneToMany(mappedBy = "idLop")
+    @OneToMany(mappedBy = "idLop", cascade = CascadeType.ALL)
     private Set<TaiKhoan> taiKhoans = new HashSet<>();
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
-    public Long getId() {
-        return idLop;
-    }
-
-    public void setId(Long id) {
-        this.idLop = id;
-    }
 
     public String getTenLop() {
         return tenLop;
@@ -83,10 +76,31 @@ public class Lop{
     public Lop taiKhoans(Set<TaiKhoan> taiKhoans) {
         this.taiKhoans = taiKhoans;
         return this;
-    }    
+    }
+
+    public Lop addTaiKhoan(TaiKhoan taiKhoan) {
+        this.taiKhoans.add(taiKhoan);
+        taiKhoan.setIdLop(this);
+        return this;
+    }
+
+    public Lop removeTaiKhoan(TaiKhoan taiKhoan) {
+        this.taiKhoans.remove(taiKhoan);
+        taiKhoan.setIdLop(null);
+        return this;
+    }
 
     public void setTaiKhoans(Set<TaiKhoan> taiKhoans) {
         this.taiKhoans = taiKhoans;
     }
 
+	public Long getIdLop() {
+		return idLop;
+	}
+
+	public void setIdLop(Long idLop) {
+		this.idLop = idLop;
+	}
+    
+    
 }
