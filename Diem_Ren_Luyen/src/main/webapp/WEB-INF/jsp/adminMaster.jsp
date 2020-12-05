@@ -30,13 +30,9 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 				<ul class="nav nav-tabs">
-					<li class="nav-item"><a class="nav-link ${activetaikhoan}" href="quanlytaikhoan">Quản lý tài khoản</a>
+					<li class="nav-item"><H3>Đánh giá điểm rèn luyện sinh viên</H3>
 					</li>
-					<li class="nav-item"><a class="nav-link ${activephong}" href="quanlyphong">Quản lý phòng</a></li>
-					<li class="nav-item"><a class="nav-link ${activekhu}" href="#">Quản lý khu</a>
-					<li class="nav-item"><a class="nav-link ${activedangky}" href="#">Mở đăng ký</a>
-					<li class="nav-item"><a class="nav-link ${active5}" href="#">gì gì đó</a>
-					</li>
+					
 				</ul>
 				
 				<div class="topright">
@@ -50,6 +46,7 @@
 				<div class="col-2">
 					<div class="nav flex-column nav-pills" id="v-pills-tab"
 						aria-orientation="vertical">
+						<a href="home.jsp"><img src="image/logoqnu.jpg"></a>
 						<a class="nav-link active" id="v-pills-home-tab"
 							href="app-cau-hoi" aria-selected="true">Câu hỏi</a> <a
 							class="nav-link" id="v-pills-profile-tab" href="bo-cau-hoi"
