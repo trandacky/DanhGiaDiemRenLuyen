@@ -37,7 +37,7 @@
 				
 				<div class="topright">
 				<label >tên tài khoản của admin hay của ai đó</label>
-				<button type="button"  class="btn btn-primary">Đăng xuất</button>
+				<a href="/logout"><button type="button"  class="btn btn-primary">Đăng xuất</button></a>
 				</div>
 			</div>
 		</nav>
