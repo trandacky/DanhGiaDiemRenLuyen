@@ -17,10 +17,20 @@
 						<label>ID: </label> <label>1${ID}</label>
 					</div>
 				</div>
-				<div class="col-md-10">
+				<div class="col-md-8">
 					<div class="form-group">
 						<label>Tên bộ câu hỏi: </label> <input class="form-control"
 							type="password">
+					</div>
+				</div>
+				<div class="col-md-2">
+
+					<div class="form-group">
+						<label>Tình trạng: </label> 
+						<select class="form-control">
+							<option>True</option>
+							<option>False</option>
+						</select>
 					</div>
 				</div>
 			</div>
@@ -49,17 +59,19 @@
 		<table class="table table-striped">
 			<tr>
 				<th>ID</th>
-				<th>Tên Bộ Câu Hỏi</th>
+				<th>Nội dung</th>
+				<th>Điểm tối đa</th>
 				<th>Tình trạng</th>
 
 			</tr>
-			<c:forEach items="${ListBoCauHoi}" var="bocauhoi">
+			<c:forEach items="${ListCauHoi}" var="cauhoi">
 				<tr>
-					<td><a href="" onclick="abc()">${bocauhoi.idBoCauHoi}</a></td>
-					<td>${bocauhoi.tenBoCauHoi}</td>
+					<td><a href="" onclick="abc()">${cauhoi.idCauHoi}</a></td>
+					<td>${cauhoi.noiDungCauHoi}</td>
+					<td>${cauhoi.diemToiDa}</td>
 					<td><button type="button"
-							style="${bocauhoi.tinhTrang==true ? 'background-color: lightgreen':'background-color: red'}"
-							class="btn btn-primary">${bocauhoi.tinhTrang}</button></td>
+							style="${cauhoi.tinhTrang==true ? 'background-color: lightgreen':'background-color: red'}"
+							class="btn btn-primary">${cauhoi.tinhTrang}</button></td>
 				</tr>
 			</c:forEach>
 		</table>
