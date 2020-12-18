@@ -11,16 +11,22 @@
 <div class="content form-control">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-2">
+				<div class="col-md-4">
 
-					<div >
-						<label>ID: </label> <label>1${ID}</label>
+					<div class="form-group">
+						<label>Tên đăng nhập: </label> <input class="form-control">
 					</div>
 				</div>
-				<div class="col-md-10">
+				<div class="col-md-4">
 					<div class="form-group">
-						<label>Tên bộ câu hỏi: </label> <input class="form-control"
+						<label>Password: </label> <input class="form-control"
 							type="password">
+					</div>
+				</div>
+				<div class="col-md-4">
+
+					<div class="form-group">
+						<label>Họ tên: </label> <input class="form-control">
 					</div>
 				</div>
 			</div>

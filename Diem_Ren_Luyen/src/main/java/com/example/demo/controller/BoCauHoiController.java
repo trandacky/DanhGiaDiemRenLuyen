@@ -22,6 +22,8 @@ public class BoCauHoiController {
 		List<BoCauHoi> listBoCauHoi = boCauHoiService.getAll();
 		model.addAttribute("ListBoCauHoi", listBoCauHoi);
 		model.addAttribute("page",page);
+		model.addAttribute("activebocauhoi","active");
+		
 		return "adminMaster";
 	}
 	

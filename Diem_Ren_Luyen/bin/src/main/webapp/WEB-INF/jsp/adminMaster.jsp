@@ -37,7 +37,10 @@
 				
 				<div class="topright">
 				<label >tên tài khoản của admin hay của ai đó</label>
+<<<<<<< HEAD
 				<a href="/logout"><button type="button"  class="btn btn-primary">Đăng xuất</button></a>
+=======
+>>>>>>> b39022f10a458163550e25a901120d502f1471dd
 				</div>
 			</div>
 		</nav>

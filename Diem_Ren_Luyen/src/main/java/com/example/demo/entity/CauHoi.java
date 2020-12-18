@@ -4,10 +4,6 @@ package com.example.demo.entity;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
-
-/**
- * A CauHoi.
- */
 @Entity
 @Table(name = "cau_hoi")
 public class CauHoi {
@@ -15,8 +11,8 @@ public class CauHoi {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCauHoi;
 
-    @Column(name = "ten_cau_hoi")
-    private String tenCauHoi;
+    @Column(name = "noi_dung_cau_hoi")
+    private String noiDungCauHoi;
 
     @Column(name = "diem_toi_da")
     private Integer diemToiDa;
@@ -40,17 +36,17 @@ public class CauHoi {
 		this.idCauHoi = idCauHoi;
 	}
 
-	public String getTenCauHoi() {
-        return tenCauHoi;
+	public String getNoiDungCauHoi() {
+        return noiDungCauHoi;
     }
 
-    public CauHoi tenCauHoi(String tenCauHoi) {
-        this.tenCauHoi = tenCauHoi;
+    public CauHoi noiDungCauHoi(String tenCauHoi) {
+        this.noiDungCauHoi = tenCauHoi;
         return this;
     }
 
-    public void setTenCauHoi(String tenCauHoi) {
-        this.tenCauHoi = tenCauHoi;
+    public void setNoiDungCauHoi(String tenCauHoi) {
+        this.noiDungCauHoi = tenCauHoi;
     }
 
     public Integer getDiemToiDa() {
