@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form method="post" action="quanlybocauhoi.them">
 <div class="content form-control">
 		<div class="container-fluid">
 			<div class="row">
@@ -17,18 +18,26 @@
 						<label>ID: </label> <label>1${ID}</label>
 					</div>
 				</div>
-				<div class="col-md-10">
+				<div class="col-md-8">
 					<div class="form-group">
-						<label>Tên bộ câu hỏi: </label> <input class="form-control"
-							type="password">
+						<label>Tên bộ câu hỏi: </label> <input class="form-control" name="tenbocauhoi">
+					</div>
+				</div>
+				<div class="col-md-2">
+
+					<div class="form-group">
+						<label>Tình trạng: </label> 
+						<select class="form-control" name="tinhtrang">
+							<option value="true">True</option>
+							<option value="false">False</option>
+						</select>
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="clearfix" style="float: right;">
-						<button class="btn btn-primary pull-right" type="button"
-							onclick="#">Thêm</button>
+						<button class="btn btn-primary pull-right" type="submit">Thêm</button>
 						<button class="btn btn-primary pull-right" type="button"
 							onclick="#">Cập nhật</button>
 					</div>
@@ -36,11 +45,13 @@
 			</div>
 		</div>
 	</div>
+	</form>
 	<div>
-		<form class="form-inline my-2 my-lg-0 form-control">
+	
+		<form class="form-inline my-2 my-lg-0 form-control" action="seachbocauhoi" method="get">
 			<input class="form-control mr-sm-2" type="search"
-				placeholder="Search" aria-label="Search">
-			<button class="btn btn-outline-success my-2 my-sm-0" type="button"
+				placeholder="Search" aria-label="Search" name=seach>
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit"
 				onclick="#">Search</button>
 
 		</form>
