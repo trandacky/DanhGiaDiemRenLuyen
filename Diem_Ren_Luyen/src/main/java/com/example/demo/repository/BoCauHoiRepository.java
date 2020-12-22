@@ -10,8 +10,6 @@ import com.example.demo.entity.BoCauHoi;
 import com.example.demo.service.dto.BoCauHoiDTO;
 @Repository
 public interface BoCauHoiRepository extends JpaRepository<BoCauHoi, Long>{
-
-
 	List<BoCauHoi> findByIdBoCauHoiOrTenBoCauHoiLike(long seachString2, String seachString);
 
 }

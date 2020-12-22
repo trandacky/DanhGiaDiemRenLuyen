@@ -27,14 +27,16 @@ public class BoCauHoiImpl implements BoCauHoiService {
 	}
 
 	@Override
-	public BoCauHoi setData(BoCauHoi boCauHoi) {
+	public BoCauHoi setData(BoCauHoiDTO boCauHoiDTO) {
 		// TODO Auto-generated method stub
+		BoCauHoi boCauHoi = new BoCauHoi(boCauHoiDTO.getIdBoCauHoi(),boCauHoiDTO.getTenBoCauHoi(),boCauHoiDTO.getTinhTrang());
 		return boCauHoiRepository.save(boCauHoi);
 	}
 
 	@Override
-	public Optional<BoCauHoi> update(BoCauHoi boCauHoi) {
+	public Optional<BoCauHoi> update(BoCauHoiDTO boCauHoiDTO) {
 		// TODO Auto-generated method stub
+		BoCauHoi boCauHoi = new BoCauHoi(boCauHoiDTO.getIdBoCauHoi(),boCauHoiDTO.getTenBoCauHoi(),boCauHoiDTO.getTinhTrang());
 		return boCauHoiRepository.findById(boCauHoi.getIdBoCauHoi()).map(bocauhoi -> {
 			bocauhoi = boCauHoi;
 			return boCauHoiRepository.save(bocauhoi);

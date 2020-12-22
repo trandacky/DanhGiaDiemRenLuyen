@@ -23,6 +23,16 @@ public class BoCauHoi{
     @OneToMany(mappedBy = "idBoCauHoi",cascade = CascadeType.ALL)
     private Set<CauHoi> cauHois = new HashSet<>();
 
+	public BoCauHoi(Long idBoCauHoi, String tenBoCauHoi, Boolean tinhTrang) {
+		super();
+		this.idBoCauHoi = idBoCauHoi;
+		this.tenBoCauHoi = tenBoCauHoi;
+		this.tinhTrang = tinhTrang;
+	}
+	public BoCauHoi() {
+		super();
+	}
+
 	public Long getIdBoCauHoi() {
 		return idBoCauHoi;
 	}

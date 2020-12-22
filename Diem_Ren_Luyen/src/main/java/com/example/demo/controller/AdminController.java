@@ -11,7 +11,7 @@ public class AdminController {
 
 	@RequestMapping(value = { "/logout" }, method = RequestMethod.GET)
 	public String index(Model model) {
-		return "redirect:/index";
+		return "redirect:index";
 	}
 	@RequestMapping(value = { "/index" }, method = RequestMethod.GET)
 	public String index2(Model model) {
