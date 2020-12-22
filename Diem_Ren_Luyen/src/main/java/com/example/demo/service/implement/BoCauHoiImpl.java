@@ -23,7 +23,7 @@ public class BoCauHoiImpl implements BoCauHoiService {
 	@Override
 	public List<BoCauHoi> getAll() {
 		// TODO Auto-generated method stub
-		return boCauHoiRepository.findAll();
+		return boCauHoiRepository.findAllByOrderByIdBoCauHoiAsc();
 	}
 
 	@Override
@@ -71,6 +71,11 @@ public class BoCauHoiImpl implements BoCauHoiService {
 			list = null;
 		}
 		return list;
+	}
+	@Override
+	public void updateTen(long id, String ten) {
+		// TODO Auto-generated method stub
+		boCauHoiRepository.updateTenBoCauHoi(id, ten);
 	}
 	public static boolean isNumeric(String str) { 
 		 for (char c : str.toCharArray())

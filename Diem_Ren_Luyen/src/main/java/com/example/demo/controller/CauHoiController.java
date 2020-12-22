@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.service.CauHoiService;
 @Controller
+@RequestMapping(value = "/quanly/cauhoi" )
 public class CauHoiController {
 	private final CauHoiService cauHoiService;
 	public CauHoiController(CauHoiService cauHoiService) {
@@ -17,7 +18,7 @@ public class CauHoiController {
 	}
 	
 	
-	@RequestMapping(value = { "/quanlycauhoi" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/","" }, method = RequestMethod.GET)
 	public String index(Model model) {
 		String page="/WEB-INF/jsp/admin/cauhoi.jsp";
 		model.addAttribute("page",page);

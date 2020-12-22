@@ -84,11 +84,22 @@ public class BoCauHoiController {
 	public String index5(Model model, HttpServletRequest request) {
 		BoCauHoiDTO bch = new BoCauHoiDTO();
 		bch.setIdBoCauHoi(Long.parseLong(request.getParameter("idbocauhoi").trim()));
-		//bch.setTenBoCauHoi(request.getParameter("tenbocauhoi").trim());
+		bch.setTenBoCauHoi(request.getParameter("tenbocauhoi").trim());
 		boolean tinhtrang = false;
 		tinhtrang = Boolean.parseBoolean(request.getParameter("tinhtrang"));
-		//bch.setIdBoCauHoi((long)1);
-		bch.setTinhTrang(tinhtrang);
+		bch.setTinhTrang(!tinhtrang);
+		boCauHoiService.update(bch);
+		String back = request.getHeader("Referer");
+		return "redirect:"+back;
+	}
+	@RequestMapping(value = { "/update/{id}" }, method = RequestMethod.GET)
+	public String index6(Model model, HttpServletRequest request) {
+		BoCauHoiDTO bch = new BoCauHoiDTO();
+		bch.setIdBoCauHoi(Long.parseLong(request.getParameter("idbocauhoi").trim()));
+		bch.setTenBoCauHoi(request.getParameter("tenbocauhoi").trim());
+		boolean tinhtrang = false;
+		tinhtrang = Boolean.parseBoolean(request.getParameter("tinhtrang"));
+		bch.setTinhTrang(!tinhtrang);
 		boCauHoiService.update(bch);
 		String back = request.getHeader("Referer");
 		return "redirect:"+back;

@@ -58,12 +58,12 @@
 
 			</tr>
 			<c:forEach items="${ListBoCauHoi}" var="bocauhoi">
-			<form method="post" action="/quanly/bocauhoi/doiquyen" >
+			<form method="post" action="/quanly/bocauhoi/doiquyen">
 				<tr>
 				
-					<td ><input name="idbocauhoi" value="${bocauhoi.idBoCauHoi}" type="hidden"><a href="/quanly/bocauhoi/capnhat/${bocauhoi.idBoCauHoi}">${bocauhoi.idBoCauHoi}</a></td>
+					<td ><input name="idbocauhoi" value="${bocauhoi.idBoCauHoi}" type="hidden"><a href="/quanly/bocauhoi/${bocauhoi.idBoCauHoi}">${bocauhoi.idBoCauHoi}</a></td>
 					
-					<td ><input name="tenbocauhoi" value="${bocauhoi.tenBoCauHoi}" type="hidden"><a href="/quanly/bocauhoi/capnhat/${bocauhoi.idBoCauHoi}">${bocauhoi.tenBoCauHoi}</a></td>
+					<td ><input name="tenbocauhoi" value="${bocauhoi.tenBoCauHoi}" type="hidden"><a href="/quanly/bocauhoi/${bocauhoi.idBoCauHoi}">${bocauhoi.tenBoCauHoi}</a></td>
 					
 					<td><button type="submit" 
 							style="${bocauhoi.tinhTrang==true ? 'background-color: lightgreen':'background-color: red'}"
