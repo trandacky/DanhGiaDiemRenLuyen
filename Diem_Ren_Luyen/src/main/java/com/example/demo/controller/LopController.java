@@ -16,10 +16,10 @@ import com.example.demo.service.BoCauHoiService;
 import com.example.demo.service.dto.BoCauHoiDTO;
 
 @Controller
-@RequestMapping(value = "/quanlybocauhoi" )
-public class BoCauHoiController {
+@RequestMapping(value = "/quanlylop" )
+public class LopController {
 	@Autowired
-	private BoCauHoiService boCauHoiService;
+	private LopService lopService;
 	@RequestMapping(value = {"","/"} )
 	public String index(Model model) {
 		String page = "/WEB-INF/jsp/admin/bocauhoi.jsp";
@@ -80,17 +80,5 @@ public class BoCauHoiController {
 		String back = request.getHeader("Referer");
 		return "redirect:"+back;
 	}
-	@RequestMapping(value = { "/doiquyen" }, method = RequestMethod.POST)
-	public String index5(Model model, HttpServletRequest request) {
-		BoCauHoiDTO bch = new BoCauHoiDTO();
-		bch.setIdBoCauHoi(Long.parseLong(request.getParameter("idbocauhoi").trim()));
-		//bch.setTenBoCauHoi(request.getParameter("tenbocauhoi").trim());
-		boolean tinhtrang = false;
-		tinhtrang = Boolean.parseBoolean(request.getParameter("tinhtrang"));
-		//bch.setIdBoCauHoi((long)1);
-		bch.setTinhTrang(tinhtrang);
-		boCauHoiService.update(bch);
-		String back = request.getHeader("Referer");
-		return "redirect:"+back;
-	}
+	
 }
