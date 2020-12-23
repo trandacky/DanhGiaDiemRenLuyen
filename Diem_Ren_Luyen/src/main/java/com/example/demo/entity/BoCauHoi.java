@@ -33,14 +33,14 @@ public class BoCauHoi{
 		super();
 	}
 
+	
+
 	public Long getIdBoCauHoi() {
 		return idBoCauHoi;
 	}
-
 	public void setIdBoCauHoi(Long idBoCauHoi) {
 		this.idBoCauHoi = idBoCauHoi;
 	}
-
 	public String getTenBoCauHoi() {
 		return tenBoCauHoi;
 	}
