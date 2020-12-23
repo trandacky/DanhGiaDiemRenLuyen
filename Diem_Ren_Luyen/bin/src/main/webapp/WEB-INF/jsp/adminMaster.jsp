@@ -37,10 +37,7 @@
 				
 				<div class="topright">
 				<label >tên tài khoản của admin hay của ai đó</label>
-<<<<<<< HEAD
 				<a href="/logout"><button type="button"  class="btn btn-primary">Đăng xuất</button></a>
-=======
->>>>>>> b39022f10a458163550e25a901120d502f1471dd
 				</div>
 			</div>
 		</nav>
@@ -49,14 +46,14 @@
 				<div class="col-2">
 					<div class="nav flex-column nav-pills" id="v-pills-tab"
 						aria-orientation="vertical">
-						<a href="home.jsp"><img src="image/logoqnu.jpg"></a>
-						<a class="nav-link active" id="v-pills-home-tab"
-							href="app-cau-hoi" aria-selected="true">Câu hỏi</a> <a
-							class="nav-link" id="v-pills-profile-tab" href="bo-cau-hoi"
-							aria-selected="false">Bộ câu hỏi</a> <a class="nav-link"
-							id="v-pills-messages-tab" href="v-pills-messages"
-							aria-selected="false">Xét duyệt lần 3</a> <a class="nav-link"
-							id="v-pills-settings-tab" href="v-pills-settings"
+						<a href="index.jsp"><img src="/image/logoqnu.jpg"></a>
+						<a class="nav-link ${activecauhoi}" id="v-pills-home-tab"
+							href="/quanly/cauhoi" aria-selected="true">Câu hỏi</a>
+							 <a	class="nav-link ${activebocauhoi}" id="v-pills-profile-tab" href="/quanly/bocauhoi"
+							aria-selected="false">Bộ câu hỏi</a> <a class="nav-link ${activexetduyetlan3}"
+							id="v-pills-messages-tab" href="xetduyetlan3"
+							aria-selected="false">Xét duyệt lần 3</a> <a class="nav-link ${activemodangky}"
+							id="v-pills-settings-tab" href="modangky"
 							aria-selected="false">Mở đăng ký</a>
 					</div>
 				</div>

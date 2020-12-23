@@ -37,7 +37,7 @@
 				
 				<div class="topright">
 				<label >tên tài khoản của admin hay của ai đó</label>
-				<a href="/logout"><button type="button"  class="btn btn-primary">Đăng xuất</button></a>
+				<button type="button"  class="btn btn-primary">Đăng xuất</button>
 				</div>
 			</div>
 		</nav>
@@ -46,24 +46,10 @@
 				<div class="col-2">
 					<div class="nav flex-column nav-pills" id="v-pills-tab"
 						aria-orientation="vertical">
-						<a href="index.jsp"><img src="/image/logoqnu.jpg"></a>
-						<a class="nav-link ${activecauhoi}" id="v-pills-home-tab"
-							href="/quanly/cauhoi" aria-selected="true">Câu hỏi</a>
-							
-						<a class="nav-link ${activebocauhoi}" id="v-pills-profile-tab" href="/quanly/bocauhoi"
-							aria-selected="false">Bộ câu hỏi</a> 
-							
-						<a class="nav-link ${activequanlydanhgialan3}"
-							id="v-pills-messages-tab" href="/quanly/quanlydanhgialan3"
-							aria-selected="false">Xét duyệt lần 3</a>
-							
-						<a class="nav-link ${activequanlytaikhoan}"
-							id="v-pills-settings-tab" href="/quanly/taikhoan"
-							aria-selected="false">Quản lý tài khoản</a>
-							
-						<a class="nav-link ${activemodangky}"
-							id="v-pills-settings-tab" href="modangky"
-							aria-selected="false">Mở đăng ký</a>
+						<a href="home.jsp"><img src="image/logoqnu.jpg"></a>
+												
+						<a class="nav-link active" id="v-pills-home-tab"
+							href="quanlyphieurenluyen" aria-selected="true">Đánh giá rèn luyện</a>
 					</div>
 				</div>
 				<div class="col-10">
