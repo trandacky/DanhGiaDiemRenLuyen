@@ -13,4 +13,5 @@ public interface BoCauHoiService {
 	List<BoCauHoi> seach(String x);
 	BoCauHoi setData(BoCauHoiDTO boCauHoiDTO);
 	Optional<BoCauHoi> update(BoCauHoiDTO boCauHoiDTO);
+	void updateTen(long id, String ten);
 }

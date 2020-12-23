@@ -46,16 +46,11 @@
 				<div class="col-2">
 					<div class="nav flex-column nav-pills" id="v-pills-tab"
 						aria-orientation="vertical">
-						<a href="index.jsp"><img src="image/logoqnu.jpg"></a>
+						<a href="index.jsp"><img src="/image/logoqnu.jpg"></a>
 						<a class="nav-link ${activecauhoi}" id="v-pills-home-tab"
-							href="quanlycauhoi" aria-selected="true">Câu hỏi</a>
-							 <a	class="nav-link ${activebocauhoi}" id="v-pills-profile-tab" href="quanlybocauhoi"
-							aria-selected="false">Bộ câu hỏi</a>
-							
-							<a	class="nav-link ${activelop}" id="v-pills-profile-tab" href="quanlylop"
-							aria-selected="false">Lớp</a>
-							
-							<a class="nav-link ${activexetduyetlan3}"
+							href="/quanly/cauhoi" aria-selected="true">Câu hỏi</a>
+							 <a	class="nav-link ${activebocauhoi}" id="v-pills-profile-tab" href="/quanly/bocauhoi"
+							aria-selected="false">Bộ câu hỏi</a> <a class="nav-link ${activexetduyetlan3}"
 							id="v-pills-messages-tab" href="xetduyetlan3"
 							aria-selected="false">Xét duyệt lần 3</a> <a class="nav-link ${activemodangky}"
 							id="v-pills-settings-tab" href="modangky"

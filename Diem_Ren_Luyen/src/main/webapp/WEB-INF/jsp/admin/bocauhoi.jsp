@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 
 </head>
@@ -13,13 +13,7 @@
 <div class="content form-control">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-2">
-
-					<div >
-						<label>ID: </label> <label>1${ID}</label>
-					</div>
-				</div>
-				<div class="col-md-8">
+				<div class="col-md-10">
 					<div class="form-group">
 						<label>Tên bộ câu hỏi: </label> <input class="form-control" name="tenbocauhoi">
 					</div>
@@ -39,8 +33,6 @@
 				<div class="col-md-12">
 					<div class="clearfix" style="float: right;">
 						<button class="btn btn-primary pull-right" type="submit">Thêm</button>
-						<button class="btn btn-primary pull-right" type="button"
-							onclick="#">Cập nhật</button>
 					</div>
 				</div>
 			</div>
@@ -58,7 +50,6 @@
 		</form>
 	</div>
 	<div class="text-center">
-	<form action="doiquyen" method="POST">
 		<table class="table table-striped">
 			<tr>
 				<th>ID</th>
@@ -67,11 +58,12 @@
 
 			</tr>
 			<c:forEach items="${ListBoCauHoi}" var="bocauhoi">
-			<form action="/quanly/bocauhoi/doiquyen" method="post">
+			<form method="post" action="/quanly/bocauhoi/doiquyen" >
 				<tr>
 				
-					<td ><button name="idbocauhoi" value="${bocauhoi.idBoCauHoi}">${bocauhoi.idBoCauHoi}</button></td>
-					<td>${bocauhoi.tenBoCauHoi}</td>
+					<td ><input name="idbocauhoi" value="${bocauhoi.idBoCauHoi}" type="hidden"><a href="/quanly/bocauhoi/capnhat/${bocauhoi.idBoCauHoi}">${bocauhoi.idBoCauHoi}</a></td>
+					
+					<td ><input name="tenbocauhoi" value="${bocauhoi.tenBoCauHoi}" type="hidden"><a href="/quanly/bocauhoi/capnhat/${bocauhoi.idBoCauHoi}">${bocauhoi.tenBoCauHoi}</a></td>
 					
 					<td><button type="submit" 
 							style="${bocauhoi.tinhTrang==true ? 'background-color: lightgreen':'background-color: red'}"
@@ -80,8 +72,7 @@
 				</tr>
 				</form>
 			</c:forEach>
-		</table>
-		</form>
+		</table>	
 	</div>
 </body>
 </html>
