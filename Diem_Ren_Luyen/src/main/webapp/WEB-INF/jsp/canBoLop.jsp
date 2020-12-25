@@ -49,7 +49,7 @@
 						<a href="home.jsp"><img src="image/logoqnu.jpg"></a>
 						<a class="nav-link active" id="v-pills-home-tab"
 							href="app-cau-hoi" aria-selected="true">Đánh giá rèn luyện</a> <a
-							class="nav-link" id="v-pills-profile-tab" href="bo-cau-hoi"
+							class="nav-link" id="v-pills-profile-tab" href="danh-sach-lop"
 							aria-selected="false">Danh sách lớp</a> 
 					</div>
 				</div>

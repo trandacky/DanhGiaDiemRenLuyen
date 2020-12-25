@@ -14,14 +14,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.entity.BoCauHoi;
+import com.example.demo.entity.CauHoi;
 import com.example.demo.service.BoCauHoiService;
+import com.example.demo.service.CauHoiService;
 import com.example.demo.service.dto.BoCauHoiDTO;
+import com.example.demo.service.dto.TaiKhoanDTO;
 
 @Controller
 @RequestMapping(value = "/quanly/bocauhoi" )
 public class BoCauHoiController {
 	@Autowired
 	private BoCauHoiService boCauHoiService;
+	@Autowired
+	private CauHoiService cauHoiService;
+	
 	@RequestMapping(value = {"","/"} )
 	public String index(Model model) {
 		String page = "/WEB-INF/jsp/admin/bocauhoi.jsp";
@@ -41,12 +47,6 @@ public class BoCauHoiController {
 		tinhtrang = Boolean.parseBoolean(request.getParameter("tinhtrang"));
 		bch.setTinhTrang(tinhtrang);
 		boCauHoiService.setData(bch);
-
-		String page = "/WEB-INF/jsp/admin/bocauhoi.jsp";
-		List<BoCauHoi> listBoCauHoi = boCauHoiService.getAll();
-		model.addAttribute("ListBoCauHoi", listBoCauHoi);
-		model.addAttribute("page", page);
-		model.addAttribute("activebocauhoi", "active");
 		String back = request.getHeader("Referer");
 		return "redirect:"+back;
 	}
@@ -93,12 +93,31 @@ public class BoCauHoiController {
 //		List<BoCauHoi> listBoCauHoi = boCauHoiService.getAll();
 		//model.addAttribute("ListBoCauHoi", listBoCauHoi);
 		Optional<BoCauHoi> boCauHoi = boCauHoiService.getByID(id);
-		
+		List<CauHoi> listCauHoi = cauHoiService.getAll();
 		String page = "/WEB-INF/jsp/admin/updatebocauhoi.jsp";
 		model.addAttribute("page", page);
+		model.addAttribute("listCauHoi", listCauHoi);
 		model.addAttribute("activebocauhoi", "active");
 		model.addAttribute("bocauhoi", boCauHoi);
 		String back = request.getHeader("Referer");
 		return "adminMaster";
+	}
+	@RequestMapping(value = { "/quanly/danhgialan3" }, method = RequestMethod.POST)
+	public String index7(Model model, HttpServletRequest request) {
+		BoCauHoiDTO bch = new BoCauHoiDTO();
+		bch.setTenBoCauHoi(request.getParameter("tenbocauhoi").trim());
+		boolean tinhtrang = false;
+		tinhtrang = Boolean.parseBoolean(request.getParameter("tinhtrang"));
+		bch.setIdBoCauHoi((long)1);
+		bch.setTinhTrang(tinhtrang);
+		boCauHoiService.update(bch);
+
+		String page = "/WEB-INF/jsp/admin/quanlydanhgialan3.jsp";
+		List<BoCauHoi> listBoCauHoi = boCauHoiService.getAll();
+		model.addAttribute("ListPhieuRenLuyen", listBoCauHoi);
+		model.addAttribute("page", page);
+		model.addAttribute("activequanlydanhgialan3", "active");
+		String back = request.getHeader("Referer");
+		return "redirect:"+back;
 	}
 }

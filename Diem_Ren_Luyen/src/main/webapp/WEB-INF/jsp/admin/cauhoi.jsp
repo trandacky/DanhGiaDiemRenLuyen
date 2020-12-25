@@ -4,48 +4,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+<form method="post" action="/quanly/cauhoi/them">
 <div class="content form-control">
 		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-2">
-
-					<div >
-						<label>ID: </label> <label>1${ID}</label>
-					</div>
-				</div>
-				<div class="col-md-8">
+		<div class = "row">
+				<div class="col-md-12">
 					<div class="form-group">
-						<label>Tên bộ câu hỏi: </label> <input class="form-control"
-							type="password">
+						<label>Nội dung câu hỏi: </label> <input name="noidungcauhoi" class="form-control">
 					</div>
 				</div>
 				<div class="col-md-2">
 
 					<div class="form-group">
-						<label>Tình trạng: </label> 
-						<select class="form-control">
-							<option>True</option>
-							<option>False</option>
+						<label>Bộ câu hỏi: </label> 
+						<select name="idbocauhoi" class="form-control">
+						<option value="">---</option>
+						<c:forEach items="${list2}" var="bocauhoi">
+							<option value="${bocauhoi.idBoCauHoi}">${bocauhoi.idBoCauHoi}</option>
+							</c:forEach>
 						</select>
 					</div>
+				</div>
+				<div class="col-md-2">
+
+					<div  class="form-group">
+						<label>Tình trạng: </label> 
+						<select class="form-control" name="tinhtrang" >
+							<option value="true">True</option>
+							<option value="false">False</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-2">
+					<div class="form-group">
+						<label>Điểm tối đa: </label> <input name="diemtoida" class="form-control">
+					</div>
+				</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="clearfix" style="float: right;">
-						<button class="btn btn-primary pull-right" type="button"
+						<button class="btn btn-primary pull-right" type="submit"
 							onclick="#">Thêm</button>
-						<button class="btn btn-primary pull-right" type="button"
-							onclick="#">Cập nhật</button>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</form>
 	<div>
 		<form class="form-inline my-2 my-lg-0 form-control">
 			<input class="form-control mr-sm-2" type="search"
@@ -61,14 +71,16 @@
 				<th>ID</th>
 				<th>Nội dung</th>
 				<th>Điểm tối đa</th>
+				<th>Bộ câu hỏi</th>
 				<th>Tình trạng</th>
 
 			</tr>
 			<c:forEach items="${ListCauHoi}" var="cauhoi">
 				<tr>
-					<td><a href="" onclick="abc()">${cauhoi.idCauHoi}</a></td>
+					<td><a href="">${cauhoi.idCauHoi}</a></td>
 					<td>${cauhoi.noiDungCauHoi}</td>
 					<td>${cauhoi.diemToiDa}</td>
+					<td>${cauhoi.idBoCauHoi.getIdBoCauHoi()}</td>
 					<td><button type="button"
 							style="${cauhoi.tinhTrang==true ? 'background-color: lightgreen':'background-color: red'}"
 							class="btn btn-primary">${cauhoi.tinhTrang}</button></td>

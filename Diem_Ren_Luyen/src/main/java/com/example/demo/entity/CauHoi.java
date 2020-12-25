@@ -7,7 +7,21 @@ import java.util.Set;
 @Entity
 @Table(name = "cau_hoi")
 public class CauHoi {
-    @Id
+	
+    public CauHoi() {
+		super();
+	}
+
+	public CauHoi(Long idCauHoi, String noiDungCauHoi, Integer diemToiDa, Boolean tinhTrang, BoCauHoi idBoCauHoi) {
+		super();
+		this.idCauHoi = idCauHoi;
+		this.noiDungCauHoi = noiDungCauHoi;
+		this.diemToiDa = diemToiDa;
+		this.idBoCauHoi = idBoCauHoi;
+		this.tinhTrang = tinhTrang;
+	}
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCauHoi;
 
@@ -24,7 +38,7 @@ public class CauHoi {
     private Set<ChiTietPhieuRenLuyen> chiTietPhieuRenLuyens = new HashSet<>();
 
     @ManyToOne
-    @JoinColumn(name = "idBoCauHoi", nullable = false)
+    @JoinColumn(name = "idBoCauHoi", nullable = true)
     private BoCauHoi idBoCauHoi;
 
    

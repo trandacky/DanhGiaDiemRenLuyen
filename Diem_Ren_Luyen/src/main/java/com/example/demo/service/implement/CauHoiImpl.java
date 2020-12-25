@@ -6,9 +6,11 @@ import java.util.Optional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.entity.BoCauHoi;
 import com.example.demo.entity.CauHoi;
 import com.example.demo.repository.CauHoiRepository;
 import com.example.demo.service.CauHoiService;
+import com.example.demo.service.dto.CauHoiDTO;
 
 @Service
 public class CauHoiImpl implements CauHoiService {
@@ -26,16 +28,27 @@ public class CauHoiImpl implements CauHoiService {
 	}
 
 	@Override
-	public CauHoi setData(CauHoi cauHoi) {
-
-		return cauHoiRepository.save(cauHoi);
+	public CauHoi setData(CauHoiDTO cauHoi) {
+		CauHoi cauhoi;
+		if(cauHoi.getIdBoCauHoi()!=0)
+		{
+		BoCauHoi bocauhoi = new BoCauHoi();
+		bocauhoi.setIdBoCauHoi(cauHoi.getIdBoCauHoi());
+		
+		cauhoi = new CauHoi(cauHoi.getIdCauHoi(),cauHoi.getNoiDungCauHoi(),cauHoi.getDiemToiDa(),cauHoi.getTinhTrang(),bocauhoi);
+		}
+		else
+			cauhoi = new CauHoi(cauHoi.getIdCauHoi(),cauHoi.getNoiDungCauHoi(),cauHoi.getDiemToiDa(),cauHoi.getTinhTrang(),null);
+		return cauHoiRepository.save(cauhoi);
 	}
 
 	@Override
-	public Optional<Object> update(CauHoi cauHoi) {
-
-		return cauHoiRepository.findById(cauHoi.getIdCauHoi()).map(cauhoi -> {
-			cauhoi = cauHoi;
+	public Optional<Object> update(CauHoiDTO cauHoi) {
+		BoCauHoi bocauhoi = new BoCauHoi();
+		bocauhoi.setIdBoCauHoi(cauHoi.getIdBoCauHoi());
+		CauHoi cauhoi = new CauHoi(cauHoi.getIdCauHoi(),cauHoi.getNoiDungCauHoi(),cauHoi.getDiemToiDa(),cauHoi.getTinhTrang(),bocauhoi);
+		return cauHoiRepository.findById(cauHoi.getIdCauHoi()).map(cauhoi2 -> {
+			cauhoi2 = cauhoi;
 			return cauHoiRepository.save(cauhoi);
 		});
 	}
