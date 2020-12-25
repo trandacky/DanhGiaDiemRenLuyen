@@ -29,6 +29,13 @@ public class Lop{
     @OneToMany(mappedBy = "idLop", cascade = CascadeType.ALL)
     private Set<TaiKhoan> taiKhoans = new HashSet<>();
 
+    public Lop(Long idLop, String tenLop, String khoa, Integer khoaHoc) {
+		super();
+		this.idLop = idLop;
+		this.tenLop = tenLop;
+		this.khoa = khoa;
+		this.khoaHoc = khoaHoc;
+	}
 
     public String getTenLop() {
         return tenLop;

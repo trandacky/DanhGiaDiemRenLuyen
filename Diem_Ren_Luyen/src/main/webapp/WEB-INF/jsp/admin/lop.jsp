@@ -58,31 +58,6 @@
 
 		</form>
 	</div>
-	<div class="text-center">
-	<form action="doiquyen" method="POST">
-		<table class="table table-striped">
-			<tr>
-				<th>ID</th>
-				<th>Tên Bộ Câu Hỏi</th>
-				<th>Tình trạng</th>
-
-			</tr>
-			<c:forEach items="${ListBoCauHoi}" var="bocauhoi">
-			<form action="/quanly/bocauhoi/doiquyen" method="post">
-				<tr>
-				
-					<td ><button name="idbocauhoi" value="${bocauhoi.idBoCauHoi}">${bocauhoi.idBoCauHoi}</button></td>
-					<td>${bocauhoi.tenBoCauHoi}</td>
-					
-					<td><button type="submit" 
-							style="${bocauhoi.tinhTrang==true ? 'background-color: lightgreen':'background-color: red'}"
-							class="btn btn-primary" name="tinhtrang" value="${bocauhoi.tinhTrang}">${bocauhoi.tinhTrang}</button></td>
-							
-				</tr>
-				</form>
-			</c:forEach>
-		</table>
-		</form>
-	</div>
+	
 </body>
 </html>

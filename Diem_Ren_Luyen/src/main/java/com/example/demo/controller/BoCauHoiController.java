@@ -18,7 +18,7 @@ import com.example.demo.service.BoCauHoiService;
 import com.example.demo.service.dto.BoCauHoiDTO;
 
 @Controller
-@RequestMapping(value = "/quanlybocauhoi" )
+@RequestMapping(value = "/quanly/bocauhoi" )
 public class BoCauHoiController {
 	@Autowired
 	private BoCauHoiService boCauHoiService;

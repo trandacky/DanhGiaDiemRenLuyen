@@ -6,9 +6,13 @@ import java.util.Optional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.entity.BoCauHoi;
 import com.example.demo.entity.Lop;
 import com.example.demo.repository.LopRepository;
 import com.example.demo.service.LopService;
+import com.example.demo.service.dto.BoCauHoiDTO;
+import com.example.demo.service.dto.LopDTO;
+
 
 @Service
 public class LopImpl implements LopService {
@@ -26,20 +30,22 @@ public class LopImpl implements LopService {
 	}
 
 	@Override
-	public Lop setData(Lop lop) {
+	public Lop setData(LopDTO lopDTO) {
 		// TODO Auto-generated method stub
+		Lop lop = new Lop(lopDTO.getId(),lopDTO.getTenLop(),lopDTO.getKhoa(),lopDTO.getKhoaHoc());
 		return lopRepository.save(lop);
 	}
 
 	@Override
-	public Optional<Lop> update(Lop lop) {
+	public Optional<Lop> update(LopDTO lopDTO) {
 		// TODO Auto-generated method stub
-		return lopRepository.findById(lop.getIdLop()).map(lop2 -> {
+		Lop lop = new Lop(lopDTO.getId(),lopDTO.getTenLop(),lopDTO.getKhoa(),lopDTO.getKhoaHoc());
+		return lopRepository.findById(lopDTO.getId()).map(lop2 -> {
 			lop2 = lop;
 			return lopRepository.save(lop2);
 		});
 	}
-
+	
 	@Override
 	public Optional<Object> delete(Long id) {
 		return lopRepository.findById(id).map(lop2 -> {
@@ -53,5 +59,29 @@ public class LopImpl implements LopService {
 		// TODO Auto-generated method stub
 		return lopRepository.findById(id);
 	}
+	
+	@Override
+	public List<Lop> seach(String seachString) {
+		// TODO Auto-generated method stub
+		
+		long seachString2=-17777777;
+		if(isNumeric( seachString)) seachString2= Long.parseLong(seachString); 
+		seachString = "%"+seachString+"%";
+		List<Lop> list;
+		try {
+			list = lopRepository.findByIdLopOrTenLopLike(seachString2, seachString);
+		} catch (Exception e) {
+			list = null;
+		}
+		return list;
+	}
+	
+	public static boolean isNumeric(String str) { 
+		 for (char c : str.toCharArray())
+		    {
+		        if (!Character.isDigit(c)) return false;
+		    }
+		    return true; 
+		}
 
 }

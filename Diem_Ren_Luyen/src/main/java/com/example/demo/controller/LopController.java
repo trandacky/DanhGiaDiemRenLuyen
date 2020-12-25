@@ -11,40 +11,39 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.example.demo.entity.BoCauHoi;
-import com.example.demo.service.BoCauHoiService;
-import com.example.demo.service.dto.BoCauHoiDTO;
+import com.example.demo.entity.Lop;
+import com.example.demo.service.LopService;
+import com.example.demo.service.dto.LopDTO;
 
 @Controller
-@RequestMapping(value = "/quanlylop" )
+@RequestMapping(value = "/quanly/lop" )
 public class LopController {
 	@Autowired
 	private LopService lopService;
 	@RequestMapping(value = {"","/"} )
 	public String index(Model model) {
-		String page = "/WEB-INF/jsp/admin/bocauhoi.jsp";
-		List<BoCauHoi> listBoCauHoi = boCauHoiService.getAll();
-		model.addAttribute("ListBoCauHoi", listBoCauHoi);
+		String page = "/WEB-INF/jsp/admin/lop.jsp";
+		List<Lop> listLop = lopService.getAll();
+		model.addAttribute("ListLop", listLop);
 		model.addAttribute("page", page);
-		model.addAttribute("activebocauhoi", "active");
+		model.addAttribute("activelop", "active");
 
 		return "adminMaster";
 	}
 
 	@RequestMapping(value = { "/them" }, method = RequestMethod.POST)
 	public String index2(Model model, HttpServletRequest request) {
-		BoCauHoiDTO bch = new BoCauHoiDTO();
-		bch.setTenBoCauHoi(request.getParameter("tenbocauhoi").trim());
-		boolean tinhtrang = false;
-		tinhtrang = Boolean.parseBoolean(request.getParameter("tinhtrang"));
-		bch.setTinhTrang(tinhtrang);
-		boCauHoiService.setData(bch);
+		LopDTO l = new LopDTO();
+		l.setTenLop(request.getParameter("tenlop").trim());
+		l.setKhoa(request.getParameter("khoa").trim());
+		l.setKhoaHoc(Integer.parseInt(request.getParameter("khoahoc").trim()));	
+		lopService.setData(l);
 
-		String page = "/WEB-INF/jsp/admin/bocauhoi.jsp";
-		List<BoCauHoi> listBoCauHoi = boCauHoiService.getAll();
-		model.addAttribute("ListBoCauHoi", listBoCauHoi);
+		String page = "/WEB-INF/jsp/admin/lop.jsp";
+		List<Lop> listLop = lopService.getAll();
+		model.addAttribute("ListLop", listLop);
 		model.addAttribute("page", page);
-		model.addAttribute("activebocauhoi", "active");
+		model.addAttribute("activelop", "active");
 		String back = request.getHeader("Referer");
 		return "redirect:"+back;
 	}
@@ -53,30 +52,29 @@ public class LopController {
 		String seachString;
 		seachString = request.getParameter("seach").trim();
 		
-		String page = "/WEB-INF/jsp/admin/bocauhoi.jsp";
+		String page = "/WEB-INF/jsp/admin/lop.jsp";
 		
 		model.addAttribute("page", page);
-		model.addAttribute("activebocauhoi", "active");
+		model.addAttribute("activelop", "active");
 		if(seachString=="") return "adminMaster";
-		List<BoCauHoi> listBoCauHoi = boCauHoiService.seach(seachString);
-		model.addAttribute("ListBoCauHoi", listBoCauHoi);
+		List<Lop> listLop = lopService.seach(seachString);
+		model.addAttribute("ListLop", listLop);
 		return "adminMaster";
 	}
 	@RequestMapping(value = { "/capnhat" }, method = RequestMethod.POST)
 	public String index4(Model model, HttpServletRequest request) {
-		BoCauHoiDTO bch = new BoCauHoiDTO();
-		bch.setTenBoCauHoi(request.getParameter("tenbocauhoi").trim());
-		boolean tinhtrang = false;
-		tinhtrang = Boolean.parseBoolean(request.getParameter("tinhtrang"));
-		bch.setIdBoCauHoi((long)1);
-		bch.setTinhTrang(tinhtrang);
-		boCauHoiService.update(bch);
+		LopDTO l = new LopDTO();
+		l.setTenLop(request.getParameter("tenlop").trim());
+		
+		l.setId((long)1);
+		
+		lopService.update(l);
 
-		String page = "/WEB-INF/jsp/admin/bocauhoi.jsp";
-		List<BoCauHoi> listBoCauHoi = boCauHoiService.getAll();
-		model.addAttribute("ListBoCauHoi", listBoCauHoi);
+		String page = "/WEB-INF/jsp/admin/lop.jsp";
+		List<Lop> listLop = lopService.getAll();
+		model.addAttribute("ListLop", listLop);
 		model.addAttribute("page", page);
-		model.addAttribute("activebocauhoi", "active");
+		model.addAttribute("activelop", "active");
 		String back = request.getHeader("Referer");
 		return "redirect:"+back;
 	}
