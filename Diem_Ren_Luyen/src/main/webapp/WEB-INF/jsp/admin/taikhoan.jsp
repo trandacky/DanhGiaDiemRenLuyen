@@ -78,8 +78,7 @@
 				<th>Ngày sinh</th>
 				<th>Quyền</th>
 				<th>Tên</th>
-				<th>Lớp</th>
-				<th>Chọn để xóa</th>
+				<th>Lớp</th>		
 
 			</tr>
 			<c:forEach items="${ListBoCauHoi}" var="bocauhoi">
@@ -91,17 +90,7 @@
 							class="btn btn-primary">${bocauhoi.tinhTrang}</button></td>
 				</tr>
 			</c:forEach>			
-		</table>
-		<div class="row">
-				<div class="col-md-12">
-					<div class="clearfix" style="float: right;">
-						<button class="btn btn-primary pull-right" type="button"
-							onclick="#">Thêm</button>
-						<button class="btn btn-primary pull-right" type="button"
-							onclick="#">Xóa</button>
-					</div>
-				</div>
-			</div>
+		</table>		
 	</div>
 </body>
 </html>

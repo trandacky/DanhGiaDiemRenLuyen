@@ -54,17 +54,18 @@
 	
 		<table class="table table-striped">
 			<tr>
-				<th>Nội dung đánh giá</th>
+				<th>Nội dung đánh giá</th> 
 				<th>Lần 1</th>
 				<th>Lần 2</th>
 				<th>Chú thích</th>
 			</tr>
 			<c:forEach items="${ListBoCauHoi}" var="bocauhoi">
 				<tr>
-					<td><a href="" onclick="abc()">${bocauhoi.idBoCauHoi}</a></td>
-					<td>${bocauhoi.tenBoCauHoi}</td>
+					<td>${bocauhoi.tenCauHoi}</td>
+					<td><input type ="text" name = "danhgia1" ></td>
+					
 					<td></td>
-					<td></td>
+					<td><input type ="text" name = "chuthich" ></td>
 				</tr>
 			</c:forEach>
 		</table>
