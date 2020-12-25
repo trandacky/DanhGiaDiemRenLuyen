@@ -57,10 +57,10 @@
 		</div>
 	</form>
 	<div>
-		<form class="form-inline my-2 my-lg-0 form-control">
+		<form class="form-inline my-2 my-lg-0 form-control" action="/quanly/cauhoi/seach">
 			<input class="form-control mr-sm-2" type="search"
-				placeholder="Search" aria-label="Search">
-			<button class="btn btn-outline-success my-2 my-sm-0" type="button"
+				placeholder="Search" aria-label="Search" name="seach">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit"
 				onclick="#">Search</button>
 
 		</form>
@@ -76,15 +76,17 @@
 
 			</tr>
 			<c:forEach items="${ListCauHoi}" var="cauhoi">
+			<form method="post" action="/quanly/cauhoi/doiquyen" >
 				<tr>
-					<td><a href="">${cauhoi.idCauHoi}</a></td>
-					<td>${cauhoi.noiDungCauHoi}</td>
-					<td>${cauhoi.diemToiDa}</td>
-					<td>${cauhoi.idBoCauHoi.getIdBoCauHoi()}</td>
-					<td><button type="button"
+					<td><input name="idcauhoi" value="${cauhoi.idCauHoi}" type="hidden"><a href="/quanly/bocauhoi/capnhat/${cauhoi.idCauHoi}">${cauhoi.idCauHoi}</a></td>
+					<td><input name="noidungcauhoi" value="${cauhoi.noiDungCauHoi}" type="hidden"><a href="/quanly/bocauhoi/capnhat/${cauhoi.idCauHoi}">${cauhoi.noiDungCauHoi}</a></td>
+					<td><input name="diemtoida" value="${cauhoi.diemToiDa}" type="hidden">${cauhoi.diemToiDa}</td>
+					<td><input name="idbocauhoi" value="${cauhoi.idBoCauHoi.getIdBoCauHoi()}" type="hidden">${cauhoi.idBoCauHoi.getIdBoCauHoi()}</td>
+					<td><button type="submit" name="tinhtrang"
 							style="${cauhoi.tinhTrang==true ? 'background-color: lightgreen':'background-color: red'}"
-							class="btn btn-primary">${cauhoi.tinhTrang}</button></td>
+							class="btn btn-primary" value="${cauhoi.tinhTrang}">${cauhoi.tinhTrang}</button></td>
 				</tr>
+			</form>
 			</c:forEach>
 		</table>
 	</div>

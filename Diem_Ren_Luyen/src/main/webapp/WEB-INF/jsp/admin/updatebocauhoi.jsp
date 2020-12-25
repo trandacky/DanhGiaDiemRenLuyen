@@ -42,21 +42,24 @@
 			</div>
 		</div>
 	</form>
-	<form method="post" action="/quanly/bocauhoi/update">
+	<form method="post" action="/quanly/bocauhoi/capnhat/up">
 		<div class="content form-control">
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-12">
 						<div class="form-group">
-							<label>Nội dung câu hỏi: </label> <select>
+							<label>Nội dung câu hỏi: </label> 
+							<select name = "layidcauhoi" class="form-control">
 								<c:forEach items="${listCauHoi}" var="cauhoi">
-									<option>${cauhoi.noiDungCauHoi}</option>
+									<option value="${cauhoi.idCauHoi}">${cauhoi.noiDungCauHoi}</option>
 								</c:forEach>
 							</select>
 
 						</div>
 					</div>
 				</div>
+				<input name="idbocauhoi" value="${bocauhoi.get().getIdBoCauHoi()}"
+					type="hidden">
 				<div class="row">
 					<div class="col-md-12">
 						<div class="clearfix" style="float: right;">
@@ -84,10 +87,7 @@
 						<td>${cauhoi.idCauHoi}</td>
 						<td>${cauhoi.noiDungCauHoi}</td>
 						<td>${cauhoi.diemToiDa}</td>
-						<td><button type="submit"
-								style="${bocauhoi.tinhTrang==true ? 'background-color: lightgreen':'background-color: red'}"
-								class="btn btn-primary" name="tinhtrang"
-								value="${bocauhoi.tinhTrang}">${bocauhoi.tinhTrang}</button></td>
+						
 
 					</tr>
 				</form>

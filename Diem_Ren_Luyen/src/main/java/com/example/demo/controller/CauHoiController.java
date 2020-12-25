@@ -53,28 +53,51 @@ public class CauHoiController {
 		
 		return "redirect:"+back;
 	}
+	@RequestMapping(value = "/seach", method = RequestMethod.GET )
+	public String index3(Model model, HttpServletRequest request) {
+		String seachString;
+		seachString = request.getParameter("seach").trim();
+		
+		String page = "/WEB-INF/jsp/admin/cauhoi.jsp";
+		
+		model.addAttribute("page", page);
+		model.addAttribute("activebocauhoi", "active");
+		if(seachString=="") return "adminMaster";
+		List<CauHoi> listCauHoi = cauHoiService.seach(seachString);
+		model.addAttribute("ListCauHoi", listCauHoi);
+		return "adminMaster";
+	}
 	@RequestMapping(value = { "/update" }, method = RequestMethod.POST)
 	public String index4(Model model, HttpServletRequest request) {
 		CauHoiDTO ch = new CauHoiDTO();
-		ch.setIdCauHoi(Long.parseLong(request.getParameter("idcauhoi").trim()));
-		ch.setNoiDungCauHoi(request.getParameter("noidungcauhoi").trim());
 		boolean tinhtrang = false;
+		String back = request.getHeader("Referer");
+		long idbocauhoi = 0;
+		ch.setIdCauHoi(Long.parseLong(request.getParameter("idcauhoi").trim()));
+		if(request.getParameter("idbocauhoi")!="") idbocauhoi= Long.parseLong(request.getParameter("idbocauhoi"));
+		ch.setIdBoCauHoi(idbocauhoi);
+		ch.setNoiDungCauHoi(request.getParameter("noidungcauhoi").trim());
+		
 		tinhtrang = Boolean.parseBoolean(request.getParameter("tinhtrang"));
 		ch.setTinhTrang(tinhtrang);
 		cauHoiService.update(ch);
-		String back = request.getHeader("Referer");
 		return "redirect:"+back;
 	}
 	@RequestMapping(value = { "/doiquyen" }, method = RequestMethod.POST)
 	public String index5(Model model, HttpServletRequest request) {
 		CauHoiDTO ch = new CauHoiDTO();
-		ch.setIdCauHoi(Long.parseLong(request.getParameter("idcauhoi").trim()));
-		ch.setNoiDungCauHoi(request.getParameter("noidungcauhoi").trim());
 		boolean tinhtrang = false;
+		String back = request.getHeader("Referer");
+		long idbocauhoi = 0;
+		ch.setIdCauHoi(Long.parseLong(request.getParameter("idcauhoi").trim()));
+		ch.setDiemToiDa(Integer.parseInt(request.getParameter("diemtoida").trim()));
+		if(request.getParameter("idbocauhoi")!="") idbocauhoi= Long.parseLong(request.getParameter("idbocauhoi"));
+		ch.setIdBoCauHoi(idbocauhoi);
+		ch.setNoiDungCauHoi(request.getParameter("noidungcauhoi").trim());
+		
 		tinhtrang = Boolean.parseBoolean(request.getParameter("tinhtrang"));
 		ch.setTinhTrang(!tinhtrang);
 		cauHoiService.update(ch);
-		String back = request.getHeader("Referer");
 		return "redirect:"+back;
 	}
 }

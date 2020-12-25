@@ -56,7 +56,11 @@ public class BoCauHoiImpl implements BoCauHoiService {
 		// TODO Auto-generated method stub
 		return boCauHoiRepository.findById(id); 
 	}
-
+	@Override
+	public void updateTen(long id, String ten) {
+		// TODO Auto-generated method stub
+		boCauHoiRepository.updateTenBoCauHoi(id, ten);
+	}
 	@Override
 	public List<BoCauHoi> seach(String seachString) {
 		// TODO Auto-generated method stub
@@ -72,11 +76,7 @@ public class BoCauHoiImpl implements BoCauHoiService {
 		}
 		return list;
 	}
-	@Override
-	public void updateTen(long id, String ten) {
-		// TODO Auto-generated method stub
-		boCauHoiRepository.updateTenBoCauHoi(id, ten);
-	}
+	
 	public static boolean isNumeric(String str) { 
 		 for (char c : str.toCharArray())
 		    {
