@@ -51,7 +51,10 @@
 							href="/quanly/cauhoi" aria-selected="true">Câu hỏi</a>
 							
 						<a class="nav-link ${activebocauhoi}" id="v-pills-profile-tab" href="/quanly/bocauhoi"
-							aria-selected="false">Bộ câu hỏi</a> 
+							aria-selected="false">Bộ câu hỏi</a>
+						
+						<a class="nav-link ${activelop}" id="v-pills-profile-tab" href="/quanly/lop"
+							aria-selected="false">Lớp</a>
 							
 						<a class="nav-link ${activequanlydanhgialan3}"
 							id="v-pills-messages-tab" href="/quanly/quanlydanhgialan3"
