@@ -18,6 +18,7 @@ import com.example.demo.entity.CauHoi;
 import com.example.demo.service.BoCauHoiService;
 import com.example.demo.service.CauHoiService;
 import com.example.demo.service.dto.BoCauHoiDTO;
+import com.example.demo.service.dto.CauHoiDTO;
 import com.example.demo.service.dto.TaiKhoanDTO;
 
 @Controller
@@ -96,11 +97,22 @@ public class BoCauHoiController {
 		List<CauHoi> listCauHoi = cauHoiService.getAll();
 		String page = "/WEB-INF/jsp/admin/updatebocauhoi.jsp";
 		model.addAttribute("page", page);
+		//combobox
 		model.addAttribute("listCauHoi", listCauHoi);
+		//datatable
+		model.addAttribute("ListCauHoi", listCauHoi);
 		model.addAttribute("activebocauhoi", "active");
 		model.addAttribute("bocauhoi", boCauHoi);
-		String back = request.getHeader("Referer");
 		return "adminMaster";
+	}
+	@RequestMapping(value = { "/capnhat/up" }, method = RequestMethod.POST)
+	public String index8(Model model, HttpServletRequest request) {
+	
+		String back = request.getHeader("Referer");
+			Long idBoCauHoi= Long.parseLong(request.getParameter("idbocauhoi"));
+			Long idCauHoi = Long.parseLong(request.getParameter("layidcauhoi"));
+		cauHoiService.updatebocauhoi(idCauHoi, idBoCauHoi);
+		return "redirect:"+back;
 	}
 	@RequestMapping(value = { "/quanly/danhgialan3" }, method = RequestMethod.POST)
 	public String index7(Model model, HttpServletRequest request) {

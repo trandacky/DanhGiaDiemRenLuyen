@@ -15,4 +15,6 @@ public interface CauHoiService {
 	CauHoi setData(CauHoiDTO bch);
 	Optional<Object> delete(Long id);
 	Optional<Object> update(CauHoiDTO cauHoi);
+	Optional<Object> updatebocauhoi(Long idCauHoi, Long idBoCauHoi);
+	List<CauHoi> seach(String seachString);
 }
