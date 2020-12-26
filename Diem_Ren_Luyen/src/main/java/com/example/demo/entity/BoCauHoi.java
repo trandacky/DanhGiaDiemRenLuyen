@@ -3,7 +3,9 @@ package com.example.demo.entity;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,7 +23,7 @@ public class BoCauHoi{
     private Boolean tinhTrang;
 
     @OneToMany(mappedBy = "idBoCauHoi",cascade = CascadeType.ALL)
-    private Set<CauHoi> cauHois = new HashSet<>();
+    private List<CauHoi> cauHois = new ArrayList<>();
 
 	public BoCauHoi(Long idBoCauHoi, String tenBoCauHoi, Boolean tinhTrang) {
 		super();
@@ -56,10 +58,14 @@ public class BoCauHoi{
 	public void setTinhTrang(Boolean tinhTrang) {
 		this.tinhTrang = tinhTrang;
 	}
-
-	public Set<CauHoi> getCauHois() {
+	public List<CauHoi> getCauHois() {
 		return cauHois;
 	}
+	public void setCauHois(List<CauHoi> cauHois) {
+		this.cauHois = cauHois;
+	}
+
+	
 
 	/*
 	 * public void setCauHois(Set<CauHoi> cauHois) { this.cauHois = cauHois; }

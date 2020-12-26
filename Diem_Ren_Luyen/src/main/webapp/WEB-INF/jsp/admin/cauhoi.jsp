@@ -24,7 +24,7 @@
 						<select name="idbocauhoi" class="form-control">
 						<option value="">---</option>
 						<c:forEach items="${list2}" var="bocauhoi">
-							<option value="${bocauhoi.tenBoCauHoi}">${bocauhoi.tenBoCauHoi}</option>
+							<option value="${bocauhoi.idBoCauHoi}">${bocauhoi.tenBoCauHoi}</option>
 							</c:forEach>
 						</select>
 					</div>

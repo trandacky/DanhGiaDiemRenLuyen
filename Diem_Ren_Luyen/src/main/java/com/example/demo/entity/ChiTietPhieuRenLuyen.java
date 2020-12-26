@@ -22,6 +22,9 @@ public class ChiTietPhieuRenLuyen {
 
     @Column(name = "diem_lan_3")
     private Integer diemLan3;
+    
+    @Column(name = "ghi_chu")
+    private Integer ghiChu;
 
     @ManyToOne
     @JoinColumn(name = "idCauHoi", nullable = false)
@@ -70,9 +73,6 @@ public class ChiTietPhieuRenLuyen {
         this.diemLan3 = diemLan3;
     }
 
-
-
-
     public CauHoi getIdCauHoi() {
         return idCauHoi;
     }
@@ -100,6 +100,14 @@ public class ChiTietPhieuRenLuyen {
 
 	public void setIdPhieuRenLuyen(PhieuRenLuyen idPhieuRenLuyen) {
 		this.idPhieuRenLuyen = idPhieuRenLuyen;
+	}
+
+	public Integer getGhiChu() {
+		return ghiChu;
+	}
+
+	public void setGhiChu(Integer ghiChu) {
+		this.ghiChu = ghiChu;
 	}
 
     
