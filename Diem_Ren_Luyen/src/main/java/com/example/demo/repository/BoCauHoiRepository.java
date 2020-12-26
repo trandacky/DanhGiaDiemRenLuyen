@@ -21,4 +21,7 @@ public interface BoCauHoiRepository extends JpaRepository<BoCauHoi, Long>{
 	@Query("update BoCauHoi u set u.tenBoCauHoi = :ten where u.idBoCauHoi = :id")
 	void updateTenBoCauHoi(@Param(value = "id") long id, @Param(value = "ten") String ten);
 
+
+	List<BoCauHoi> findByTinhTrangTrue();
+
 }

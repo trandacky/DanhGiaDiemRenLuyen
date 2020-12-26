@@ -1,12 +1,14 @@
 package com.example.demo.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -28,7 +30,7 @@ public class CauHoiController {
 	public String index(Model model) {
 		String page="/WEB-INF/jsp/admin/cauhoi.jsp";
 		List<CauHoi> listCauHoi = cauHoiService.getAll();
-		model.addAttribute("list2",boCauHoiService.getAll());
+		model.addAttribute("list2",boCauHoiService.getBoCauHoiTrue());
 		model.addAttribute("ListCauHoi", listCauHoi);
 		model.addAttribute("page",page);
 		model.addAttribute("activecauhoi","active");
@@ -61,7 +63,7 @@ public class CauHoiController {
 		String page = "/WEB-INF/jsp/admin/cauhoi.jsp";
 		
 		model.addAttribute("page", page);
-		model.addAttribute("activebocauhoi", "active");
+		model.addAttribute("activecauhoi", "active");
 		if(seachString=="") return "adminMaster";
 		List<CauHoi> listCauHoi = cauHoiService.seach(seachString);
 		model.addAttribute("ListCauHoi", listCauHoi);
@@ -99,5 +101,27 @@ public class CauHoiController {
 		ch.setTinhTrang(!tinhtrang);
 		cauHoiService.update(ch);
 		return "redirect:"+back;
+	}
+	@RequestMapping(value = { "/capnhat/{id}" }, method = RequestMethod.GET)
+	public String index6(Model model, HttpServletRequest request, @PathVariable Long id)
+	{
+		CauHoi cauHoi = cauHoiService.getByID(id);
+		String page = "/WEB-INF/jsp/admin/updatecauhoi.jsp";
+		model.addAttribute("page", page);
+		//combobox
+		model.addAttribute("cauhoi", cauHoi);
+		//datatable
+		model.addAttribute("activecauhoi", "active");
+		return "adminMaster";
+	}
+	@RequestMapping(value = { "/capnhat/up" }, method = RequestMethod.POST)
+	public String index7(Model model, HttpServletRequest request)
+	{
+		long id = Long.parseLong(request.getParameter("idcauhoi").trim());
+		String noidung = (request.getParameter("noidungcauhoi").trim());
+		int diemtoida = Integer.parseInt(request.getParameter("diemtoida").trim());
+		
+		cauHoiService.updatenoidung(id,noidung,diemtoida);
+		return "redirect:/quanly/cauhoi";
 	}
 }

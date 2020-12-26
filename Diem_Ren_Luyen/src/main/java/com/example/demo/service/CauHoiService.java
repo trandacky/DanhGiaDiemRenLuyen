@@ -17,4 +17,7 @@ public interface CauHoiService {
 	Optional<Object> update(CauHoiDTO cauHoi);
 	Optional<Object> updatebocauhoi(Long idCauHoi, Long idBoCauHoi);
 	List<CauHoi> seach(String seachString);
+	Optional<CauHoi> updatenoidung(long id, String noidung, int diemtoida);
+	List<CauHoi> getCauHoiByIDBoCauHoi(long idBoCauHoi);
+	List<CauHoi> getCauHoiTrue();
 }

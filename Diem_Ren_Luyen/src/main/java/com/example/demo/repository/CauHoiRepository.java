@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.example.demo.entity.BoCauHoi;
 import com.example.demo.entity.CauHoi;
 @Repository
 public interface CauHoiRepository extends JpaRepository<CauHoi, Long>{
@@ -15,6 +16,10 @@ public interface CauHoiRepository extends JpaRepository<CauHoi, Long>{
 	List<CauHoi> findAllByOrderByIdCauHoiAsc();
 
 	List<CauHoi> findByIdCauHoiOrNoiDungCauHoiLike(long seachString2, String seachString);
+
+	List<CauHoi> findByIdBoCauHoi(BoCauHoi bocauhoi);
+
+	List<CauHoi> findByTinhTrangTrue();
 
 	// ví dụ 1 cái về việc tùy chỉnh
 	/*

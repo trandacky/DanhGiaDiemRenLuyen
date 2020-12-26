@@ -17,14 +17,14 @@
 						<label>Nội dung câu hỏi: </label> <input name="noidungcauhoi" class="form-control">
 					</div>
 				</div>
-				<div class="col-md-2">
+				<div class="col-md-8">
 
 					<div class="form-group">
 						<label>Bộ câu hỏi: </label> 
 						<select name="idbocauhoi" class="form-control">
 						<option value="">---</option>
 						<c:forEach items="${list2}" var="bocauhoi">
-							<option value="${bocauhoi.idBoCauHoi}">${bocauhoi.idBoCauHoi}</option>
+							<option value="${bocauhoi.tenBoCauHoi}">${bocauhoi.tenBoCauHoi}</option>
 							</c:forEach>
 						</select>
 					</div>
@@ -78,8 +78,8 @@
 			<c:forEach items="${ListCauHoi}" var="cauhoi">
 			<form method="post" action="/quanly/cauhoi/doiquyen" >
 				<tr>
-					<td><input name="idcauhoi" value="${cauhoi.idCauHoi}" type="hidden"><a href="/quanly/bocauhoi/capnhat/${cauhoi.idCauHoi}">${cauhoi.idCauHoi}</a></td>
-					<td><input name="noidungcauhoi" value="${cauhoi.noiDungCauHoi}" type="hidden"><a href="/quanly/bocauhoi/capnhat/${cauhoi.idCauHoi}">${cauhoi.noiDungCauHoi}</a></td>
+					<td><input name="idcauhoi" value="${cauhoi.idCauHoi}" type="hidden"><a href="/quanly/cauhoi/capnhat/${cauhoi.idCauHoi}">${cauhoi.idCauHoi}</a></td>
+					<td><input name="noidungcauhoi" value="${cauhoi.noiDungCauHoi}" type="hidden"><a href="/quanly/cauhoi/capnhat/${cauhoi.idCauHoi}">${cauhoi.noiDungCauHoi}</a></td>
 					<td><input name="diemtoida" value="${cauhoi.diemToiDa}" type="hidden">${cauhoi.diemToiDa}</td>
 					<td><input name="idbocauhoi" value="${cauhoi.idBoCauHoi.getIdBoCauHoi()}" type="hidden">${cauhoi.idBoCauHoi.getIdBoCauHoi()}</td>
 					<td><button type="submit" name="tinhtrang"

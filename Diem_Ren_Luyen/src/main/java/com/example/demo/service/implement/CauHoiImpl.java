@@ -3,17 +3,21 @@ package com.example.demo.service.implement;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.BoCauHoi;
 import com.example.demo.entity.CauHoi;
+import com.example.demo.repository.BoCauHoiRepository;
 import com.example.demo.repository.CauHoiRepository;
 import com.example.demo.service.CauHoiService;
 import com.example.demo.service.dto.CauHoiDTO;
 
 @Service
 public class CauHoiImpl implements CauHoiService {
+	@Autowired
+	private BoCauHoiRepository boCauHoiRepository;
 	private final CauHoiRepository cauHoiRepository;
 
 	public CauHoiImpl(CauHoiRepository cauHoiRepository) {
@@ -25,6 +29,17 @@ public class CauHoiImpl implements CauHoiService {
 	public List<CauHoi> getAll() {
 
 		return cauHoiRepository.findAllByOrderByIdCauHoiAsc();
+	}
+	@Override
+	public List<CauHoi> getCauHoiByIDBoCauHoi(long idBoCauHoi) {
+		BoCauHoi bocauhoi= new BoCauHoi();
+		bocauhoi.setIdBoCauHoi(idBoCauHoi);
+		return cauHoiRepository.findByIdBoCauHoi(bocauhoi);
+	}
+	@Override
+	public List<CauHoi> getCauHoiTrue() {
+		// TODO Auto-generated method stub
+		return cauHoiRepository.findByTinhTrangTrue();
 	}
 
 	@Override
@@ -83,6 +98,15 @@ public class CauHoiImpl implements CauHoiService {
 		// TODO Auto-generated method stub
 		return cauHoiRepository.getOne(id);
 	}
+	@Override
+	public Optional<CauHoi> updatenoidung(long id, String noidung, int diemtoida) {
+		return cauHoiRepository.findById(id).map(cauhoi -> {
+			cauhoi.setNoiDungCauHoi(noidung);
+			cauhoi.setDiemToiDa(diemtoida);
+			return cauHoiRepository.save(cauhoi);
+		});
+		
+	}
 
 	@Override
 	public List<CauHoi> seach(String seachString) {
@@ -108,4 +132,6 @@ public class CauHoiImpl implements CauHoiService {
 		    return true; 
 		}
 
+	
+	
 }

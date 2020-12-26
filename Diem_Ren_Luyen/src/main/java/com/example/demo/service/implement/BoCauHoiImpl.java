@@ -57,6 +57,11 @@ public class BoCauHoiImpl implements BoCauHoiService {
 		return boCauHoiRepository.findById(id); 
 	}
 	@Override
+	public List<BoCauHoi> getBoCauHoiTrue() {
+		
+		return boCauHoiRepository.findByTinhTrangTrue();
+	}
+	@Override
 	public void updateTen(long id, String ten) {
 		// TODO Auto-generated method stub
 		boCauHoiRepository.updateTenBoCauHoi(id, ten);
@@ -84,4 +89,6 @@ public class BoCauHoiImpl implements BoCauHoiService {
 		    }
 		    return true; 
 		}
+
+	
 }
