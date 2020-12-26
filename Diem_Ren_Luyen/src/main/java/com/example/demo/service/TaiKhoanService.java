@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
+import com.example.demo.entity.CauHoi;
 import com.example.demo.entity.TaiKhoan;
 import java.util.List;
 
@@ -19,5 +20,10 @@ public interface TaiKhoanService {
 	List<TaiKhoan> getAll();
 
 	Optional<Object> update(TaiKhoan TaiKhoan);
+	
+	Optional<Object> updatelop(Long idTaiKhoan, Long idLop);
+
+	List<TaiKhoan> getTaiKhoanByIDLop(long idLop);
+	List<TaiKhoan> getTaiKhoanTrue();
 
 }

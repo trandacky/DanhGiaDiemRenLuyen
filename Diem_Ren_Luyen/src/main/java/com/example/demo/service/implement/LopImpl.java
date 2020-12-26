@@ -32,14 +32,14 @@ public class LopImpl implements LopService {
 	@Override
 	public Lop setData(LopDTO lopDTO) {
 		// TODO Auto-generated method stub
-		Lop lop = new Lop(lopDTO.getId(),lopDTO.getTenLop(),lopDTO.getKhoa(),lopDTO.getKhoaHoc());
+		Lop lop = new Lop(lopDTO.getId(),lopDTO.getTenLop(),lopDTO.getKhoa(),lopDTO.getKhoaHoc(),lopDTO.getTinhTrang());
 		return lopRepository.save(lop);
 	}
 
 	@Override
 	public Optional<Lop> update(LopDTO lopDTO) {
 		// TODO Auto-generated method stub
-		Lop lop = new Lop(lopDTO.getId(),lopDTO.getTenLop(),lopDTO.getKhoa(),lopDTO.getKhoaHoc());
+		Lop lop = new Lop(lopDTO.getId(),lopDTO.getTenLop(),lopDTO.getKhoa(),lopDTO.getKhoaHoc(),lopDTO.getTinhTrang());
 		return lopRepository.findById(lopDTO.getId()).map(lop2 -> {
 			lop2 = lop;
 			return lopRepository.save(lop2);

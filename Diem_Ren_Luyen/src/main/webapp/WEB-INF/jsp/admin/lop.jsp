@@ -13,25 +13,29 @@
 <div class="content form-control">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-2">
-
-					<div >
-						<label>ID: </label> <label>1${ID}</label>
-					</div>
-				</div>
-				<div class="col-md-8">
+				
+				<div class="col-md-6">
 					<div class="form-group">
 						<label>Tên lớp: </label> <input class="form-control" name="tenlop">
 					</div>
 				</div>
-				<div class="col-md-8">
+				<div class="col-md-6">
 					<div class="form-group">
 						<label>Khoa: </label> <input class="form-control" name="khoa">
 					</div>
 				</div>
-				<div class="col-md-8">
+				<div class="col-md-2">
 					<div class="form-group">
 						<label>Khóa học: </label> <input class="form-control" name="khoahoc">
+					</div>
+				</div>
+				<div class="col-md-2">
+					<div class="form-group">
+						<label>Tình trạng: </label> 
+						<select class="form-control" name="tinhtrang">
+							<option value="true">True</option>
+							<option value="false">False</option>
+						</select>
 					</div>
 				</div>
 				
@@ -58,6 +62,34 @@
 
 		</form>
 	</div>
-	
+	<div class="text-center">
+		<table class="table table-striped">
+			<tr>
+				<th>ID</th>
+				<th>Tên Lớp</th>
+				<th>Khoa</th>
+				<th>Khóa học</th>
+				<th>Tình trạng</th>
+
+			</tr>
+			<c:forEach items="${ListLop}" var="lop">
+			<form method="post" action="/quanly/lop/doiquyen" >
+				<tr>
+				
+					<td ><input name="idlop" value="${lop.idLop}" type="hidden"><a href="/quanly/lop/capnhat/${lop.idLop}">${lop.idLop}</a></td>
+					
+					<td ><input name="tenlop" value="${lop.tenLop}" type="hidden"><a href="/quanly/lop/capnhat/${lop.idLop}">${lop.tenLop}</a></td>
+					<td ><input name="khoa" value="${lop.khoa}" type="hidden"><a href="/quanly/lop/capnhat/${lop.idLop}">${lop.khoa}</a></td>
+					<td ><input name="khoaHoc" value="${lop.khoaHoc}" type="hidden"><a href="/quanly/lop/capnhat/${lop.idLop}">${lop.khoaHoc}</a></td>
+					
+					<td><button type="submit" 
+							style="${lop.tinhTrang==true ? 'background-color: lightgreen':'background-color: red'}"
+							class="btn btn-primary" name="tinhtrang" value="${lop.tinhTrang}">${lop.tinhTrang}</button></td>
+							
+				</tr>
+				</form>
+			</c:forEach>
+		</table>	
+	</div>	
 </body>
 </html>

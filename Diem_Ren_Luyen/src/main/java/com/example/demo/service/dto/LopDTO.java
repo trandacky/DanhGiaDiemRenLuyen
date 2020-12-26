@@ -14,6 +14,8 @@ public class LopDTO implements Serializable {
     private String khoa;
 
     private Integer khoaHoc;
+    
+    private Boolean tinhTrang;
 
     
     public Long getId() {
@@ -47,6 +49,14 @@ public class LopDTO implements Serializable {
     public void setKhoaHoc(Integer khoaHoc) {
         this.khoaHoc = khoaHoc;
     }
+    
+    public Boolean getTinhTrang() {
+		return tinhTrang;
+	}
+
+	public void setTinhTrang(Boolean tinhTrang) {
+		this.tinhTrang = tinhTrang;
+	}
 
     @Override
     public boolean equals(Object o) {

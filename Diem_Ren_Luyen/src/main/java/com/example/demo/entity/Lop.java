@@ -26,15 +26,23 @@ public class Lop{
     @Column(name = "khoa_hoc")
     private Integer khoaHoc;
 
+    @Column(name = "tinh_trang")
+    private Boolean tinhTrang;
+    
     @OneToMany(mappedBy = "idLop", cascade = CascadeType.ALL)
     private Set<TaiKhoan> taiKhoans = new HashSet<>();
 
-    public Lop(Long idLop, String tenLop, String khoa, Integer khoaHoc) {
+    public Lop(Long idLop, String tenLop, String khoa, Integer khoaHoc, Boolean tinhTrang) {
 		super();
 		this.idLop = idLop;
 		this.tenLop = tenLop;
 		this.khoa = khoa;
 		this.khoaHoc = khoaHoc;
+		this.tinhTrang = tinhTrang;
+	}
+    
+    public Lop() {
+		super();
 	}
 
     public String getTenLop() {
@@ -75,6 +83,14 @@ public class Lop{
     public void setKhoaHoc(Integer khoaHoc) {
         this.khoaHoc = khoaHoc;
     }
+    
+    public Boolean getTinhTrang() {
+		return tinhTrang;
+	}
+
+	public void setTinhTrang(Boolean tinhTrang) {
+		this.tinhTrang = tinhTrang;
+	}
 
     public Set<TaiKhoan> getTaiKhoans() {
         return taiKhoans;
