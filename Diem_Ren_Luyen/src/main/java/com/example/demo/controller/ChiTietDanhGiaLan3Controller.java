@@ -14,15 +14,15 @@ import com.example.demo.service.ChiTietPhieuRenLuyenService;
 import com.example.demo.service.TaiKhoanService;
 
 @Controller
-public class ChiTietPhieuRenLuyenController {
+public class ChiTietDanhGiaLan3Controller {
 	public final ChiTietPhieuRenLuyenService chiTietPhieuRenLuyenService;
-	public ChiTietPhieuRenLuyenController(ChiTietPhieuRenLuyenService chiTietPhieuRenLuyenService)
+	public ChiTietDanhGiaLan3Controller(ChiTietPhieuRenLuyenService chiTietPhieuRenLuyenService)
 	
 	{
 		super();
 		this.chiTietPhieuRenLuyenService = chiTietPhieuRenLuyenService;
 	}
-	@RequestMapping(value = { "/quanly/quanlydanhgialan3" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/quanly/chitietxetduyetlan3/{id}" }, method = RequestMethod.GET)
 	public String index(Model model) {
 		String page="/WEB-INF/jsp/admin/quanlydanhgialan3.jsp";
 		List<ChiTietPhieuRenLuyen> listChiTietPhieuRenLuyen = chiTietPhieuRenLuyenService.getAll();
