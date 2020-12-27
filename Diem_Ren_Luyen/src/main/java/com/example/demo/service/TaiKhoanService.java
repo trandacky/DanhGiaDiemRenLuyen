@@ -24,6 +24,6 @@ public interface TaiKhoanService {
 	Optional<Object> updatelop(Long idTaiKhoan, Long idLop);
 
 	List<TaiKhoan> getTaiKhoanByIDLop(long idLop);
-	List<TaiKhoan> getTaiKhoanTrue();
+	List<TaiKhoan> getTaiKhoanSinhVien();
 
 }

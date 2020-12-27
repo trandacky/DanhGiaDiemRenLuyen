@@ -26,7 +26,16 @@
 				</div>
 				<div class="col-md-2">
 					<div class="form-group">
-						<label>Khóa học: </label> <input class="form-control" name="khoahoc">
+						<label>Khóa học: </label> <select class="form-control"
+								name="khoahoc">
+								<%
+									for (int i = 1; i < 100; i += 1) {
+								%>
+								<option value="<%=i%>"><%=i%></option>
+								<%
+									}
+								%>
+							</select>
 					</div>
 				</div>
 				<div class="col-md-2">
@@ -44,8 +53,6 @@
 				<div class="col-md-12">
 					<div class="clearfix" style="float: right;">
 						<button class="btn btn-primary pull-right" type="submit">Thêm</button>
-						<button class="btn btn-primary pull-right" type="button"
-							onclick="#">Cập nhật</button>
 					</div>
 				</div>
 			</div>
@@ -80,7 +87,7 @@
 					
 					<td ><input name="tenlop" value="${lop.tenLop}" type="hidden"><a href="/quanly/lop/capnhat/${lop.idLop}">${lop.tenLop}</a></td>
 					<td ><input name="khoa" value="${lop.khoa}" type="hidden"><a href="/quanly/lop/capnhat/${lop.idLop}">${lop.khoa}</a></td>
-					<td ><input name="khoaHoc" value="${lop.khoaHoc}" type="hidden"><a href="/quanly/lop/capnhat/${lop.idLop}">${lop.khoaHoc}</a></td>
+					<td ><input name="khoahoc" value="${lop.khoaHoc}" type="hidden"><a href="/quanly/lop/capnhat/${lop.idLop}">${lop.khoaHoc}</a></td>
 					
 					<td><button type="submit" 
 							style="${lop.tinhTrang==true ? 'background-color: lightgreen':'background-color: red'}"

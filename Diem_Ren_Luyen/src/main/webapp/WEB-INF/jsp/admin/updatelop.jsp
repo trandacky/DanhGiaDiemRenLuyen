@@ -15,19 +15,47 @@
 				<div class="row">
 					<div class="col-md-1">
 						<div class="form-group">
-							<label>ID: </label> ${lop.get().getId()} <input
-								name="idlop" value="${lop.get().getId()}"
+							<label>ID: </label> ${lop.get().getIdLop()} <input
+								name="idlop" value="${lop.get().getIdLop()}"
 								type="hidden"> <input name="tinhtrang"
 								value="${lop.get().getTinhTrang()}" type="hidden">
 						</div>
 					</div>
-					<div class="col-md-11">
+				</div>
+				<div class="row">	
+					<div class="col-md-6">
 						<div class="form-group">
 							<label>Tên lớp: </label> <input class="form-control"
 								name="tenlop" value="${lop.get().getTenLop()}"
 								placeholder="${lop.get().getTenLop()}"> <input
 								name="idlop" value="${lop.get().getTenLop()}"
 								type="hidden">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Khoa: </label> <input class="form-control"
+								name="khoa" value="${lop.get().getKhoa()}"
+								placeholder="${lop.get().getKhoa()}"> 
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="form-group">
+							<%--<label>Khóa học: </label> <input class="form-control"
+								name="khoahoc" value="${lop.get().getKhoaHoc()}"
+								placeholder="${lop.get().getKhoaHoc()}">--%>
+								
+							<label>Khóa học: </label> <select class="form-control"
+								name="khoahoc">
+								<option selected="selected">${lop.get().getKhoaHoc()}</option>
+								<%
+									for (int i = 1; i < 100; i += 1) {
+								%>
+								<option value="<%=i%>"><%=i%></option>
+								<%
+									}
+								%>
+							</select> 
 						</div>
 					</div>
 				</div>
@@ -42,29 +70,29 @@
 			</div>
 		</div>
 	</form>
-	<form method="post" action="/quanly/bocauhoi/capnhat/up">
+	<form method="post" action="/quanly/lop/capnhat/up">
 		<div class="content form-control">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-md-12">
+					<div class="col-md-7">
 						<div class="form-group">
-							<label>Nội dung câu hỏi: </label> 
-							<select name = "layidcauhoi" class="form-control">
-								<c:forEach items="${listCauHoi}" var="cauhoi">
-									<option value="${cauhoi.idCauHoi}">${cauhoi.noiDungCauHoi}</option>
+							<label>Sinh viên: </label> 
+							<select name = "layidtaikhoan" class="form-control">
+								<c:forEach items="${listTaiKhoan}" var="taikhoan">
+									<option value="${taikhoan.maSinhVien}">${taikhoan.ten}</option>
 								</c:forEach>
 							</select>
 
 						</div>
 					</div>
 				</div>
-				<input name="idbocauhoi" value="${bocauhoi.get().getIdBoCauHoi()}"
+				<input name="idlop" value="${lop.get().getIdLop()}"
 					type="hidden">
 				<div class="row">
 					<div class="col-md-12">
 						<div class="clearfix" style="float: right;">
 							<button class="btn btn-primary pull-right" onclick="demo()"
-								type="submit">Thêm vào bộ câu hỏi</button>
+								type="submit">Thêm vào lớp</button>
 
 						</div>
 
@@ -77,16 +105,18 @@
 		<table class="table table-striped">
 			<tr>
 				<th>ID</th>
-				<th>Nội dung câu hỏi</th>
-				<th>Điểm tối đa</th>
+				<th>Mật khẩu</th>
+				<th>Ngày tháng năm sinh</th>
+				<th>Tên</th>
 
 			</tr>
-			<c:forEach items="${ListCauHoi}" var="cauhoi">
-				<form method="post" action="/quanly/bocauhoi/doiquyen">
+			<c:forEach items="${ListTaiKhoan}" var="taikhoan">
+				<form method="post" action="/quanly/lop/doiquyen">
 					<tr>
-						<td>${cauhoi.idCauHoi}</td>
-						<td>${cauhoi.noiDungCauHoi}</td>
-						<td>${cauhoi.diemToiDa}</td>
+						<td>${taikhoan.maSinhVien}</td>
+						<td>${taikhoan.matKhau}</td>
+						<td>${taikhoan.ngayThangNamSinh}</td>
+						<td>${taikhoan.ten}</td>
 						
 
 					</tr>

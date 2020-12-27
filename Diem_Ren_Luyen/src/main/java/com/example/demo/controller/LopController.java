@@ -48,17 +48,11 @@ public class LopController {
 		LopDTO l = new LopDTO();
 		l.setTenLop(request.getParameter("tenlop").trim());
 		l.setKhoa(request.getParameter("khoa").trim());
-		l.setKhoaHoc(Integer.parseInt(request.getParameter("khoahoc").trim()));	
+		l.setKhoaHoc(Integer.parseInt(request.getParameter("khoahoc").trim()));
 		boolean tinhtrang = false;
 		tinhtrang = Boolean.parseBoolean(request.getParameter("tinhtrang"));
 		l.setTinhTrang(tinhtrang);
 		lopService.setData(l);
-
-		String page = "/WEB-INF/jsp/admin/lop.jsp";
-		List<Lop> listLop = lopService.getAll();
-		model.addAttribute("ListLop", listLop);
-		model.addAttribute("page", page);
-		model.addAttribute("activelop", "active");
 		String back = request.getHeader("Referer");
 		return "redirect:"+back;
 	}
@@ -108,7 +102,7 @@ public class LopController {
 	public String index6(Model model, HttpServletRequest request, @PathVariable Long id) {
 
 		Optional<Lop> lop = lopService.getByID(id);
-		List<TaiKhoan> listTaiKhoan = taiKhoanService.getTaiKhoanTrue();
+		List<TaiKhoan> listTaiKhoan = taiKhoanService.getTaiKhoanSinhVien();
 		List<TaiKhoan> ListTaiKhoan = taiKhoanService.getTaiKhoanByIDLop(id);
 		String page = "/WEB-INF/jsp/admin/updatelop.jsp";
 		model.addAttribute("page", page);

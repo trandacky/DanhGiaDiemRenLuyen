@@ -30,7 +30,7 @@ public class TaiKhoan{
     private Set<PhieuRenLuyen> phieuRenLuyens = new HashSet<>();
 
     @ManyToOne
-    @JoinColumn(name = "idLop", nullable = false)
+    @JoinColumn(name = "idLop", nullable = true)
     private Lop idLop;
 
     
