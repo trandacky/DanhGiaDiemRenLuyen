@@ -15,5 +15,6 @@ public interface LopService {
 	Optional<Object> delete(Long id);
 	List<Lop> seach(String x);
 	Optional<Lop> update(LopDTO lopDTO);
+	List<Lop> getLopTrue();
 
 }

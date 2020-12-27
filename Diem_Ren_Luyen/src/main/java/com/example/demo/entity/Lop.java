@@ -3,7 +3,9 @@ package com.example.demo.entity;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -30,7 +32,7 @@ public class Lop{
     private Boolean tinhTrang;
     
     @OneToMany(mappedBy = "idLop", cascade = CascadeType.ALL)
-    private Set<TaiKhoan> taiKhoans = new HashSet<>();
+    private List<TaiKhoan> taiKhoans = new ArrayList<>();
 
     public Lop(Long idLop, String tenLop, String khoa, Integer khoaHoc, Boolean tinhTrang) {
 		super();
@@ -45,7 +47,15 @@ public class Lop{
 		super();
 	}
 
-    public String getTenLop() {
+    public List<TaiKhoan> getTaiKhoans() {
+		return taiKhoans;
+	}
+
+	public void setTaiKhoans(List<TaiKhoan> taiKhoans) {
+		this.taiKhoans = taiKhoans;
+	}
+
+	public String getTenLop() {
         return tenLop;
     }
 
@@ -92,15 +102,6 @@ public class Lop{
 		this.tinhTrang = tinhTrang;
 	}
 
-    public Set<TaiKhoan> getTaiKhoans() {
-        return taiKhoans;
-    }
-
-    public Lop taiKhoans(Set<TaiKhoan> taiKhoans) {
-        this.taiKhoans = taiKhoans;
-        return this;
-    }
-
     public Lop addTaiKhoan(TaiKhoan taiKhoan) {
         this.taiKhoans.add(taiKhoan);
         taiKhoan.setIdLop(this);
@@ -113,9 +114,6 @@ public class Lop{
         return this;
     }
 
-    public void setTaiKhoans(Set<TaiKhoan> taiKhoans) {
-        this.taiKhoans = taiKhoans;
-    }
 
 	public Long getIdLop() {
 		return idLop;

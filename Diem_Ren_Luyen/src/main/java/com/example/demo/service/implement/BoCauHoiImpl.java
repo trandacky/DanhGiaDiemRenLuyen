@@ -50,7 +50,11 @@ public class BoCauHoiImpl implements BoCauHoiService {
 			return ResponseEntity.ok().build();
 		});
 	}
-
+	@Override
+	public BoCauHoi save(BoCauHoi boCauHoi) {
+		// TODO Auto-generated method stub
+		return boCauHoiRepository.save(boCauHoi);
+	}
 	@Override
 	public Optional<BoCauHoi> getByID(long id) {
 		// TODO Auto-generated method stub
@@ -89,6 +93,8 @@ public class BoCauHoiImpl implements BoCauHoiService {
 		    }
 		    return true; 
 		}
+
+	
 
 	
 }

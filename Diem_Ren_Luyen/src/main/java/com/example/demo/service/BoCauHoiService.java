@@ -15,4 +15,5 @@ public interface BoCauHoiService {
 	Optional<BoCauHoi> update(BoCauHoiDTO boCauHoiDTO);
 	void updateTen(long id, String ten);
 	List<BoCauHoi> getBoCauHoiTrue();
+	BoCauHoi save(BoCauHoi boCauHoi);
 }

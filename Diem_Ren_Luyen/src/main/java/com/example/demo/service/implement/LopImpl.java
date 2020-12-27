@@ -59,6 +59,12 @@ public class LopImpl implements LopService {
 		// TODO Auto-generated method stub
 		return lopRepository.findById(id);
 	}
+	@Override
+	
+	public List<Lop> getLopTrue() {
+		// TODO Auto-generated method stub
+		return lopRepository.findByTinhTrangTrue();
+	}
 	
 	@Override
 	public List<Lop> seach(String seachString) {

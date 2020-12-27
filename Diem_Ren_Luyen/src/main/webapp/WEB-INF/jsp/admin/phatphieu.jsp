@@ -7,11 +7,38 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+$.confirm({
+    title: 'Confirm!',
+    content: 'Simple confirm!',
+    confirm: function(){
+        alert('Confirmed!');
+    },
+    cancel: function(){
+        alert('Canceled!')
+    }
+});
+</style>
 <body>
 <form method="post" action="/quanly/phatphieu/send">
 <div class="content form-control">
 		<div class="container-fluid">
 			<div class="row">
+			<div class="col-md-2">
+
+					<div class="form-group">
+						<label>Năm học </label> 
+						<select class="form-control" name="namhoc">
+								<%
+									for (int i = 2020; i < 2200; i += 1) {
+								%>
+								<option value="<%=i%>"><%=i%>-<%=i+1 %></option>
+								<%
+									}
+								%>
+						</select>
+					</div>
+				</div>
 				<div class="col-md-2">
 
 					<div class="form-group">
@@ -19,6 +46,7 @@
 						<select class="form-control" name="hocky">
 							<option value="1">1</option>
 							<option value="2">2</option>
+							<option value="3">3</option>
 						</select>
 					</div>
 				</div>
@@ -26,10 +54,10 @@
 
 					<div class="form-group">
 						<label>Lớp: </label> 
-						<select class="form-control" name="lop">
+						<select class="form-control" name="idlop">
 						<c:forEach items="${listLop}" var="lop">
 							<option value="${lop.idLop}">${lop.tenLop}</option>
-							</c:forEach>
+						</c:forEach>
 						</select>
 						
 					</div>
@@ -39,8 +67,7 @@
 				<div class="col-md-12">
 					<div class="clearfix" style="float: right;">
 						<button class="btn btn-primary pull-right" type="submit">Phát phiếu</button>
-						<button class="btn btn-primary pull-right" type="button"
-							onclick="#">Phát toàn bộ các lớp</button>
+						<button class="btn btn-primary pull-right" onclick="return confirm('Bạn muốn phát phiếu cho toàn bộ các lớp?');" type="submit" value="true" name="phattoanbo">Phát toàn bộ các lớp</button>
 					</div>
 				</div>
 			</div>
