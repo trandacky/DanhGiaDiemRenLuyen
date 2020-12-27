@@ -81,6 +81,7 @@ public class CauHoiImpl implements CauHoiService {
 		
 		return cauHoiRepository.findById(idCauHoi).map(cauhoi -> {
 			cauhoi.setIdBoCauHoi(bocauhoi);
+			cauhoi.setTinhTrang(false);
 			return cauHoiRepository.save(cauhoi);
 		});
 	}

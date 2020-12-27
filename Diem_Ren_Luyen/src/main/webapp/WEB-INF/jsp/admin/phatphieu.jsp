@@ -16,9 +16,9 @@
 
 					<div class="form-group">
 						<label>Học kỳ </label> 
-						<select class="form-control" name="tinhtrang">
-							<option value="">1</option>
-							<option value="">2</option>
+						<select class="form-control" name="hocky">
+							<option value="1">1</option>
+							<option value="2">2</option>
 						</select>
 					</div>
 				</div>
@@ -26,10 +26,12 @@
 
 					<div class="form-group">
 						<label>Lớp: </label> 
-						<select class="form-control" name="tinhtrang">
-							<option value="">select tên lớp từ database với value=id</option>
-							<option value="">False</option>
+						<select class="form-control" name="lop">
+						<c:forEach items="${listLop}" var="lop">
+							<option value="${lop.idLop}">${lop.tenLop}</option>
+							</c:forEach>
 						</select>
+						
 					</div>
 				</div>
 			</div>
@@ -97,7 +99,7 @@
 			<c:forEach items="${ListCauHoi=bocauhoi.getCauHois()}" var="cauhoi">
 				<tr>
 					
-					<td class="text-center"  style="width:700px"><%=sttcauhoi%>. ${cauhoi.noiDungCauHoi}: (${cauhoi.diemToiDa})</td>
+					<td class="text-center"  style="width:700px"><%=sttcauhoi%>) ${cauhoi.noiDungCauHoi}: ( ${cauhoi.diemToiDa}đ )</td>
 					<td></td>
 					<td></td>
 					<td></td>

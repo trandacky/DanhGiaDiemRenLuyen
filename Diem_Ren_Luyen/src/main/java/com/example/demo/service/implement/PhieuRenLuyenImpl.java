@@ -3,6 +3,7 @@ package com.example.demo.service.implement;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.PhieuRenLuyen;
@@ -18,27 +19,31 @@ public class PhieuRenLuyenImpl implements PhieuRenLuyenService{
 	@Override
 	public List<PhieuRenLuyen> getAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return phieuRenLuyenRepository.findAll();
 	}
 	@Override
 	public Optional<PhieuRenLuyen> getByID(long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return phieuRenLuyenRepository.findById(id);
 	}
 	@Override
 	public PhieuRenLuyen setData(PhieuRenLuyen phieuRenLuyen) {
 		// TODO Auto-generated method stub
-		return null;
+		return phieuRenLuyenRepository.save(phieuRenLuyen);
 	}
 	@Override
 	public Optional<PhieuRenLuyen> update(PhieuRenLuyen phieuRenLuyen) {
-		// TODO Auto-generated method stub
-		return null;
+		return phieuRenLuyenRepository.findById(phieuRenLuyen.getIdPhieuRenLuyen()).map(phieurenluyen -> {
+			phieurenluyen = phieuRenLuyen;
+			return phieuRenLuyenRepository.save(phieurenluyen);
+		});
 	}
 	@Override
 	public Optional<Object> delete(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return phieuRenLuyenRepository.findById(id).map(phieurenluyen -> {
+			phieuRenLuyenRepository.delete(phieurenluyen);
+			return ResponseEntity.ok().build();
+		});
 	}
 }
 

@@ -94,14 +94,14 @@ public class BoCauHoiController {
 //		List<BoCauHoi> listBoCauHoi = boCauHoiService.getAll();
 		//model.addAttribute("ListBoCauHoi", listBoCauHoi);
 		Optional<BoCauHoi> boCauHoi = boCauHoiService.getByID(id);
-		List<CauHoi> listCauHoi = cauHoiService.getCauHoiTrue();
-		List<CauHoi> ListCauHoi = cauHoiService.getCauHoiByIDBoCauHoi(id);
+		List<CauHoi> listCauHoiTrue = cauHoiService.getCauHoiTrue();
+		List<CauHoi> listCauHoiByIDBoCauHoi = cauHoiService.getCauHoiByIDBoCauHoi(id);
 		String page = "/WEB-INF/jsp/admin/updatebocauhoi.jsp";
 		model.addAttribute("page", page);
 		//combobox
-		model.addAttribute("listCauHoi", listCauHoi);
+		model.addAttribute("listCauHoi", listCauHoiTrue);
 		//datatable
-		model.addAttribute("ListCauHoi", ListCauHoi);
+		model.addAttribute("ListCauHoi", listCauHoiByIDBoCauHoi);
 		model.addAttribute("activebocauhoi", "active");
 		model.addAttribute("bocauhoi", boCauHoi);
 		return "adminMaster";
