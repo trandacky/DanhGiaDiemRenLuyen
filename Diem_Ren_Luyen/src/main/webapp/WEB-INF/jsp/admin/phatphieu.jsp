@@ -74,7 +74,6 @@ $.confirm({
 		</div>
 	</div>
 	</form>
-
 <label>Phiếu mẫu:</label>
 	<div class="content form-control">
 		<div class="container-fluid">

@@ -2,7 +2,9 @@ package com.example.demo.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -27,7 +29,7 @@ public class TaiKhoan{
     private LocalDate ngayThangNamSinh;
 
     @OneToMany(mappedBy = "maSinhVien", cascade =  CascadeType.ALL)
-    private Set<PhieuRenLuyen> phieuRenLuyens = new HashSet<>();
+    private List<PhieuRenLuyen> phieuRenLuyens = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "idLop", nullable = true)
@@ -87,16 +89,16 @@ public class TaiKhoan{
         this.ngayThangNamSinh = ngayThangNamSinh;
     }
 
-    public Set<PhieuRenLuyen> getPhieuRenLuyens() {
+    public List<PhieuRenLuyen> getPhieuRenLuyens() {
         return phieuRenLuyens;
     }
 
-    public TaiKhoan phieuRenLuyens(Set<PhieuRenLuyen> phieuRenLuyens) {
-        this.phieuRenLuyens = phieuRenLuyens;
-        return this;
-    }
 
-    public TaiKhoan addPhieuRenLuyen(PhieuRenLuyen phieuRenLuyen) {
+    public void setPhieuRenLuyens(List<PhieuRenLuyen> phieuRenLuyens) {
+		this.phieuRenLuyens = phieuRenLuyens;
+	}
+
+	public TaiKhoan addPhieuRenLuyen(PhieuRenLuyen phieuRenLuyen) {
         this.phieuRenLuyens.add(phieuRenLuyen);
         phieuRenLuyen.setMaSinhVien(this);
         return this;
@@ -108,9 +110,7 @@ public class TaiKhoan{
         return this;
     }
 
-    public void setPhieuRenLuyens(Set<PhieuRenLuyen> phieuRenLuyens) {
-        this.phieuRenLuyens = phieuRenLuyens;
-    }
+  
 
 	public Long getMaSinhVien() {
 		return maSinhVien;
