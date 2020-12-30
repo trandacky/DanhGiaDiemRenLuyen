@@ -9,7 +9,9 @@ import com.example.demo.entity.CauHoi;
 import com.example.demo.entity.Lop;
 import com.example.demo.entity.TaiKhoan;
 
-public interface TaiKhoanRepository extends JpaRepository<TaiKhoan, Long>{
+public interface TaiKhoanRepository extends JpaRepository<TaiKhoan, String>{
 	List<TaiKhoan> findByIdLop(Lop lop);
 	List<TaiKhoan> findByQuyen(int quyen);
+	List<TaiKhoan> findByMaSinhVienOrTenLike(String x, String y);
+	
 }

@@ -13,14 +13,28 @@ import java.util.Set;
 @Entity
 @Table(name = "tai_khoan")
 public class TaiKhoan{
-    @Id
-    private Long maSinhVien;
+	 
+		public TaiKhoan() {
+			super();
+		}
+    public TaiKhoan(String maSinhVien, String matKhau, int quyen, String ten, LocalDate ngayThangNamSinh,
+				Lop idLop) {
+			super();
+			this.maSinhVien = maSinhVien;
+			this.matKhau = matKhau;
+			this.quyen = quyen;
+			this.ten = ten;
+			this.ngayThangNamSinh = ngayThangNamSinh;
+			this.idLop = idLop;
+		}
+	@Id
+    private String maSinhVien;
 
     @Column(name = "mat_khau")
     private String matKhau;
 
     @Column(name = "quyen")
-    private Integer quyen;
+    private int quyen;
 
     @Column(name = "ten")
     private String ten;
@@ -35,8 +49,7 @@ public class TaiKhoan{
     @JoinColumn(name = "idLop", nullable = true)
     private Lop idLop;
 
-    
-
+   
     public String getMatKhau() {
         return matKhau;
     }
@@ -50,16 +63,16 @@ public class TaiKhoan{
         this.matKhau = matKhau;
     }
 
-    public Integer getQuyen() {
+    public int getQuyen() {
         return quyen;
     }
 
-    public TaiKhoan quyen(Integer quyen) {
+    public TaiKhoan quyen(int quyen) {
         this.quyen = quyen;
         return this;
     }
 
-    public void setQuyen(Integer quyen) {
+    public void setQuyen(int quyen) {
         this.quyen = quyen;
     }
 
@@ -112,14 +125,14 @@ public class TaiKhoan{
 
   
 
-	public Long getMaSinhVien() {
+	
+
+	public String getMaSinhVien() {
 		return maSinhVien;
 	}
-
-	public void setMaSinhVien(Long maSinhVien) {
+	public void setMaSinhVien(String maSinhVien) {
 		this.maSinhVien = maSinhVien;
 	}
-
 	public Lop getIdLop() {
 		return idLop;
 	}

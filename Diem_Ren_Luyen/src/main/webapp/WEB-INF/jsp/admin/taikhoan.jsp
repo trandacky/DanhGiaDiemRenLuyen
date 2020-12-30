@@ -8,45 +8,55 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form method="post" action="/quanly/taikhoan/them">
 <div class="content form-control">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-4">
 					<div >
 						<label>Mã sinh viên </label><input class="form-control"
-							type="text">
+							type="text" name ="maSinhVien">
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="form-group">
 						<label>Mật khẩu </label> <input class="form-control"
-							type="text">
+							type="text" name = "matKhau" >
+							
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="form-group">
 						<label>Ngày sinh</label> <input class="form-control"
-							type="text">
+							type="text" name = "ngaySinh" placeholder = "yyyy-mm-dd">
 					</div>
 				</div>
 				</div>
 				<div class="row">
 				<div class="col-md-4">
 					<div class="form-group">
-						<label>Quyền </label> <input class="form-control"
-							type="text">
+						<label>Quyền </label><select class="form-control" name = "quyen" >					
+						<option value="0" selected>Disable</option>
+						<option value="1">Admin</option>
+						<option value="2">Sinh viên</option>
+						<option value="3">Cán bộ lớp</option>
+						<option value="4">Giảng viên</option>
+						</select>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="form-group">
 						<label> Tên </label> <input class="form-control"
-							type="text">
+							type="text" name = "tenTaiKhoan">
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="form-group">
-						<label>Lớp </label> <input class="form-control"
-							type="text">
+						<label>Lớp </label><select class="form-control" name="idlop">
+						<c:forEach items="${listLop}" var="lop">
+							<option value="${lop.idLop}">${lop.tenLop}</option>
+						</c:forEach>
+						</select>
 					</div>
 				</div>
 			</div>
@@ -54,13 +64,15 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="clearfix" style="float: right;">
+					<button class="btn btn-primary pull-right" type="submit">Thêm</button>
 						<button class="btn btn-primary pull-right" type="button"
-							onclick="#">Thêm</button>						
+							onclick="#">Cập nhật</button>						
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	
+	</form>
 	<div>
 		<form class="form-inline my-2 my-lg-0 form-control">
 			<input class="form-control mr-sm-2" type="search"
@@ -81,13 +93,15 @@
 				<th>Lớp</th>		
 
 			</tr>
-			<c:forEach items="${ListBoCauHoi}" var="bocauhoi">
+			<c:forEach items="${ListTaiKhoan}" var="taikhoan">
+			<form method="post" action="/quanly/taikhoan/doiquyen">
 				<tr>
-					<td><a href="" onclick="abc()">${bocauhoi.idBoCauHoi}</a></td>
-					<td>${bocauhoi.tenBoCauHoi}</td>
-					<td><button type="button"
-							style="${bocauhoi.tinhTrang==true ? 'background-color: lightgreen':'background-color: red'}"
-							class="btn btn-primary">${bocauhoi.tinhTrang}</button></td>
+					<td ><input name="maSinhVien" value="${taikhoan.maSinhVien}" type="hidden"><a href="/quanly/taikhoan/capnhat/${taikhoan.maSinhVien}">${taikhoan.maSinhVien}</a></td>
+					<td ><input name="matKhau" value="${taikhoan.matKhau}" type="hidden"><a href="/quanly/taikhoan/capnhat/${taikhoan.maSinhVien}">${taikhoan.matKhau}</a></td>
+					<td ><input name="ngaySinh" value="${taikhoan.ngayThangNamSinh}" type="hidden"><a href="/quanly/taikhoan/capnhat/${taikhoan.maSinhVien}">${taikhoan.ngayThangNamSinh}</a></td>
+					<td ><input name="quyen" value="${taikhoan.quyen}" type="hidden"><a href="/quanly/taikhoan/capnhat/${taikhoan.maSinhVien}">${taikhoan.quyen}</a></td>
+					<td ><input name="tenTaiKhoan" value="${taikhoan.ten}" type="hidden"><a href="/quanly/taikhoan/capnhat/${taikhoan.maSinhVien}">${taikhoan.ten}</a></td>
+					<td ><input name="lopTaiKhoan" value="${taikhoan.idLop}" type="hidden"><a href="/quanly/taikhoan/capnhat/${taikhoan.maSinhVien}">${taikhoan.idLop.tenLop}</a></td>
 				</tr>
 			</c:forEach>			
 		</table>		

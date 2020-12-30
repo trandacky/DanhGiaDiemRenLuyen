@@ -15,6 +15,7 @@ import com.example.demo.repository.BoCauHoiRepository;
 import com.example.demo.repository.LopRepository;
 import com.example.demo.repository.TaiKhoanRepository;
 import com.example.demo.service.TaiKhoanService;
+import com.example.demo.service.dto.TaiKhoanDTO;
 @Service
 public class TaiKhoanImpl implements TaiKhoanService{
 	@Autowired
@@ -34,21 +35,23 @@ public class TaiKhoanImpl implements TaiKhoanService{
 
 	@Override
 	public TaiKhoan setData(TaiKhoan TaiKhoan) {
-
+//		TaiKhoan taiKhoan = new TaiKhoan(TaiKhoan.getm(),TaiKhoanDTO.getMatKhau(),TaiKhoanDTO.getQuyen(),TaiKhoanDTO.getTen(),TaiKhoanDTO.getNgayThangNamSinh(),TaiKhoanDTO.getIdLop());
 		return TaiKhoanRepository.save(TaiKhoan);
+		
 	}
 
 	@Override
-	public Optional<Object> update(TaiKhoan TaiKhoan) {
+	public Optional<TaiKhoan> update(TaiKhoanDTO TaiKhoanDTO) {
 
-		return TaiKhoanRepository.findById(TaiKhoan.getMaSinhVien()).map(taiKhoan -> {
-			taiKhoan = TaiKhoan;
-			return TaiKhoanRepository.save(taiKhoan);
+		TaiKhoan taiKhoan = new TaiKhoan(TaiKhoanDTO.getId(),TaiKhoanDTO.getMatKhau(),TaiKhoanDTO.getQuyen(), TaiKhoanDTO.getTen(),TaiKhoanDTO.getNgayThangNamSinh(),TaiKhoanDTO.getIdLop());
+		return TaiKhoanRepository.findById(taiKhoan.getMaSinhVien()).map(taikhoan -> {
+			taikhoan = taiKhoan;
+			return TaiKhoanRepository.save(taikhoan);
 		});
 	}
 
 	@Override
-	public Optional<Object> delete(Long id) {
+	public Optional<Object> delete(String id) {
 		return TaiKhoanRepository.findById(id).map(TaiKhoan -> {
 			TaiKhoanRepository.delete(TaiKhoan);
 			return ResponseEntity.ok().build();
@@ -56,13 +59,13 @@ public class TaiKhoanImpl implements TaiKhoanService{
 	}
 
 	@Override
-	public TaiKhoan getByID(long id) {
+	public Optional<TaiKhoan> getByID(String id) {
 		// TODO Auto-generated method stub
-		return TaiKhoanRepository.getOne(id);
+		return TaiKhoanRepository.findById(id);
 	}
 	
 	@Override
-	public Optional<Object> updatelop(Long idTaiKhoan, Long idLop) {
+	public Optional<Object> updatelop(String idTaiKhoan, Long idLop) {
 		Lop lop = new Lop();
 		lop.setIdLop(idLop);
 		
@@ -84,6 +87,31 @@ public class TaiKhoanImpl implements TaiKhoanService{
 		// TODO Auto-generated method stub
 		return TaiKhoanRepository.findByQuyen(4);
 	}
+
+
+	@Override
+	public List<TaiKhoan> search(String x) {
+		x = "%"+ x +"%";
+		List<TaiKhoan> list;
+			list = TaiKhoanRepository.findByMaSinhVienOrTenLike( x,x);
+		return list;
+	}
+	
+	public static boolean isNumeric(String str) { 
+		 for (char c : str.toCharArray())
+		    {
+		        if (!Character.isDigit(c)) return false;
+		    }
+		    return true; 
+		}
+
+
+	@Override
+	public Optional<Object> update(TaiKhoan TaiKhoan) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	
 

@@ -119,7 +119,7 @@ public class LopController {
 	
 		String back = request.getHeader("Referer");
 			Long idLop= Long.parseLong(request.getParameter("idlop"));
-			Long idTaiKhoan = Long.parseLong(request.getParameter("layidtaikhoan"));
+			String idTaiKhoan = request.getParameter("layidtaikhoan");
 		taiKhoanService.updatelop(idTaiKhoan, idLop);
 		return "redirect:"+back;
 	}
