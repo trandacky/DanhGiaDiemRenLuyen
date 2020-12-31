@@ -15,16 +15,16 @@ public class ChiTietPhieuRenLuyen {
     private Long idChiTietPhieuRenLuyen;
 
     @Column(name = "diem_lan_1")
-    private Integer diemLan1;
+    private Integer diemLan1=0;
 
     @Column(name = "diem_lan_2")
-    private Integer diemLan2;
+    private Integer diemLan2=0;
 
     @Column(name = "diem_lan_3")
-    private Integer diemLan3;
+    private Integer diemLan3=0;
     
     @Column(name = "ghi_chu")
-    private Integer ghiChu;
+    private String ghiChu;
 
     @ManyToOne
     @JoinColumn(name = "idCauHoi", nullable = false)
@@ -102,13 +102,15 @@ public class ChiTietPhieuRenLuyen {
 		this.idPhieuRenLuyen = idPhieuRenLuyen;
 	}
 
-	public Integer getGhiChu() {
+	public String getGhiChu() {
 		return ghiChu;
 	}
 
-	public void setGhiChu(Integer ghiChu) {
+	public void setGhiChu(String ghiChu) {
 		this.ghiChu = ghiChu;
 	}
+
+	
 
     
 }

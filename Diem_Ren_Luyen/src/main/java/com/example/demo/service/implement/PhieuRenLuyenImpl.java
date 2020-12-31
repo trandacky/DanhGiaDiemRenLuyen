@@ -19,7 +19,7 @@ public class PhieuRenLuyenImpl implements PhieuRenLuyenService{
 	@Override
 	public List<PhieuRenLuyen> getAll() {
 		// TODO Auto-generated method stub
-		return phieuRenLuyenRepository.findAll();
+		return phieuRenLuyenRepository.findAllByOrderByIdPhieuRenLuyenAsc();
 	}
 	@Override
 	public Optional<PhieuRenLuyen> getByID(long id) {
@@ -39,12 +39,31 @@ public class PhieuRenLuyenImpl implements PhieuRenLuyenService{
 		});
 	}
 	@Override
+	public Optional<PhieuRenLuyen> updateDuyetLan2(long IdPhieu) {
+		return phieuRenLuyenRepository.findById(IdPhieu).map(phieurenluyen -> {
+			
+			phieurenluyen.setDaDuyetLan2(!phieurenluyen.getDaDuyetLan2());
+			return phieuRenLuyenRepository.save(phieurenluyen);
+		});
+	}
+	@Override
+	public Optional<PhieuRenLuyen> updateDuyetLan2True(Long idPhieu) {
+		
+		return phieuRenLuyenRepository.findById(idPhieu).map(phieurenluyen -> {
+			
+			phieurenluyen.setDaDuyetLan2(true);
+			return phieuRenLuyenRepository.save(phieurenluyen);
+		});
+		
+	}
+	@Override
 	public Optional<Object> delete(Long id) {
 		return phieuRenLuyenRepository.findById(id).map(phieurenluyen -> {
 			phieuRenLuyenRepository.delete(phieurenluyen);
 			return ResponseEntity.ok().build();
 		});
 	}
+	
 }
 
 	

@@ -50,7 +50,7 @@ public class PhatPhieuController {
 	public String index2(Model model, HttpServletRequest request) {
 		String back = request.getHeader("Referer");
 
-		if (Boolean.parseBoolean(request.getParameter("phattoanbo")) == false) {
+		if (Boolean.parseBoolean(request.getParameter("phattoanbo")) != true) {
 			int hocKy = Integer.parseInt(request.getParameter("hocky"));
 			int namHoc = Integer.parseInt(request.getParameter("namhoc"));
 			long idLop = 0;
@@ -67,7 +67,7 @@ public class PhatPhieuController {
 			// trong lớp sẽ có nhiều tài khoản, mỗi tài khoản sẽ có nhiều bộ câu hỏi, mỗi bộ
 			// câu hỏi có nhiều câu hỏi
 			for (int i = 0; i < listTaiKhoan.size(); i++) {
-				if(listTaiKhoan.get(i).getQuyen()==0) break;
+				if(listTaiKhoan.get(i).getQuyen()==0) continue;
 				PhieuRenLuyen phieuRenLuyen = new PhieuRenLuyen();
 				phieuRenLuyen.setHocKy(hocKy);
 				phieuRenLuyen.setNamHoc(namHoc);

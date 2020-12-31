@@ -6,7 +6,9 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -28,22 +30,22 @@ public class PhieuRenLuyen{
     private Integer hocKy;
 
     @Column(name = "tong_diem_lan_1")
-    private Integer tongDiemLan1;
+    private Integer tongDiemLan1=0;
 
     @Column(name = "tong_diem_lan_2")
-    private Integer tongDiemLan2;
+    private Integer tongDiemLan2=0;
 
     @Column(name = "tong_diem_lan_3")
-    private Integer tongDiemLan3;
+    private Integer tongDiemLan3=0;
 
     @Column(name = "da_duyet_lan_2")
-    private Boolean daDuyetLan2;
+    private Boolean daDuyetLan2 = false;
 
     @Column(name = "da_duyet_lan_3")
-    private Boolean daDuyetLan3;
+    private Boolean daDuyetLan3 = false;
 
     @OneToMany(mappedBy = "idPhieuRenLuyen",cascade = CascadeType.ALL)
-    private Set<ChiTietPhieuRenLuyen> chiTietPhieuRenLuyens = new HashSet<>();
+    private List<ChiTietPhieuRenLuyen> chiTietPhieuRenLuyens = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "maSinhVien", nullable = false)
@@ -141,14 +143,7 @@ public class PhieuRenLuyen{
         this.daDuyetLan3 = daDuyetLan3;
     }
 
-    public Set<ChiTietPhieuRenLuyen> getChiTietPhieuRenLuyens() {
-        return chiTietPhieuRenLuyens;
-    }
-
-    public PhieuRenLuyen chiTietPhieuRenLuyens(Set<ChiTietPhieuRenLuyen> chiTietPhieuRenLuyens) {
-        this.chiTietPhieuRenLuyens = chiTietPhieuRenLuyens;
-        return this;
-    }
+ 
 
     public PhieuRenLuyen addChiTietPhieuRenLuyen(ChiTietPhieuRenLuyen chiTietPhieuRenLuyen) {
         this.chiTietPhieuRenLuyens.add(chiTietPhieuRenLuyen);
@@ -162,9 +157,14 @@ public class PhieuRenLuyen{
         return this;
     }
 
-    public void setChiTietPhieuRenLuyens(Set<ChiTietPhieuRenLuyen> chiTietPhieuRenLuyens) {
-        this.chiTietPhieuRenLuyens = chiTietPhieuRenLuyens;
-    }
+
+	public List<ChiTietPhieuRenLuyen> getChiTietPhieuRenLuyens() {
+		return chiTietPhieuRenLuyens;
+	}
+
+	public void setChiTietPhieuRenLuyens(List<ChiTietPhieuRenLuyen> chiTietPhieuRenLuyens) {
+		this.chiTietPhieuRenLuyens = chiTietPhieuRenLuyens;
+	}
 
 	public Long getIdPhieuRenLuyen() {
 		return idPhieuRenLuyen;
