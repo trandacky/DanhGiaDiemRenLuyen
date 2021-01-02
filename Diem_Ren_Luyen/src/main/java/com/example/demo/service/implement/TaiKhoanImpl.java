@@ -85,7 +85,7 @@ public class TaiKhoanImpl implements TaiKhoanService{
 	@Override
 	public List<TaiKhoan> getTaiKhoanSinhVien() {
 		// TODO Auto-generated method stub
-		return TaiKhoanRepository.findByQuyen(4);
+		return TaiKhoanRepository.findByQuyenOrQuyen(3,4);
 	}
 
 

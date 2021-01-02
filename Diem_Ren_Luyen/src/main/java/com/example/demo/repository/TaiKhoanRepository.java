@@ -11,7 +11,7 @@ import com.example.demo.entity.TaiKhoan;
 
 public interface TaiKhoanRepository extends JpaRepository<TaiKhoan, String>{
 	List<TaiKhoan> findByIdLop(Lop lop);
-	List<TaiKhoan> findByQuyen(int quyen);
+	List<TaiKhoan> findByQuyenOrQuyen(int quyen,int quyen2);
 	List<TaiKhoan> findByMaSinhVienOrTenLike(String x, String y);
 	
 }
