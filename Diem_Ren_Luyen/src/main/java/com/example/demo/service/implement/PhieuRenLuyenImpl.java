@@ -63,6 +63,24 @@ public class PhieuRenLuyenImpl implements PhieuRenLuyenService{
 			return ResponseEntity.ok().build();
 		});
 	}
+	@Override
+	public Optional<PhieuRenLuyen> updateDuyetLan3(long IdPhieu) {
+		return phieuRenLuyenRepository.findById(IdPhieu).map(phieurenluyen -> {
+			
+			phieurenluyen.setDaDuyetLan3(!phieurenluyen.getDaDuyetLan3());
+			return phieuRenLuyenRepository.save(phieurenluyen);
+		});
+	}
+	@Override
+	public Optional<PhieuRenLuyen> updateDuyetLan3True(Long idPhieu) {
+		
+		return phieuRenLuyenRepository.findById(idPhieu).map(phieurenluyen -> {
+			
+			phieurenluyen.setDaDuyetLan3(true);
+			return phieuRenLuyenRepository.save(phieurenluyen);
+		});
+		
+	}
 	
 }
 

@@ -15,4 +15,6 @@ public interface PhieuRenLuyenService {
 	Optional<Object> delete(Long id);
 	Optional<PhieuRenLuyen> updateDuyetLan2(long idPhieu);
 	Optional<PhieuRenLuyen> updateDuyetLan2True(Long idPhieu);
+	Optional<PhieuRenLuyen> updateDuyetLan3(long idPhieu);
+	Optional<PhieuRenLuyen> updateDuyetLan3True(Long idPhieu);
 }

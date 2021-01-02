@@ -56,8 +56,8 @@
 						<a class="nav-link ${activelop}" id="v-pills-profile-tab" href="/quanly/lop"
 							aria-selected="false">Lớp</a>
 							
-						<a class="nav-link ${activexetduyetlan3}"
-							id="v-pills-messages-tab" href="/quanly/xetduyetlan3"
+						<a class="nav-link ${activeduyetlan3}"
+							id="v-pills-messages-tab" href="/quanly/duyetlan3"
 							aria-selected="false">Xét duyệt lần 3</a>
 							
 						<a class="nav-link ${activequanlytaikhoan}"

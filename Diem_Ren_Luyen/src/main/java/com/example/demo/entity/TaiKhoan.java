@@ -27,8 +27,12 @@ public class TaiKhoan{
 			this.ngayThangNamSinh = ngayThangNamSinh;
 			this.idLop = idLop;
 		}
-	@Id
-    private String maSinhVien;
+//	@Id
+//    private String maSinhVien;
+    
+    @Id
+    @Column(length = 100)
+        private String maSinhVien;
 
     @Column(name = "mat_khau")
     private String matKhau;
