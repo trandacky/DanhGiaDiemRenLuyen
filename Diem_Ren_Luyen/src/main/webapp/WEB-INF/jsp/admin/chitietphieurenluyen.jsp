@@ -66,6 +66,7 @@ cancel: function() {alert ('Canceled!')
 		</div>
 	</div>
 	<div>
+	<form action="/quanly/duyetlan3/duyetphieu" method="POST">
 		<table class="table table-striped">
 			<tr>
 				<th class="text-center">Nội dung đánh giá</th>
@@ -102,14 +103,14 @@ cancel: function() {alert ('Canceled!')
 
 					<td>${phieu.getDiemLan1()}</td>
 					<td>${phieu.getDiemLan2()}</td>
-					<td><input class="form-control" name="diemlan3" value="${phieu.getDiemLan3()}"
+					<td><input class="form-control" name="diemlan3<%=sttcauhoi%>" value="${phieu.getDiemLan3()}"
 								placeholder="${phieu.getDiemLan3()}"></td>
 					<td style="width: 200px">${phieu.getGhiChu()}</td>
 				</tr>
 				<%
 					sttcauhoi++;
 					sothutubocauhoi++;
-				%>
+				%><input name="sttcauhoi" value="<%=sttcauhoi%>" type="hidden">
 			</c:forEach>
 			<%
 				}
@@ -122,7 +123,7 @@ cancel: function() {alert ('Canceled!')
 			<td></td>
 			</tr>
 		</table>
-		<form action="/quanly/duyetlan3/duyetphieu" method="POST">
+		
 		<input type="hidden" name="idphieu" value="${listChiTietPhieuRenLuyen.get(0).getIdPhieuRenLuyen().getIdPhieuRenLuyen()}">
 		<div class="clearfix" style="float: right;">
 						<button class="btn btn-primary pull-right" type="submit">Tính tổng</button>
@@ -130,6 +131,7 @@ cancel: function() {alert ('Canceled!')
 						
 						<button class="btn btn-primary pull-right" type="button">Hủy và Thoát</button></a>
 						<button class="btn btn-primary pull-right" onclick="return confirm('Bạn muốn duyệt phiếu này?');" type="submit">Duyệt</button>
+						
 		</div>
 		</form>
 	</div>

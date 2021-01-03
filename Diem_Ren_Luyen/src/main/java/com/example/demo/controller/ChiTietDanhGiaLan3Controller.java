@@ -25,6 +25,8 @@ import com.example.demo.service.ChiTietPhieuRenLuyenService;
 import com.example.demo.service.LopService;
 import com.example.demo.service.PhieuRenLuyenService;
 import com.example.demo.service.TaiKhoanService;
+import com.example.demo.service.dto.ChiTietPhieuRenLuyenDTO;
+import com.example.demo.service.dto.LopDTO;
 
 @Controller
 @RequestMapping(value = "/quanly/duyetlan3")
@@ -138,19 +140,21 @@ public class ChiTietDanhGiaLan3Controller {
 	
 //	@RequestMapping(value = { "/tinhtong" }, method = RequestMethod.POST)
 //	public String index22(Model model, HttpServletRequest request) {
+//		int tong=0;
+//		for(int i=1; i<Integer.parseInt(request.getParameter("sttcauhoi").toString()); i++)
+//			tong=tong+Integer.parseInt(request.getParameter("diemlan3"+i).toString());
+//		
+//		ChiTietPhieuRenLuyenDTO ctphieu = new ChiTietPhieuRenLuyenDTO();
 //		
 //		
-//		
-//		@SuppressWarnings("unchecked")
-//		
-//		List<PhieuRenLuyen> listPhieu=  (List<PhieuRenLuyen>) request.getSession().getAttribute("listPhieuRenLuyen");
-//		for(int i=0;i<listPhieu.size();i++)
-//		{
-//			PhieuRenLuyen phieuRenLuyen = listPhieu.get(i);
-//			phieuRenLuyen.setDaDuyetLan3(true);
-//			phieuRenLuyenService.update(phieuRenLuyen);
-//		}
-//		
+//		l.setId(Long.parseLong(request.getParameter("idlop").trim()));
+//		l.setTenLop(request.getParameter("tenlop").trim());
+//		l.setKhoa(request.getParameter("khoa").trim());
+//		l.setKhoaHoc(Integer.parseInt(request.getParameter("khoahoc").trim()));
+//		boolean tinhtrang = false;
+//		tinhtrang = Boolean.parseBoolean(request.getParameter("tinhtrang"));
+//		l.setTinhTrang(tinhtrang);
+//		lopService.update(l);
 //		String back = request.getHeader("Referer");
 //		return "redirect:"+back;
 //	}
