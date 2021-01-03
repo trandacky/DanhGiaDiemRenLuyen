@@ -17,4 +17,5 @@ public interface PhieuRenLuyenService {
 	Optional<PhieuRenLuyen> updateDuyetLan2True(Long idPhieu);
 	Optional<PhieuRenLuyen> updateDuyetLan3(long idPhieu);
 	Optional<PhieuRenLuyen> updateDuyetLan3True(Long idPhieu);
+	void updateTongDiemLan3(Integer tongdiem3, Long id);
 }

@@ -82,6 +82,12 @@ public class PhieuRenLuyenImpl implements PhieuRenLuyenService{
 		
 	}
 	
+	@Override
+	public void updateTongDiemLan3(Integer tongdiem3, Long id) {
+		// TODO Auto-generated method stub
+		phieuRenLuyenRepository.updateTongDiemLan3(tongdiem3, id);
+	}
+	
 }
 
 	

@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.entity.CauHoi;
 import com.example.demo.entity.ChiTietPhieuRenLuyen;
 import com.example.demo.repository.ChiTietPhieuRenLuyenRepository;
 import com.example.demo.service.ChiTietPhieuRenLuyenService;
@@ -52,6 +53,12 @@ public class ChiTietPhieuRenLuyenImpl implements ChiTietPhieuRenLuyenService {
 	public Optional<ChiTietPhieuRenLuyen> getByID(long id) {
 		// TODO Auto-generated method stub
 		return chiTietPhieuRenLuyenRepository.findById(id);
+	}
+	
+	@Override
+	public void updateDiemLan3(Integer diem3, CauHoi id) {
+		// TODO Auto-generated method stub
+		chiTietPhieuRenLuyenRepository.updateDiemLan3(diem3, id);
 	}
 
 }

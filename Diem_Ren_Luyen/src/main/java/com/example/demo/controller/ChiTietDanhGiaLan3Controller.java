@@ -101,12 +101,7 @@ public class ChiTietDanhGiaLan3Controller {
 		String back = request.getHeader("Referer");
 		return "redirect:"+back;
 	}
-	@RequestMapping(value = { "/duyetphieu" }, method = RequestMethod.POST)
-	public String index19(Model model, HttpServletRequest request) {
-		Long idPhieu=Long.parseLong(request.getParameter("idphieu"));
-		phieuRenLuyenService.updateDuyetLan3True(idPhieu);
-		return "redirect:/quanly/duyetlan3";
-	}
+
 	@RequestMapping(value = { "/duyettatca" }, method = RequestMethod.POST)
 	public String index3(Model model, HttpServletRequest request) {
 		
@@ -138,26 +133,27 @@ public class ChiTietDanhGiaLan3Controller {
 		return "adminMaster";
 	}
 	
-//	@RequestMapping(value = { "/tinhtong" }, method = RequestMethod.POST)
-//	public String index22(Model model, HttpServletRequest request) {
-//		int tong=0;
-//		for(int i=1; i<Integer.parseInt(request.getParameter("sttcauhoi").toString()); i++)
-//			tong=tong+Integer.parseInt(request.getParameter("diemlan3"+i).toString());
-//		
-//		ChiTietPhieuRenLuyenDTO ctphieu = new ChiTietPhieuRenLuyenDTO();
-//		
-//		
-//		l.setId(Long.parseLong(request.getParameter("idlop").trim()));
-//		l.setTenLop(request.getParameter("tenlop").trim());
-//		l.setKhoa(request.getParameter("khoa").trim());
-//		l.setKhoaHoc(Integer.parseInt(request.getParameter("khoahoc").trim()));
-//		boolean tinhtrang = false;
-//		tinhtrang = Boolean.parseBoolean(request.getParameter("tinhtrang"));
-//		l.setTinhTrang(tinhtrang);
-//		lopService.update(l);
-//		String back = request.getHeader("Referer");
-//		return "redirect:"+back;
-//	}
+	@RequestMapping(value = { "/tinhtongvaduyetphieu" }, method = RequestMethod.POST)
+	public String index22(Model model, HttpServletRequest request) {
+		if (request.getParameter("tinhtong") != null) {
+			int tong=0;
+			for(int i=1; i<Integer.parseInt(request.getParameter("sttcauhoi").toString()); i++) {
+				tong=tong+Integer.parseInt(request.getParameter("diemlan3"+i).toString());
+				chiTietPhieuRenLuyenService.updateDiemLan3(Integer.parseInt(request.getParameter("diemlan3"+i).toString()), (CauHoi)request.getAttribute("idcauhoi"+i));
+			}
+			phieuRenLuyenService.updateTongDiemLan3(tong, Long.parseLong(request.getParameter("idphieu")));
+			String back = request.getHeader("Referer");
+			return "redirect:"+back;
+	    } else if (request.getParameter("duyet") != null) {
+	    	Long idPhieu=Long.parseLong(request.getParameter("idphieu"));
+			phieuRenLuyenService.updateDuyetLan3True(idPhieu);
+			return "redirect:/quanly/duyetlan3";
+	    }
+		
+		return null;
+	}
+	
+	
 	
 	
 }

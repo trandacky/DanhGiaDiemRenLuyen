@@ -65,8 +65,9 @@ cancel: function() {alert ('Canceled!')
 			</div>
 		</div>
 	</div>
+	<%int sothutubocauhoi = 1; %>
 	<div>
-	<form action="/quanly/duyetlan3/duyetphieu" method="POST">
+	<form action="/quanly/duyetlan3/tinhtongvaduyetphieu" method="POST">
 		<table class="table table-striped">
 			<tr>
 				<th class="text-center">Nội dung đánh giá</th>
@@ -77,7 +78,7 @@ cancel: function() {alert ('Canceled!')
 			</tr>
 			<%
 				{
-				int sothutubocauhoi = 1;
+				
 				int tongdiemlan1=0;
 				int tongdiemlan2=0;
 				int tongdiemlan3=0;
@@ -103,8 +104,10 @@ cancel: function() {alert ('Canceled!')
 
 					<td>${phieu.getDiemLan1()}</td>
 					<td>${phieu.getDiemLan2()}</td>
-					<td><input class="form-control" name="diemlan3<%=sttcauhoi%>" value="${phieu.getDiemLan3()}"
-								placeholder="${phieu.getDiemLan3()}"></td>
+					<td>
+						<input class="form-control" name="diemlan3<%=sttcauhoi%>" value="${phieu.getDiemLan3()}" placeholder="${phieu.getDiemLan3()}">
+						<input type="hidden" class="form-control" name="idcauhoi<%=sttcauhoi%>" value="${phieu.getIdCauHoi().getIdCauHoi()}">
+					</td>
 					<td style="width: 200px">${phieu.getGhiChu()}</td>
 				</tr>
 				<%
@@ -126,11 +129,11 @@ cancel: function() {alert ('Canceled!')
 		
 		<input type="hidden" name="idphieu" value="${listChiTietPhieuRenLuyen.get(0).getIdPhieuRenLuyen().getIdPhieuRenLuyen()}">
 		<div class="clearfix" style="float: right;">
-						<button class="btn btn-primary pull-right" type="submit">Tính tổng</button>
+						<button class="btn btn-primary pull-right" type="submit" name="tinhtong" value="tinhtong">Tính tổng</button>
 						<a href="/quanly/duyetlan3">
 						
 						<button class="btn btn-primary pull-right" type="button">Hủy và Thoát</button></a>
-						<button class="btn btn-primary pull-right" onclick="return confirm('Bạn muốn duyệt phiếu này?');" type="submit">Duyệt</button>
+						<button class="btn btn-primary pull-right" onclick="return confirm('Bạn muốn duyệt phiếu này?');" type="submit" name="duyet" value="duyet">Duyệt</button>
 						
 		</div>
 		</form>
