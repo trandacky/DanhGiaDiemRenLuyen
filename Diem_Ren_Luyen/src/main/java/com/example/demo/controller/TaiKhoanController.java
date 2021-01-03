@@ -56,24 +56,24 @@ public class TaiKhoanController {
 	}
 	@RequestMapping(value = "/search", method = RequestMethod.GET )
 	public String index3(Model model, HttpServletRequest request) {
-		String searchString;
-		searchString = request.getParameter("search").trim();
+		String x;
+		x = request.getParameter("search").trim();
 		
 		String page = "/WEB-INF/jsp/admin/taikhoan.jsp";
 		
 		model.addAttribute("page", page);
 		model.addAttribute("activequanlytaikhoan", "active");
-		if(searchString=="") return "adminMaster";		
-		List<TaiKhoan> listTaiKhoan = taiKhoanService.search(searchString);
-		model.addAttribute("ListLop", listTaiKhoan);
+		if(x=="") return "adminMaster";		
+		List<TaiKhoan> listTaiKhoan = taiKhoanService.search(x);
+		model.addAttribute("ListTaiKhoan", listTaiKhoan);
 		return "adminMaster";
 	}
 	@RequestMapping(value = { "/update" }, method = RequestMethod.POST)
 	public String index4(Model model, HttpServletRequest request) {
-		TaiKhoanDTO taiKhoan = new TaiKhoanDTO();
+		TaiKhoan taiKhoan = new TaiKhoan();
 		Lop lop = new Lop();
 		lop.setIdLop(Long.parseLong(request.getParameter("lopTaiKhoan")));
-		taiKhoan.setId(request.getParameter("maSinhVien").trim());
+		taiKhoan.setMaSinhVien(request.getParameter("maSinhVien").trim());
 		taiKhoan.setMatKhau(request.getParameter("matKhau").trim());
 		taiKhoan.setNgayThangNamSinh(LocalDate.parse(request.getParameter("ngaySinh").trim()));
 		taiKhoan.setQuyen(Integer.parseInt(request.getParameter("quyen").trim()));
@@ -85,10 +85,10 @@ public class TaiKhoanController {
 	}
 	@RequestMapping(value = { "/doiquyen" }, method = RequestMethod.POST)
 	public String index5(Model model, HttpServletRequest request) {
-		TaiKhoanDTO taiKhoan = new TaiKhoanDTO();
+		TaiKhoan taiKhoan = new TaiKhoan();
 		Lop lop = new Lop();
 		lop.setIdLop(Long.parseLong(request.getParameter("lopTaiKhoan")));
-		taiKhoan.setId(request.getParameter("maSinhVien").trim());
+		taiKhoan.setMaSinhVien(request.getParameter("maSinhVien").trim());
 		taiKhoan.setMatKhau(request.getParameter("matKhau").trim());
 		taiKhoan.setNgayThangNamSinh(LocalDate.parse(request.getParameter("ngaySinh").trim()));
 		taiKhoan.setQuyen(Integer.parseInt(request.getParameter("quyen").trim()));
@@ -104,12 +104,12 @@ public class TaiKhoanController {
 		Optional<TaiKhoan> taiKhoan = taiKhoanService.getByID(id);
 		List<TaiKhoan> listTaiKhoan = taiKhoanService.getTaiKhoanSinhVien();
 //		List<TaiKhoan> ListTaiKhoan = taiKhoanService.getTaiKhoanByIDLop(id);
-		String page = "/WEB-INF/jsp/admin/updatelop.jsp";
+		String page = "/WEB-INF/jsp/admin/updatetaikhoan.jsp";
 		model.addAttribute("page", page);
 		//combobox
 //		model.addAttribute("listTaiKhoan", listTaiKhoan);
 		//datatable
-		model.addAttribute("ListTaiKhoan", listTaiKhoan);
+//		model.addAttribute("ListTaiKhoan", listTaiKhoan);
 		model.addAttribute("activequanlytaikhoan", "active");
 		model.addAttribute("taiKhoan", taiKhoan);
 		return "adminMaster";
