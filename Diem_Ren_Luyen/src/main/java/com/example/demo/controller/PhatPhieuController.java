@@ -67,39 +67,9 @@ public class PhatPhieuController {
 			// trong lớp sẽ có nhiều tài khoản, mỗi tài khoản sẽ có nhiều bộ câu hỏi, mỗi bộ
 			// câu hỏi có nhiều câu hỏi
 			for (int i = 0; i < listTaiKhoan.size(); i++) {
-				if(listTaiKhoan.get(i).getQuyen()==0) continue;
-				PhieuRenLuyen phieuRenLuyen = new PhieuRenLuyen();
-				phieuRenLuyen.setHocKy(hocKy);
-				phieuRenLuyen.setNamHoc(namHoc);
-				phieuRenLuyen.setMaSinhVien(listTaiKhoan.get(i));
-				PhieuRenLuyen phieuRenLuyenForCauHoi = new PhieuRenLuyen();
-				phieuRenLuyenForCauHoi = phieuRenLuyenService.setData(phieuRenLuyen);
-
-				for (int j = 0; j < listBoCauHoi.size(); j++) {
-					listCauHoi = listBoCauHoi.get(j).getCauHois();
-					for (int k = 0; k < listCauHoi.size(); k++) {
-						ChiTietPhieuRenLuyen chiTietPhieuRenLuyen = new ChiTietPhieuRenLuyen();
-						chiTietPhieuRenLuyen.setIdCauHoi(listCauHoi.get(k));
-						chiTietPhieuRenLuyen.setIdPhieuRenLuyen(phieuRenLuyenForCauHoi);
-						chiTietPhieuRenLuyenService.setData(chiTietPhieuRenLuyen);
-					}
-
-				}
-			}
-		} else {
-			int hocKy = Integer.parseInt(request.getParameter("hocky").trim());
-			int namHoc = Integer.parseInt(request.getParameter("namhoc").trim());
-
-			List<BoCauHoi> listBoCauHoi = boCauHoiService.getBoCauHoiTrue();
-			List<Lop> listLop = lopService.getAll();
-			List<CauHoi> listCauHoi;
-
-			// ở đây có nhiều lớp trong lớp sẽ có nhiều tài khoản, mỗi tài khoản sẽ có nhiều
-			// bộ câu hỏi, mỗi bộ câu hỏi có nhiều câu hỏi
-			for (int temp = 0; temp < listLop.size(); temp++) {
-				List<TaiKhoan> listTaiKhoan = listLop.get(temp).getTaiKhoans();
-				for (int i = 0; i < listTaiKhoan.size(); i++) {
-					if(listTaiKhoan.get(i).getQuyen()==0) break;
+				if (listTaiKhoan.get(i).getQuyen() == 0)
+					continue;
+				else if (listTaiKhoan.get(i).getQuyen() == 4 || (listTaiKhoan.get(i).getQuyen() == 3)) {
 					PhieuRenLuyen phieuRenLuyen = new PhieuRenLuyen();
 					phieuRenLuyen.setHocKy(hocKy);
 					phieuRenLuyen.setNamHoc(namHoc);
@@ -116,6 +86,42 @@ public class PhatPhieuController {
 							chiTietPhieuRenLuyenService.setData(chiTietPhieuRenLuyen);
 						}
 
+					}
+				}
+			}
+		} else {
+			int hocKy = Integer.parseInt(request.getParameter("hocky").trim());
+			int namHoc = Integer.parseInt(request.getParameter("namhoc").trim());
+
+			List<BoCauHoi> listBoCauHoi = boCauHoiService.getBoCauHoiTrue();
+			List<Lop> listLop = lopService.getAll();
+			List<CauHoi> listCauHoi;
+
+			// ở đây có nhiều lớp trong lớp sẽ có nhiều tài khoản, mỗi tài khoản sẽ có nhiều
+			// bộ câu hỏi, mỗi bộ câu hỏi có nhiều câu hỏi
+			for (int temp = 0; temp < listLop.size(); temp++) {
+				List<TaiKhoan> listTaiKhoan = listLop.get(temp).getTaiKhoans();
+				for (int i = 0; i < listTaiKhoan.size(); i++) {
+					if (listTaiKhoan.get(i).getQuyen() == 0)
+						continue;
+					else if (listTaiKhoan.get(i).getQuyen() == 4 || (listTaiKhoan.get(i).getQuyen() == 3)) {
+						PhieuRenLuyen phieuRenLuyen = new PhieuRenLuyen();
+						phieuRenLuyen.setHocKy(hocKy);
+						phieuRenLuyen.setNamHoc(namHoc);
+						phieuRenLuyen.setMaSinhVien(listTaiKhoan.get(i));
+						PhieuRenLuyen phieuRenLuyenForCauHoi = new PhieuRenLuyen();
+						phieuRenLuyenForCauHoi = phieuRenLuyenService.setData(phieuRenLuyen);
+
+						for (int j = 0; j < listBoCauHoi.size(); j++) {
+							listCauHoi = listBoCauHoi.get(j).getCauHois();
+							for (int k = 0; k < listCauHoi.size(); k++) {
+								ChiTietPhieuRenLuyen chiTietPhieuRenLuyen = new ChiTietPhieuRenLuyen();
+								chiTietPhieuRenLuyen.setIdCauHoi(listCauHoi.get(k));
+								chiTietPhieuRenLuyen.setIdPhieuRenLuyen(phieuRenLuyenForCauHoi);
+								chiTietPhieuRenLuyenService.setData(chiTietPhieuRenLuyen);
+							}
+
+						}
 					}
 				}
 			}
