@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.example.demo.entity.CauHoi;
 import com.example.demo.entity.ChiTietPhieuRenLuyen;
+import com.example.demo.service.dto.ChiTietPhieuRenLuyenDTO;
 
 public interface ChiTietPhieuRenLuyenService {
 	List<ChiTietPhieuRenLuyen> getAll();
@@ -12,5 +13,6 @@ public interface ChiTietPhieuRenLuyenService {
 	ChiTietPhieuRenLuyen setData(ChiTietPhieuRenLuyen chiTietPhieuRenLuyen);
 	Optional<ChiTietPhieuRenLuyen> update(ChiTietPhieuRenLuyen chiTietPhieuRenLuyen);
 	Optional<Object> delete(Long id);
-	void updateDiemLan3(Integer diem3, CauHoi id);
+	void updateChiTietPhieuRenLuyenSetDiemlan3ForId(Integer diem3, Long id);
+	Optional<ChiTietPhieuRenLuyen> updateDiemLan3(Integer diem3, Long id);
 }

@@ -11,9 +11,10 @@ import com.example.demo.entity.ChiTietPhieuRenLuyen;
 public interface ChiTietPhieuRenLuyenRepository extends JpaRepository<ChiTietPhieuRenLuyen, Long>{
 
 	@Modifying
-	@Query("update ChiTietPhieuRenLuyen u set u.diemLan3 = :diem3 where u.idCauHoi = :id")
-	void updateDiemLan3(@Param(value = "diem3") Integer diem3, @Param(value = "id") CauHoi id);
+	@Query("update ChiTietPhieuRenLuyen u set u.diemLan3 = :diem3 where u.idChiTietPhieuRenLuyen = :id")
+	void updateChiTietPhieuRenLuyenSetDiemlan3ForId(@Param(value = "diem3") Integer diem3, @Param(value = "id") Long id);
 	
+	//@Query(value="UPD * " +"FROM public.cauhoi where idCauHoi=:id",nativeQuery = true) Optional<CauHoi> getByID(@Param("id") Long id) ;
 	
 	
 	

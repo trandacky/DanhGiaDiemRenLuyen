@@ -6,10 +6,13 @@ import java.util.Optional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.entity.BoCauHoi;
 import com.example.demo.entity.CauHoi;
 import com.example.demo.entity.ChiTietPhieuRenLuyen;
 import com.example.demo.repository.ChiTietPhieuRenLuyenRepository;
 import com.example.demo.service.ChiTietPhieuRenLuyenService;
+import com.example.demo.service.dto.BoCauHoiDTO;
+import com.example.demo.service.dto.ChiTietPhieuRenLuyenDTO;
 
 @Service
 public class ChiTietPhieuRenLuyenImpl implements ChiTietPhieuRenLuyenService {
@@ -56,9 +59,21 @@ public class ChiTietPhieuRenLuyenImpl implements ChiTietPhieuRenLuyenService {
 	}
 	
 	@Override
-	public void updateDiemLan3(Integer diem3, CauHoi id) {
+	public void updateChiTietPhieuRenLuyenSetDiemlan3ForId(Integer diem3, Long id) {
 		// TODO Auto-generated method stub
-		chiTietPhieuRenLuyenRepository.updateDiemLan3(diem3, id);
+		chiTietPhieuRenLuyenRepository.updateChiTietPhieuRenLuyenSetDiemlan3ForId(diem3, id);
+	}
+	
+	@Override
+	public Optional<ChiTietPhieuRenLuyen> updateDiemLan3(Integer diem3, Long id) {
+		// TODO Auto-generated method stub
+		return chiTietPhieuRenLuyenRepository.findById(id).map(chitietphieurenluyen -> {
+			chitietphieurenluyen.setDiemLan3(diem3);
+			return chiTietPhieuRenLuyenRepository.save(chitietphieurenluyen);
+		});
+	
+	
+		
 	}
 
 }

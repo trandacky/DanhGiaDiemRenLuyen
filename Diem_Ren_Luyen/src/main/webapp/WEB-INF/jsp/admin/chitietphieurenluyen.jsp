@@ -106,7 +106,7 @@ cancel: function() {alert ('Canceled!')
 					<td>${phieu.getDiemLan2()}</td>
 					<td>
 						<input class="form-control" name="diemlan3<%=sttcauhoi%>" value="${phieu.getDiemLan3()}" placeholder="${phieu.getDiemLan3()}">
-						<input type="hidden" class="form-control" name="idcauhoi<%=sttcauhoi%>" value="${phieu.getIdCauHoi().getIdCauHoi()}">
+						<input type="hidden" class="form-control" name="idchitietphieurenluyen<%=sttcauhoi%>" value="${phieu.getIdChiTietPhieuRenLuyen()}">
 					</td>
 					<td style="width: 200px">${phieu.getGhiChu()}</td>
 				</tr>
