@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.entity.ChiTietPhieuRenLuyen;
 import com.example.demo.entity.PhieuRenLuyen;
 import com.example.demo.repository.PhieuRenLuyenRepository;
 import com.example.demo.service.PhieuRenLuyenService;
@@ -86,6 +87,19 @@ public class PhieuRenLuyenImpl implements PhieuRenLuyenService{
 	public void updateTongDiemLan3(Integer tongdiem3, Long id) {
 		// TODO Auto-generated method stub
 		phieuRenLuyenRepository.updateTongDiemLan3(tongdiem3, id);
+	}
+	
+	
+	@Override
+	public Optional<PhieuRenLuyen> updateTongDiemLan33(Integer tongdiem3, Long id) {
+		// TODO Auto-generated method stub
+		return phieuRenLuyenRepository.findById(id).map(phieurenluyen -> {
+			phieurenluyen.setTongDiemLan3(tongdiem3);
+			return phieuRenLuyenRepository.save(phieurenluyen);
+		});
+	
+	
+		
 	}
 	
 }

@@ -141,7 +141,7 @@ public class ChiTietDanhGiaLan3Controller {
 				tong=tong+Integer.parseInt(request.getParameter("diemlan3"+i).toString());
 				chiTietPhieuRenLuyenService.updateDiemLan3(Integer.parseInt(request.getParameter("diemlan3"+i).toString()), Long.parseLong(request.getParameter("idchitietphieurenluyen"+i).toString()));
 			}
-			phieuRenLuyenService.updateTongDiemLan3(tong, Long.parseLong(request.getParameter("idphieu")));
+			phieuRenLuyenService.updateTongDiemLan33(tong, Long.parseLong(request.getParameter("idphieu")));
 			String back = request.getHeader("Referer");
 			return "redirect:"+back;
 	    } else if (request.getParameter("duyet") != null) {
