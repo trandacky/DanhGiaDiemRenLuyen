@@ -7,6 +7,8 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,8 +30,23 @@ public class TaiKhoanController {
 	@Autowired
 	private LopService lopService;
 
+	public TaiKhoan getTaiKhoanDangNhap()
+	{
+		
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String username;
+		if (principal instanceof UserDetails) {
+			username = ((UserDetails) principal).getUsername();
+		} else {
+		    username = principal.toString();
+		}
+		TaiKhoan taiKhoan=new TaiKhoan();
+		taiKhoan = taiKhoanService.getByID(username).get();
+		return taiKhoan;
+	}
 	@RequestMapping(value = { "","/" })
-	public String index(Model model) {
+	public String index(Model model, HttpServletRequest request) {
+		request.getSession().setAttribute("tenadmin",getTaiKhoanDangNhap());
 		String page="/WEB-INF/jsp/admin/taikhoan.jsp";
 		List<TaiKhoan> listTaiKhoan = taiKhoanService.getAll();
 		model.addAttribute("ListTaiKhoan", listTaiKhoan);		

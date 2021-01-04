@@ -36,7 +36,7 @@
 				</ul>
 				
 				<div class="topright">
-				<label >tên tài khoản của admin hay của ai đó</label>
+				<label >Xin chào: ${tenadmin.getTen()}</label>
 				<a href="/logout"><button type="button"  class="btn btn-primary">Đăng xuất</button></a>
 				</div>
 			</div>
