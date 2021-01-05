@@ -67,7 +67,7 @@ cancel: function() {alert ('Canceled!')
 	</div>
 	<%int sothutubocauhoi = 1; int sttcauhoi = 1;%>
 	<div>
-	<form action="/sv/danhgialan1/capnhat" method="POST">
+	<form action="/sv/danhgiarenluyen/capnhat" method="POST">
 		<table class="table table-striped">
 			<tr>
 				<th class="text-center">Nội dung đánh giá</th>
@@ -118,14 +118,14 @@ cancel: function() {alert ('Canceled!')
 			<input name="sttcauhoi" value="<%=sttcauhoi%>" type="hidden">
 			<tr class="text-center">
 			<td style="float:right">Tổng điểm:</td>
-			<td><input width="50" class="form-control" name="tongdiemlan1" value="${listChiTietPhieuRenLuyen.get(0).getIdPhieuRenLuyen().getTongDiemLan1()}" disabled></td>
+			<td><input width="50" class="form-control" name="tongdiemlan1" value="${phieurenluyen.getTongDiemLan1()}" disabled></td>
 			<td></td>
 			</tr>
 		</table>
 		
-		<input type="hidden" name="idphieu" value="${listChiTietPhieuRenLuyen.get(0).getIdPhieuRenLuyen().getIdPhieuRenLuyen()}">
+		<input type="hidden" name="idphieu" value="${phieurenluyen.getIdPhieuRenLuyen()}">
 		<div class="clearfix" style="float: right;">
-						<button class="btn btn-primary pull-right" type="submit" name="capnhat" value="capnhat" onclick="demo()">capnhat</button>
+						<button class="btn btn-primary pull-right" type="submit" name="capnhat" value="capnhat" onclick="demo()">Cập nhật</button>
 						
 						
 						

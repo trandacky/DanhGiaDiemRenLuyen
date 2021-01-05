@@ -63,13 +63,22 @@ public class SVController {
 	public String index99(Model model, HttpServletRequest request) {
 
 		String page = "/WEB-INF/jsp/SV/chitietphieu.jsp";
-		  List<PhieuRenLuyen> phieuRenLuyen = phieuRenLuyenService.getPhieuRenLuyen(getTaiKhoanDangNhap().getMaSinhVien().toString());
-		  PhieuRenLuyen phieuRenLuyen2 = phieuRenLuyen.get(0);
+			
+		  List<PhieuRenLuyen> phieuRenLuyen=getTaiKhoanDangNhap().getPhieuRenLuyens();
+		  
+		  PhieuRenLuyen phieuRenLuyen2 = new PhieuRenLuyen();
+		  for(int i=0;i<phieuRenLuyen.size();i++)
+		  {
+			  
+			  if(!phieuRenLuyen.get(i).getDaDuyetLan2()) {phieuRenLuyen2=phieuRenLuyen.get(i); break;}
+			  
+		  }
 		  
 		  model.addAttribute("taikhoan", getTaiKhoanDangNhap());
 		  
 		  List<ChiTietPhieuRenLuyen> listChiTietPhieuRenLuyen= phieuRenLuyen2.getChiTietPhieuRenLuyens();
 		  request.getSession().setAttribute("listChiTietPhieuRenLuyen", listChiTietPhieuRenLuyen);
+		  request.getSession().setAttribute("phieurenluyen", phieuRenLuyen2);
 		  request.getSession().setAttribute("tensinhvien",getTaiKhoanDangNhap().getTen());
 		  model.addAttribute("page", page);
 		  //model.addAttribute("activeduyetlan3", "active");
@@ -84,9 +93,9 @@ public class SVController {
 			int tong=0;
 			for(int i=1; i<Integer.parseInt(request.getParameter("sttcauhoi").toString()); i++) {
 				tong=tong+Integer.parseInt(request.getParameter("diemlan1"+i).toString());
-				chiTietPhieuRenLuyenService.updateDiemLan1Va2(Integer.parseInt(request.getParameter("diemlan1"+i).toString()), Integer.parseInt(request.getParameter("diemlan2"+i).toString()), Long.parseLong(request.getParameter("idchitietphieurenluyen"+i).toString()));
+				chiTietPhieuRenLuyenService.updateDiemLan1Va2(Integer.parseInt(request.getParameter("diemlan1"+i).toString()), Long.parseLong(request.getParameter("idchitietphieurenluyen"+i).toString()));
 			}
-			phieuRenLuyenService.updateTongDiemLan1Va2(tong, tong, Long.parseLong(request.getParameter("idphieu")));
+			phieuRenLuyenService.updateTongDiemLan1(tong, Long.parseLong(request.getParameter("idphieu")));
 			String back = request.getHeader("Referer");
 			return "redirect:"+back;
 	    
