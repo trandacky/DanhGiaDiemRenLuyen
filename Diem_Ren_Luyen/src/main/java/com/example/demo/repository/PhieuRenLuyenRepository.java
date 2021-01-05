@@ -27,5 +27,6 @@ public interface PhieuRenLuyenRepository extends JpaRepository<PhieuRenLuyen, Lo
 	 * = true) Optional<CauHoi> getByID(@Param("id") Long id) ;
 	 */
 	
-	
+	List<PhieuRenLuyen> findFistByMaSinhVienAndTongDiemLan1OrderByIdPhieuRenLuyenDesc(String msv, Integer tongdiemlan1);
+
 }

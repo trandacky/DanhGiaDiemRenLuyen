@@ -51,13 +51,13 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 		if (isAdmin(roles)) {
 			url = "/quanly/";
 		} else if (isUser(roles)) {
-			url = "/sinhvien/";
+			url = "/sv/danhgiarenluyen";
 		}
 		else if(isGiangVien(roles)) {
 			url = "/gvhd/duyetlan2";
 		}
 		else if(isCanBo(roles)) {
-		url = "/sinhvien/";
+		url = "/sv/danhgiarenluyen";
 		}
 		else {
 			url = "/";

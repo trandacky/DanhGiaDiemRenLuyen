@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.ChiTietPhieuRenLuyen;
 import com.example.demo.entity.PhieuRenLuyen;
+import com.example.demo.entity.TaiKhoan;
 import com.example.demo.repository.PhieuRenLuyenRepository;
 import com.example.demo.service.PhieuRenLuyenService;
 @Service
@@ -100,6 +101,23 @@ public class PhieuRenLuyenImpl implements PhieuRenLuyenService{
 	
 	
 		
+	}
+	
+	@Override
+	public Optional<PhieuRenLuyen> updateTongDiemLan1Va2(Integer tongdiem1, Integer tongdiem2, Long id) {
+		// TODO Auto-generated method stub
+		return phieuRenLuyenRepository.findById(id).map(phieurenluyen -> {
+			phieurenluyen.setTongDiemLan1(tongdiem1);
+			phieurenluyen.setTongDiemLan2(tongdiem2);
+			return phieuRenLuyenRepository.save(phieurenluyen);
+		});
+		
+	}
+	
+	@Override
+	public List<PhieuRenLuyen> getPhieuRenLuyen(String msv) {
+		// TODO Auto-generated method stub
+		return phieuRenLuyenRepository.findFistByMaSinhVienAndTongDiemLan1OrderByIdPhieuRenLuyenDesc(msv, 0);
 	}
 	
 }

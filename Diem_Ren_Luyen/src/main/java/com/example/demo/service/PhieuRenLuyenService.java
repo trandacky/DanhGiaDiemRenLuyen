@@ -20,4 +20,7 @@ public interface PhieuRenLuyenService {
 	Optional<PhieuRenLuyen> updateDuyetLan3True(Long idPhieu);
 	void updateTongDiemLan3(Integer tongdiem3, Long id);
 	Optional<PhieuRenLuyen> updateTongDiemLan33(Integer tongdiem3, Long id);
+	Optional<PhieuRenLuyen> updateTongDiemLan1Va2(Integer tongdiem1, Integer tongdiem2, Long id);
+	List<PhieuRenLuyen> getPhieuRenLuyen(String msv);
+	
 }

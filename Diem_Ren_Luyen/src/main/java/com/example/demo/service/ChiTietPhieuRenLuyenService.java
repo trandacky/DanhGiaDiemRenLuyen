@@ -15,4 +15,5 @@ public interface ChiTietPhieuRenLuyenService {
 	Optional<Object> delete(Long id);
 	void updateChiTietPhieuRenLuyenSetDiemlan3ForId(Integer diem3, Long id);
 	Optional<ChiTietPhieuRenLuyen> updateDiemLan3(Integer diem3, Long id);
+	Optional<ChiTietPhieuRenLuyen> updateDiemLan1Va2(Integer diem1, Integer diem2, Long id);
 }
