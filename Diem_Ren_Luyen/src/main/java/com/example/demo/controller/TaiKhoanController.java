@@ -72,13 +72,12 @@ public class TaiKhoanController {
 	public String index4(Model model, HttpServletRequest request) {
 		TaiKhoan taiKhoan = new TaiKhoan();
 		Lop lop = new Lop();
-		lop.setIdLop(Long.parseLong(request.getParameter("lopTaiKhoan")));
-		taiKhoan.setMaSinhVien(request.getParameter("maSinhVien").trim());
+		lop.setIdLop(Long.parseLong(request.getParameter("idlop").trim()));
 		taiKhoan.setMatKhau(request.getParameter("matKhau").trim());
 		taiKhoan.setNgayThangNamSinh(LocalDate.parse(request.getParameter("ngaySinh").trim()));
 		taiKhoan.setQuyen(Integer.parseInt(request.getParameter("quyen").trim()));
 		taiKhoan.setTen(request.getParameter("tenTaiKhoan"));
-//		taiKhoan.setIdLop(lop);
+		taiKhoan.setIdLop(lop);
 		taiKhoanService.update(taiKhoan);
 		String back = request.getHeader("Referer");
 		return "redirect:"+back;
@@ -87,7 +86,7 @@ public class TaiKhoanController {
 	public String index5(Model model, HttpServletRequest request) {
 		TaiKhoan taiKhoan = new TaiKhoan();
 		Lop lop = new Lop();
-		lop.setIdLop(Long.parseLong(request.getParameter("lopTaiKhoan")));
+		lop.setIdLop(Long.parseLong(request.getParameter("idlop")));
 		taiKhoan.setMaSinhVien(request.getParameter("maSinhVien").trim());
 		taiKhoan.setMatKhau(request.getParameter("matKhau").trim());
 		taiKhoan.setNgayThangNamSinh(LocalDate.parse(request.getParameter("ngaySinh").trim()));

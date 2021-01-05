@@ -101,7 +101,7 @@
 					<td ><input name="ngaySinh" value="${taikhoan.ngayThangNamSinh}" type="hidden"><a href="/quanly/taikhoan/capnhat/${taikhoan.maSinhVien}">${taikhoan.ngayThangNamSinh}</a></td>
 					<td ><input name="quyen" value="${taikhoan.quyen}" type="hidden"><a href="/quanly/taikhoan/capnhat/${taikhoan.maSinhVien}">${taikhoan.quyen}</a></td>
 					<td ><input name="tenTaiKhoan" value="${taikhoan.ten}" type="hidden"><a href="/quanly/taikhoan/capnhat/${taikhoan.maSinhVien}">${taikhoan.ten}</a></td>
-					<td ><input name="lopTaiKhoan" value="${taikhoan.idLop}" type="hidden"><a href="/quanly/taikhoan/capnhat/${taikhoan.maSinhVien}">${taikhoan.idLop.tenLop}</a></td>
+					<td ><input name="idlop" value="${taikhoan.idLop}" type="hidden"><a href="/quanly/taikhoan/capnhat/${taikhoan.maSinhVien}">${taikhoan.idLop.tenLop}</a></td>
 				</tr>
 			</c:forEach>			
 		</table>		

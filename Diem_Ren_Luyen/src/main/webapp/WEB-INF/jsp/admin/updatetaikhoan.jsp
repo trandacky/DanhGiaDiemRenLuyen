@@ -59,8 +59,8 @@
 				<div class="col-md-4">
 					<div class="form-group">
 						<label>Lớp </label><select class="form-control"
-								name="idlop]">
-								<option selected="selected">${taiKhoan.get().getIdLop().getTenLop()}</option>
+								name="idlop">
+								<option value = "${taiKhoan.get().getIdLop()}" selected="selected">${taiKhoan.get().getIdLop().getTenLop()}</option>
 								<c:forEach items="${listLop}" var="lop">							
 								<option value="${lop.idLop}">${lop.tenLop}</option>
 								</c:forEach>
