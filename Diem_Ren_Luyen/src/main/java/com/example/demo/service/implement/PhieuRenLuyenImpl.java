@@ -6,7 +6,9 @@ import java.util.Optional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.entity.ChiTietPhieuRenLuyen;
 import com.example.demo.entity.PhieuRenLuyen;
+import com.example.demo.entity.TaiKhoan;
 import com.example.demo.repository.PhieuRenLuyenRepository;
 import com.example.demo.service.PhieuRenLuyenService;
 @Service
@@ -86,6 +88,35 @@ public class PhieuRenLuyenImpl implements PhieuRenLuyenService{
 	public void updateTongDiemLan3(Integer tongdiem3, Long id) {
 		// TODO Auto-generated method stub
 		phieuRenLuyenRepository.updateTongDiemLan3(tongdiem3, id);
+	}
+	
+	
+	@Override
+	public Optional<PhieuRenLuyen> updateTongDiemLan33(Integer tongdiem3, Long id) {
+		// TODO Auto-generated method stub
+		return phieuRenLuyenRepository.findById(id).map(phieurenluyen -> {
+			phieurenluyen.setTongDiemLan3(tongdiem3);
+			return phieuRenLuyenRepository.save(phieurenluyen);
+		});
+	
+	
+		
+	}
+	
+	@Override
+	public Optional<PhieuRenLuyen> updateTongDiemLan1(Integer tongdiem1, Long id) {
+		// TODO Auto-generated method stub
+		return phieuRenLuyenRepository.findById(id).map(phieurenluyen -> {
+			phieurenluyen.setTongDiemLan1(tongdiem1);
+			return phieuRenLuyenRepository.save(phieurenluyen);
+		});
+		
+	}
+	
+	@Override
+	public List<PhieuRenLuyen> getPhieuRenLuyen(String msv) {
+		// TODO Auto-generated method stub
+		return phieuRenLuyenRepository.findByDaDuyetLan2TrueAndMaSinhVienLike(msv);
 	}
 	
 }

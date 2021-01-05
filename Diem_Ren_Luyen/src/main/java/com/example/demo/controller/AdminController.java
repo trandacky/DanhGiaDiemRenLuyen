@@ -15,6 +15,15 @@ public class AdminController {
 	}
 	@RequestMapping(value = { "/index" }, method = RequestMethod.GET)
 	public String index2(Model model) {
-		return "index";
+		return "/index";
 	}
+	@RequestMapping(value = { "/loginfail" }, method = RequestMethod.GET)
+	public String loginfail(Model model) {
+		return "/index";
+	}
+	@RequestMapping(value = { "/quanly" }, method = RequestMethod.GET)
+	public String loginAdmin(Model model) {
+		return "redirect:/quanly/taikhoan";
+	}
+	
 }

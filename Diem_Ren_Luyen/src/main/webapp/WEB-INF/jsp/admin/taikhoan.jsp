@@ -38,9 +38,9 @@
 						<label>Quyền </label><select class="form-control" name = "quyen" >					
 						<option value="0" selected>Disable</option>
 						<option value="1">Admin</option>
-						<option value="2">Sinh viên</option>
+						<option value="4">Sinh viên</option>
 						<option value="3">Cán bộ lớp</option>
-						<option value="4">Giảng viên</option>
+						<option value="2">Giảng viên</option>
 						</select>
 					</div>
 				</div>

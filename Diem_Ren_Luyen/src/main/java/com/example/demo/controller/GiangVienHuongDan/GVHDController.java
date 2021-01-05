@@ -8,6 +8,8 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,19 +41,39 @@ public class GVHDController {
 	private ChiTietPhieuRenLuyenService chiTietPhieuRenLuyenService;
 	@Autowired
 	private PhieuRenLuyenService phieuRenLuyenService;
-
+	public TaiKhoan getTaiKhoanDangNhap()
+	{
+		
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String username;
+		if (principal instanceof UserDetails) {
+			username = ((UserDetails) principal).getUsername();
+		} else {
+		    username = principal.toString();
+		}
+		TaiKhoan taiKhoan=new TaiKhoan();
+		taiKhoan = taiKhoanService.getByID(username).get();
+		return taiKhoan;
+	}
+	
+	
 	@RequestMapping(value = { "", "/" })
 	public String index(Model model, HttpServletRequest request) {
 		String page = "/WEB-INF/jsp/GVHD/duyetlan2.jsp";
-
-		List<TaiKhoan> listTaiKhoan = taiKhoanService.getTaiKhoanByIDLop((long) 1);// lấy lớp của gvhd
-
+		List<TaiKhoan> listTaiKhoan = taiKhoanService.getTaiKhoanByIDLop(getTaiKhoanDangNhap().getIdLop().getIdLop());
+		// lấy lớp của gvhd
 		List<PhieuRenLuyen> listPhieuRenLuyen = listTaiKhoan.get(0).getPhieuRenLuyens();
 		for (int i = 1; i < listTaiKhoan.size(); i++) {
-
 			listPhieuRenLuyen.addAll(listTaiKhoan.get(i).getPhieuRenLuyens());
-
 		}
+		//lọc lại phiếu rèn luyện đã đánh giá lần 3(phiếu đánh giá lần 3 sẽ không hiển thị lại ở đây)
+		for(int i=0;i<listPhieuRenLuyen.size();i++)
+		{
+			if(listPhieuRenLuyen.get(i).getDaDuyetLan3())
+				{listPhieuRenLuyen.remove(i); i--;}
+			
+		}
+	    request.getSession().setAttribute("tengiangvien",getTaiKhoanDangNhap().getTen());
 		model.addAttribute("selecthocky", 1);
 		model.addAttribute("namhocselect", Year.now().getValue());
 		request.getSession().setAttribute("listPhieuRenLuyen", listPhieuRenLuyen);

@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.entity.BoCauHoi;
 import com.example.demo.entity.CauHoi;
+import com.example.demo.entity.TaiKhoan;
 import com.example.demo.service.BoCauHoiService;
 import com.example.demo.service.CauHoiService;
+import com.example.demo.service.TaiKhoanService;
 import com.example.demo.service.dto.BoCauHoiDTO;
 import com.example.demo.service.dto.CauHoiDTO;
 import com.example.demo.service.dto.TaiKhoanDTO;
@@ -25,12 +29,28 @@ import com.example.demo.service.dto.TaiKhoanDTO;
 @RequestMapping(value = "/quanly/bocauhoi" )
 public class BoCauHoiController {
 	@Autowired
+	private TaiKhoanService taiKhoanService;
+	@Autowired
 	private BoCauHoiService boCauHoiService;
 	@Autowired
 	private CauHoiService cauHoiService;
-	
+	public TaiKhoan getTaiKhoanDangNhap()
+	{
+		
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String username;
+		if (principal instanceof UserDetails) {
+			username = ((UserDetails) principal).getUsername();
+		} else {
+		    username = principal.toString();
+		}
+		TaiKhoan taiKhoan=new TaiKhoan();
+		taiKhoan = taiKhoanService.getByID(username).get();
+		return taiKhoan;
+	}
 	@RequestMapping(value = {"","/"} )
-	public String index(Model model) {
+	public String index(Model model ,HttpServletRequest request) {
+		request.getSession().setAttribute("tenadmin", getTaiKhoanDangNhap());
 		String page = "/WEB-INF/jsp/admin/bocauhoi.jsp";
 		List<BoCauHoi> listBoCauHoi = boCauHoiService.getAll();
 		model.addAttribute("ListBoCauHoi", listBoCauHoi);

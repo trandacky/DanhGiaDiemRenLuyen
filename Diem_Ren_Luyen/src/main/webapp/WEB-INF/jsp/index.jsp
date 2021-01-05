@@ -31,10 +31,10 @@
 				 </span>
 			</div>
 			<div class="card-body">
-				<form action="" method="post">
+				<form action="/login" method="post">
 					<div class="row">
 						<div class="col-md-12">
-							<input type="text" name="email" class="form-control centertab"
+							<input type="text" name="username" class="form-control centertab"
 								placeholder="Tên đăng nhập">
 						</div>
 					</div>
@@ -45,6 +45,7 @@
 								class="form-control centertab" placeholder="Mật khẩu">
 						</div>
 					</div>
+					<input name="remember-me" type="hidden" value="on">
 					<br>
 					<div class="form-group">
 						<button type="submit" class="btn btn-outline-info btn-lg centertab">Đăng nhập</button>

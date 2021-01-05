@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.BoCauHoi;
@@ -36,6 +37,7 @@ public class TaiKhoanImpl implements TaiKhoanService{
 	@Override
 	public TaiKhoan setData(TaiKhoan TaiKhoan) {
 //		TaiKhoan taiKhoan = new TaiKhoan(TaiKhoan.getm(),TaiKhoanDTO.getMatKhau(),TaiKhoanDTO.getQuyen(),TaiKhoanDTO.getTen(),TaiKhoanDTO.getNgayThangNamSinh(),TaiKhoanDTO.getIdLop());
+		TaiKhoan.setMatKhau(encrytePassword(TaiKhoan.getMatKhau()));
 		return TaiKhoanRepository.save(TaiKhoan);
 		
 	}
@@ -45,6 +47,7 @@ public class TaiKhoanImpl implements TaiKhoanService{
 
 		TaiKhoan taiKhoan = new TaiKhoan(TaiKhoanDTO.getId(),TaiKhoanDTO.getMatKhau(),TaiKhoanDTO.getQuyen(), TaiKhoanDTO.getTen(),TaiKhoanDTO.getNgayThangNamSinh(),TaiKhoanDTO.getIdLop());
 		return TaiKhoanRepository.findById(taiKhoan.getMaSinhVien()).map(taikhoan -> {
+			taiKhoan.setMatKhau(encrytePassword(taiKhoan.getMatKhau()));
 			taikhoan = taiKhoan;
 			return TaiKhoanRepository.save(taikhoan);
 		});
@@ -113,9 +116,12 @@ public class TaiKhoanImpl implements TaiKhoanService{
 	}
 
 	
-	
+	   public static String encrytePassword(String password) {
+	        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+	        return encoder.encode(password);
+	    }
 
 	
-
+ 
 
 }

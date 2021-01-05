@@ -36,7 +36,7 @@
 				</ul>
 				
 				<div class="topright">
-				<label >Xin chào: ${tenadmin.getTen()}</label>
+				<label>Xin Chào ${tensinhvien}</label>
 				<a href="/logout"><button type="button"  class="btn btn-primary">Đăng xuất</button></a>
 				</div>
 			</div>
@@ -47,26 +47,10 @@
 					<div class="nav flex-column nav-pills" id="v-pills-tab"
 						aria-orientation="vertical">
 						<a href="index.jsp"><img src="/image/logoqnu.jpg"></a>
-						<a class="nav-link ${activecauhoi}" id="v-pills-home-tab"
-							href="/quanly/cauhoi" aria-selected="true">Câu hỏi</a>
 							
-						<a class="nav-link ${activebocauhoi}" id="v-pills-profile-tab" href="/quanly/bocauhoi"
-							aria-selected="false">Bộ câu hỏi</a>
-						
-						<a class="nav-link ${activelop}" id="v-pills-profile-tab" href="/quanly/lop"
-							aria-selected="false">Lớp</a>
-							
-						<a class="nav-link ${activeduyetlan3}"
-							id="v-pills-messages-tab" href="/quanly/duyetlan3"
-							aria-selected="false">Xét duyệt lần 3</a>
-							
-						<a class="nav-link ${activequanlytaikhoan}"
-							id="v-pills-settings-tab" href="/quanly/taikhoan"
-							aria-selected="false">Quản lý tài khoản</a>
-							
-						<a class="nav-link ${activephatphieu}"
-							id="v-pills-settings-tab" href="/quanly/phatphieu"
-							aria-selected="false">Phát phiếu</a>
+						<a class="nav-link active"
+							id="v-pills-messages-tab" href="/sv/danhgiarenluyen"
+							aria-selected="false">Duyệt lần 2</a>
 					</div>
 				</div>
 				<div class="col-10">

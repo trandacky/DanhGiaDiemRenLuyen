@@ -27,5 +27,8 @@ public interface PhieuRenLuyenRepository extends JpaRepository<PhieuRenLuyen, Lo
 	 * = true) Optional<CauHoi> getByID(@Param("id") Long id) ;
 	 */
 	
-	
+
+
+	List<PhieuRenLuyen> findByDaDuyetLan2TrueAndMaSinhVienLike(String msv);
+
 }
