@@ -66,6 +66,13 @@ public class GVHDController {
 		for (int i = 1; i < listTaiKhoan.size(); i++) {
 			listPhieuRenLuyen.addAll(listTaiKhoan.get(i).getPhieuRenLuyens());
 		}
+		//lọc lại phiếu rèn luyện đã đánh giá lần 3(phiếu đánh giá lần 3 sẽ không hiển thị lại ở đây)
+		for(int i=0;i<listPhieuRenLuyen.size();i++)
+		{
+			if(listPhieuRenLuyen.get(i).getDaDuyetLan3())
+				{listPhieuRenLuyen.remove(i); i--;}
+			
+		}
 	    request.getSession().setAttribute("tengiangvien",getTaiKhoanDangNhap().getTen());
 		model.addAttribute("selecthocky", 1);
 		model.addAttribute("namhocselect", Year.now().getValue());

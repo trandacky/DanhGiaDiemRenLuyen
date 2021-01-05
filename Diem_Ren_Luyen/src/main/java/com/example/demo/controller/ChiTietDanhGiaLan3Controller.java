@@ -45,7 +45,7 @@ public class ChiTietDanhGiaLan3Controller {
 	@RequestMapping(value = { "", "/" })
 	public String index(Model model, HttpServletRequest request) {
 		String page = "/WEB-INF/jsp/admin/xetduyetlan3.jsp";
-
+		
 		List<TaiKhoan> listTaiKhoan = taiKhoanService.getTaiKhoanSinhVien();
 
 		List<PhieuRenLuyen> listPhieuRenLuyen = listTaiKhoan.get(0).getPhieuRenLuyens();
@@ -54,6 +54,8 @@ public class ChiTietDanhGiaLan3Controller {
 			listPhieuRenLuyen.addAll(listTaiKhoan.get(i).getPhieuRenLuyens());
 
 		}
+		List<Lop> lop = lopService.getAll();
+		model.addAttribute("lop", lop);
 		model.addAttribute("lopselect", listTaiKhoan.get(0).getIdLop());
 		model.addAttribute("selecthocky", 1);
 		model.addAttribute("namhocselect", Year.now().getValue());
@@ -84,6 +86,8 @@ public class ChiTietDanhGiaLan3Controller {
 				j--;
 			}
 		}
+		List<Lop> lop = lopService.getAll();
+		model.addAttribute("lop", lop);
 		model.addAttribute("listPhieuRenLuyen", listPhieuRenLuyen);
 		model.addAttribute("lopselect", lopService.getByID(idlop).get());
 		model.addAttribute("namhocselect", namhoc);

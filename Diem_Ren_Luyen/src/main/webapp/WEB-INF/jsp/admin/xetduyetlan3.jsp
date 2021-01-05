@@ -34,9 +34,8 @@ cancel: function() {alert ('Canceled!')
 					<div class="form-group">
 						<label>Lớp: </label> 
 						<select class="form-control" name="idlop">
-						<option value="${lopselect.getIdLop()}">${lopselect.getTenLop()}</option>
-						<c:forEach items="${listPhieuRenLuyen}" var="phieu">
-							<option value="${phieu.getMaSinhVien().getIdLop().getIdLop()}">${phieu.getMaSinhVien().getIdLop().getTenLop()}</option>
+						<c:forEach items="${lop}" var="lop">
+							<option value="${lop.getIdLop()}">${lop.getTenLop()}</option>
 						</c:forEach>
 						</select>
 						
