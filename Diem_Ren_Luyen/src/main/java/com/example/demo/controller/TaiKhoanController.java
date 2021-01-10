@@ -60,13 +60,17 @@ public class TaiKhoanController {
 	public String index2(Model model, HttpServletRequest request) {
 		TaiKhoan taiKhoan = new TaiKhoan();
 		Lop lop = new Lop();
+		if( request.getParameter("idlop")!="")
+		{
 		lop.setIdLop(Long.parseLong(request.getParameter("idlop")));
+		taiKhoan.setIdLop(lop);
+		}
 		taiKhoan.setMaSinhVien(request.getParameter("maSinhVien").trim());
 		taiKhoan.setMatKhau(request.getParameter("matKhau").trim());
 		taiKhoan.setNgayThangNamSinh(LocalDate.parse(request.getParameter("ngaySinh").trim()));
 		taiKhoan.setQuyen(Integer.parseInt(request.getParameter("quyen").trim()));
 		taiKhoan.setTen(request.getParameter("tenTaiKhoan"));
-		taiKhoan.setIdLop(lop);
+		
 		taiKhoanService.setData(taiKhoan);
 		String back = request.getHeader("Referer");
 		return "redirect:"+back;
@@ -89,13 +93,18 @@ public class TaiKhoanController {
 	public String index4(Model model, HttpServletRequest request) {
 		TaiKhoan taiKhoan = new TaiKhoan();
 		Lop lop = new Lop();
-		lop.setIdLop(Long.parseLong(request.getParameter("idlop").trim()));
+		if( request.getParameter("idlop")!="")
+		{
+		lop.setIdLop(Long.parseLong(request.getParameter("idlop")));
+		taiKhoan.setIdLop(lop);
+		}
+		taiKhoan.setMaSinhVien(request.getParameter("maSinhVien"));
 		taiKhoan.setMatKhau(request.getParameter("matKhau").trim());
 		taiKhoan.setNgayThangNamSinh(LocalDate.parse(request.getParameter("ngaySinh").trim()));
 		taiKhoan.setQuyen(Integer.parseInt(request.getParameter("quyen").trim()));
 		taiKhoan.setTen(request.getParameter("tenTaiKhoan"));
-		taiKhoan.setIdLop(lop);
-		taiKhoanService.update(taiKhoan);
+		System.out.print(taiKhoan.getMaSinhVien());
+		taiKhoanService.updateTaiKhoan(taiKhoan);
 		String back = request.getHeader("Referer");
 		return "redirect:"+back;
 	}
@@ -119,6 +128,7 @@ public class TaiKhoanController {
 
 		Optional<TaiKhoan> taiKhoan = taiKhoanService.getByID(id);
 		List<TaiKhoan> listTaiKhoan = taiKhoanService.getTaiKhoanSinhVien();
+		List<Lop> listLop= lopService.getAll();
 //		List<TaiKhoan> ListTaiKhoan = taiKhoanService.getTaiKhoanByIDLop(id);
 		String page = "/WEB-INF/jsp/admin/updatetaikhoan.jsp";
 		model.addAttribute("page", page);
@@ -126,6 +136,7 @@ public class TaiKhoanController {
 //		model.addAttribute("listTaiKhoan", listTaiKhoan);
 		//datatable
 //		model.addAttribute("ListTaiKhoan", listTaiKhoan);
+		model.addAttribute("listLop",listLop);
 		model.addAttribute("activequanlytaikhoan", "active");
 		model.addAttribute("taiKhoan", taiKhoan);
 		return "adminMaster";

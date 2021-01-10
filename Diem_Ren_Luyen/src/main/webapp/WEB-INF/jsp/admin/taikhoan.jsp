@@ -53,6 +53,7 @@
 				<div class="col-md-4">
 					<div class="form-group">
 						<label>Lớp </label><select class="form-control" name="idlop">
+						<option value="">---</option>
 						<c:forEach items="${listLop}" var="lop">
 							<option value="${lop.idLop}">${lop.tenLop}</option>
 						</c:forEach>

@@ -31,4 +31,6 @@ public interface TaiKhoanService {
 
 	Optional<Object> updatelop(String idTaiKhoan, Long idLop);
 
+	Optional<TaiKhoan> updateTaiKhoan(TaiKhoan taiKhoan);
+
 }

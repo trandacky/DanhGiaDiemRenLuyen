@@ -52,6 +52,15 @@ public class TaiKhoanImpl implements TaiKhoanService{
 			return TaiKhoanRepository.save(taikhoan);
 		});
 	}
+	@Override
+	public Optional<TaiKhoan> updateTaiKhoan(TaiKhoan taiKhoan) {
+
+		
+		return TaiKhoanRepository.findById(taiKhoan.getMaSinhVien()).map(taikhoan -> {
+			taikhoan=taiKhoan;
+			return TaiKhoanRepository.save(taikhoan);
+		});
+	}
 
 	@Override
 	public Optional<Object> delete(String id) {

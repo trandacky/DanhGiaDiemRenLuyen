@@ -42,8 +42,12 @@
 				<div class="col-md-4">
 					<div class="form-group">
 						<label>Quyền </label><select class="form-control" name = "quyen" >					
-						<option selected>${taiKhoan.get().getQuyen() }</option>
-						
+						<option selected value="${taiKhoan.get().getQuyen() }">${taiKhoan.get().getQuyen() }</option>
+						<option value="0">Disable</option>
+						<option value="1">Admin</option>
+						<option value="2">Giảng viên</option>
+						<option value="3">Cán bộ lớp</option>
+						<option value="4">Sinh viên</option>
 						</select>
 					</div>
 				</div>
@@ -51,16 +55,14 @@
 					<div class="form-group">
 						<label> Tên </label><input class="form-control"
 								name="tenTaiKhoan" value="${taiKhoan.get().getTen()}"
-								placeholder="${taiKhoan.get().getTen()}"> <input
-								name="tenTaiKhoan" value="${taiKhoan.get().getTen()}"
-								type="hidden">
+								placeholder="${taiKhoan.get().getTen()}">
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="form-group">
 						<label>Lớp </label><select class="form-control"
 								name="idlop">
-								<option value = "${taiKhoan.get().getIdLop()}" selected="selected">${taiKhoan.get().getIdLop().getTenLop()}</option>
+								<option value = "${taiKhoan.get().getIdLop().getIdLop()}" selected="selected">${taiKhoan.get().getIdLop().getTenLop()}</option>
 								<c:forEach items="${listLop}" var="lop">							
 								<option value="${lop.idLop}">${lop.tenLop}</option>
 								</c:forEach>
