@@ -50,7 +50,7 @@
 							
 						<a class="nav-link active"
 							id="v-pills-messages-tab" href="/sv/danhgiarenluyen"
-							aria-selected="false">Duyệt lần 2</a>
+							aria-selected="false">Đánh giá rèn luyện</a>
 					</div>
 				</div>
 				<div class="col-10">

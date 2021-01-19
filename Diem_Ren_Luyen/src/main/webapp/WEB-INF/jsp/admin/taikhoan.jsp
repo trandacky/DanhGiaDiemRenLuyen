@@ -15,20 +15,20 @@
 				<div class="col-md-4">
 					<div >
 						<label>Mã sinh viên </label><input class="form-control"
-							type="text" name ="maSinhVien">
+							type="text" name ="maSinhVien" required>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="form-group">
 						<label>Mật khẩu </label> <input class="form-control"
-							type="text" name = "matKhau" >
+							type="text" name = "matKhau" required>
 							
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="form-group">
 						<label>Ngày sinh</label> <input class="form-control"
-							type="Date" name = "ngaySinh" placeholder = "yyyy-mm-dd">
+							type="Date" name = "ngaySinh" placeholder = "yyyy-mm-dd" required>
 					</div>
 				</div>
 				</div>
@@ -37,23 +37,23 @@
 					<div class="form-group">
 						<label>Quyền </label><select class="form-control" name = "quyen" >					
 						<option value="0" selected>Disable</option>
-						<option value="1">Admin</option>
-						<option value="4">Sinh viên</option>
-						<option value="3">Cán bộ lớp</option>
+						<option value="1">Admin</option>		
 						<option value="2">Giảng viên</option>
+						<option value="3">Cán bộ lớp</option>
+						<option value="4">Sinh viên</option>
 						</select>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="form-group">
 						<label> Tên </label> <input class="form-control"
-							type="text" name = "tenTaiKhoan">
+							type="text" name = "tenTaiKhoan" required>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="form-group">
 						<label>Lớp </label><select class="form-control" name="idlop">
-						<option value="">---</option>
+						
 						<c:forEach items="${listLop}" var="lop">
 							<option value="${lop.idLop}">${lop.tenLop}</option>
 						</c:forEach>

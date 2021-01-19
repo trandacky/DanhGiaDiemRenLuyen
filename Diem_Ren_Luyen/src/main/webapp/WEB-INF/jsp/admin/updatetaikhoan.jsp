@@ -16,25 +16,25 @@
 					<div >
 						<label>Mã sinh viên/giảng viên: </label> ${taiKhoan.get().getMaSinhVien()} <input
 								name="maSinhVien" value="${taiKhoan.get().getMaSinhVien()}"
-								type="hidden">
+								type="hidden" required>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="form-group">
 						<label>Mật khẩu </label> <input class="form-control"
 								name="matKhau" value="${taiKhoan.get().getMatKhau()}"
-								placeholder="${taiKhoan.get().getMatKhau()}"> <input
+								placeholder="${taiKhoan.get().getMatKhau()}" required> <input
 								name="maSinhVien" value="${taiKhoan.get().getMatKhau()}"
-								type="hidden">
+								type="hidden" required>
 							
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="form-group">
 						<label>Ngày sinh</label> <input class="form-control"
-							value="${taiKhoan.get().getNgayThangNamSinh()}" type="date" name = "ngaySinh"><input
+							value="${taiKhoan.get().getNgayThangNamSinh()}" type="date" name = "ngaySinh" required><input
 								name="ngaySinh" value="${taiKhoan.get().getNgayThangNamSinh()}"
-								type="hidden">
+								type="hidden" required>
 					</div>
 				</div>
 				</div>
@@ -55,7 +55,7 @@
 					<div class="form-group">
 						<label> Tên </label><input class="form-control"
 								name="tenTaiKhoan" value="${taiKhoan.get().getTen()}"
-								placeholder="${taiKhoan.get().getTen()}">
+								placeholder="${taiKhoan.get().getTen()}" required>
 					</div>
 				</div>
 				<div class="col-md-4">

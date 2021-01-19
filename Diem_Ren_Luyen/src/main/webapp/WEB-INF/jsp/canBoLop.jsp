@@ -36,8 +36,8 @@
 				</ul>
 				
 				<div class="topright">
-				<label >tên tài khoản của admin hay của ai đó</label>
-				<button type="button"  class="btn btn-primary">Đăng xuất</button>
+				<label>Xin Chào:${tensinhvien}</label>
+				<a href="/logout"><button type="button"  class="btn btn-primary">Đăng xuất</button></a>
 				</div>
 			</div>
 		</nav>
@@ -46,11 +46,15 @@
 				<div class="col-2">
 					<div class="nav flex-column nav-pills" id="v-pills-tab"
 						aria-orientation="vertical">
-						<a href="home.jsp"><img src="image/logoqnu.jpg"></a>
-						<a class="nav-link active" id="v-pills-home-tab"
-							href="app-cau-hoi" aria-selected="true">Đánh giá rèn luyện</a> <a
-							class="nav-link" id="v-pills-profile-tab" href="danh-sach-lop"
-							aria-selected="false">Danh sách lớp</a> 
+						<a href="index.jsp"><img src="/image/logoqnu.jpg"></a>
+							
+						<a class="nav-link ${activedanhgiarenluyen}"
+							id="v-pills-messages-tab" href="/cbl/canbolopdanhgiarenluyen"
+							aria-selected="false">Đánh giá rèn luyện</a>
+							<a class="nav-link ${activedanhsachlop}"
+							id="v-pills-messages-tab" href="/cbl/danhgialan2"
+							aria-selected="false">Danh sách lớp</a>
+							
 					</div>
 				</div>
 				<div class="col-10">

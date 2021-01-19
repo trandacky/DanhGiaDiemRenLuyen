@@ -57,7 +57,7 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 			url = "/gvhd/duyetlan2";
 		}
 		else if(isCanBo(roles)) {
-		url = "/sv/danhgiarenluyen";
+		url = "/cbl/canbolopdanhgiarenluyen";
 		}
 		else {
 			url = "/";
