@@ -64,7 +64,9 @@ cancel: function() {alert ('Canceled!')
 			</div>
 		</div>
 	</div>
+	<%int sothutubocauhoi = 1; int sttcauhoi = 1;%>
 	<div>
+	<form action="/cbl/danhsachsinhvien/tinhtongvaduyetphieu" method="POST">
 		<table class="table table-striped">
 			<tr>
 				<th class="text-center">Nội dung đánh giá</th>
@@ -74,10 +76,10 @@ cancel: function() {alert ('Canceled!')
 			</tr>
 			<%
 				{
-				int sothutubocauhoi = 1;
+				
 				int tongdiemlan1=0;
 				int tongdiemlan2=0;
-				int tongdiemlan3=0;
+				
 				
 			%>
 			<c:forEach items="${listChiTietPhieuRenLuyen}" var="phieu">
@@ -86,7 +88,7 @@ cancel: function() {alert ('Canceled!')
 					<td><%=sothutubocauhoi%>.
 						${phieu.getIdCauHoi().getIdBoCauHoi().getTenBoCauHoi()}</td>
 					<%
-						int sttcauhoi = sothutubocauhoi;
+						 sttcauhoi = sothutubocauhoi;
 					%>
 					<td></td>
 					<td></td>
@@ -98,7 +100,11 @@ cancel: function() {alert ('Canceled!')
 						${phieu.getIdCauHoi().getNoiDungCauHoi()}: (
 						${phieu.getIdCauHoi().getDiemToiDa()}đ )</td>
 					<td>${phieu.getDiemLan1()}</td>
-					<td></td>
+					<td>
+					<input width="55" class="form-control" name="diemlan2<%=sttcauhoi%>" value="${phieu.getDiemLan2()}" placeholder="${phieu.getDiemLan2()}">
+						<input type="hidden" class="form-control" name="idchitietphieurenluyen<%=sttcauhoi%>" value="${phieu.getIdChiTietPhieuRenLuyen()}">
+					</td>
+					
 					<td style="width: 200px">${phieu.getGhiChu()}</td>
 				</tr>
 				<%
@@ -112,14 +118,15 @@ cancel: function() {alert ('Canceled!')
 			<tr class="text-center">
 			<td style="float:right">Tổng điểm:</td>
 			<td>${listChiTietPhieuRenLuyen.get(0).getIdPhieuRenLuyen().getTongDiemLan1()}</td>
-			<td>${listChiTietPhieuRenLuyen.get(0).getIdPhieuRenLuyen().getTongDiemLan1()}</td>
+			<td><input width="55" class="form-control" name="tongdiemlan2" value="${listChiTietPhieuRenLuyen.get(0).getIdPhieuRenLuyen().getTongDiemLan2()}" disabled></td>
 			<td></td>
 			</tr>
 		</table>
-		<form action="/gvhd/duyetlan2/duyetphieu" method="POST">
+		
 		<input type="hidden" name="idphieu" value="${listChiTietPhieuRenLuyen.get(0).getIdPhieuRenLuyen().getIdPhieuRenLuyen()}">
 		<div class="clearfix" style="float: right;">
-						<a href="/gvhd/duyetlan2"><button class="btn btn-primary pull-right" type="button">Hủy và Thoát</button></a>
+						<a href="/cbl/danhsachsinhvien">
+						<button class="btn btn-primary pull-right" type="button">Hủy và Thoát</button></a>
 						<button class="btn btn-primary pull-right" onclick="return confirm('Bạn muốn duyệt phiếu này?');" type="submit">Duyệt</button>
 		</div>
 		</form>

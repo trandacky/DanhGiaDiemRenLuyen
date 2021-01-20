@@ -19,18 +19,26 @@
 			<tr>
 				<th>Mã sinh viên</th>
 				<th>Tên</th>
-				<th>Ngày sinh</th>		
+				<th>Ngày sinh</th>	
+				<th>Duyệt lần 2</th>	
 
 			</tr>
-			<c:forEach items="${ListTaiKhoan}" var="taikhoan">
-			<form method="post" action="/cbl/danhsachsinhvien/capnhat/up">
-				<tr>
-					<td ><input name="maSinhVien" value="${taikhoan.maSinhVien}" type="hidden"><a href="/quanly/taikhoan/capnhat/${taikhoan.maSinhVien}">${taikhoan.maSinhVien}</a></td>
+			<c:forEach items="${listPhieuRenLuyen}" var="phieu">
+				<form action="/cbl/danhsachsinhvien/duyetmot" method="post">
+					<tr>						
+						<td><input type="hidden" name="idphieu"
+							value="${phieu.getIdPhieuRenLuyen()}"><a
+							href="/cbl/danhsachsinhvien/${phieu.getIdPhieuRenLuyen()}">${phieu.getMaSinhVien().getMaSinhVien()}</a></td>
+						<td>${phieu.getMaSinhVien().getTen()}</td>
+						<td>${phieu.getMaSinhVien().getNgayThangNamSinh()}</td>
+						<td><button type="submit"
+								style="${phieu.getDaDuyetLan2()==true ? 'background-color: lightgreen':'background-color: red'}"
+								class="btn btn-primary">${phieu.getDaDuyetLan2()}</button></td>
 					
-					<td ><input name="tenTaiKhoan" value="${taikhoan.ten}" type="hidden"><a href="/quanly/taikhoan/capnhat/${taikhoan.maSinhVien}">${taikhoan.ten}</a></td>	
-					<td ><input name="ngaySinh" value="${taikhoan.ngayThangNamSinh}" type="hidden"><a href="/quanly/taikhoan/capnhat/${taikhoan.maSinhVien}">${taikhoan.ngayThangNamSinh}</a></td>
 					</tr>
-			</c:forEach>			
+				</form>
+			</c:forEach>
+
 		</table>		
 	</div>
 </body>

@@ -16,4 +16,5 @@ public interface ChiTietPhieuRenLuyenService {
 	void updateChiTietPhieuRenLuyenSetDiemlan3ForId(Integer diem3, Long id);
 	Optional<ChiTietPhieuRenLuyen> updateDiemLan3(Integer diem3, Long id);
 	Optional<ChiTietPhieuRenLuyen> updateDiemLan1Va2(Integer diem1, Long id);
+	Optional<ChiTietPhieuRenLuyen> updateDiemLan2(Integer diem2, Long id);
 }

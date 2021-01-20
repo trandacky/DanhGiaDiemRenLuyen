@@ -21,6 +21,7 @@ public interface PhieuRenLuyenService {
 	void updateTongDiemLan3(Integer tongdiem3, Long id);
 	Optional<PhieuRenLuyen> updateTongDiemLan33(Integer tongdiem3, Long id);
 	Optional<PhieuRenLuyen> updateTongDiemLan1(Integer tongdiem1, Long id);
+	Optional<PhieuRenLuyen> updateTongDiemLan2(Integer tongdiem2, Long id);
 	List<PhieuRenLuyen> getPhieuRenLuyen(String msv);
 	
 }

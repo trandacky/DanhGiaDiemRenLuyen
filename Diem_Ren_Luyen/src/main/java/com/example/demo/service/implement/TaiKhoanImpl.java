@@ -105,7 +105,7 @@ public class TaiKhoanImpl implements TaiKhoanService{
 	public List<TaiKhoan> search(String x) {
 		x = "%"+ x +"%";
 		List<TaiKhoan> list;
-			list = TaiKhoanRepository.findByMaSinhVienOrTenLike( x,x);
+			list = TaiKhoanRepository.findByMaSinhVienOrTenLike(x,x);
 		return list;
 	}
 	

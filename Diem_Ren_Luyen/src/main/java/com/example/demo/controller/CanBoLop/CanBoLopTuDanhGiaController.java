@@ -52,8 +52,7 @@ public class CanBoLopTuDanhGiaController {
 	@RequestMapping(value = { "", "/" })
 	public String index99(Model model, HttpServletRequest request) {
 
-		String page = "/WEB-INF/jsp/CBL/canbolopdanhgiarenluyen.jsp";
-			
+		String page = "/WEB-INF/jsp/CBL/canbolopdanhgiarenluyen.jsp";			
 		  List<PhieuRenLuyen> phieuRenLuyen=getTaiKhoanDangNhap().getPhieuRenLuyens();
 		  
 		  PhieuRenLuyen phieuRenLuyen2 = new PhieuRenLuyen();

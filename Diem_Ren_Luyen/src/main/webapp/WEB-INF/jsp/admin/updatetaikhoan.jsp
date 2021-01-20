@@ -14,7 +14,7 @@
 			<div class="row">
 				<div class="col-md-4">
 					<div >
-						<label>Mã sinh viên/giảng viên: </label> ${taiKhoan.get().getMaSinhVien()} <input
+						<label>Mã sinh viên/Giảng viên: </label> ${taiKhoan.get().getMaSinhVien()} <input
 								name="maSinhVien" value="${taiKhoan.get().getMaSinhVien()}"
 								type="hidden" required>
 					</div>

@@ -118,6 +118,13 @@ public class PhieuRenLuyenImpl implements PhieuRenLuyenService{
 		// TODO Auto-generated method stub
 		return phieuRenLuyenRepository.findByDaDuyetLan2TrueAndMaSinhVienLike(msv);
 	}
+	@Override
+	public Optional<PhieuRenLuyen> updateTongDiemLan2(Integer tongdiem2, Long id) {
+		return phieuRenLuyenRepository.findById(id).map(phieurenluyen -> {
+			phieurenluyen.setTongDiemLan2(tongdiem2);
+			return phieuRenLuyenRepository.save(phieurenluyen);
+		});
+	}
 	
 }
 

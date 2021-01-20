@@ -58,6 +58,9 @@ public class TaiKhoanController {
 						}
 	@RequestMapping(value = { "/them" }, method = RequestMethod.POST)
 	public String index2(Model model, HttpServletRequest request) {
+		String maSV = request.getParameter("maSinhVien").trim();
+		String sql = "SELECT ma_sinh_vien FROM tai_khoan";
+		String error = "Mã đã tồn tại";
 		TaiKhoan taiKhoan = new TaiKhoan();
 		Lop lop = new Lop();
 		if( request.getParameter("idlop")!="")
@@ -70,7 +73,10 @@ public class TaiKhoanController {
 		taiKhoan.setNgayThangNamSinh(LocalDate.parse(request.getParameter("ngaySinh").trim()));
 		taiKhoan.setQuyen(Integer.parseInt(request.getParameter("quyen").trim()));
 		taiKhoan.setTen(request.getParameter("tenTaiKhoan"));
-		
+		if((maSV.equals(sql)))
+		{
+			return "" +error;
+		}
 		taiKhoanService.setData(taiKhoan);
 		String back = request.getHeader("Referer");
 		return "redirect:"+back;
@@ -105,8 +111,8 @@ public class TaiKhoanController {
 		taiKhoan.setTen(request.getParameter("tenTaiKhoan"));
 		System.out.print(taiKhoan.getMaSinhVien());
 		taiKhoanService.updateTaiKhoan(taiKhoan);
-		String back = request.getHeader("Referer");
-		return "redirect:"+back;
+//		String back = request.getHeader("Referer");
+		return "redirect:/quanly/taikhoan";
 	}
 	@RequestMapping(value = { "/doiquyen" }, method = RequestMethod.POST)
 	public String index5(Model model, HttpServletRequest request) {

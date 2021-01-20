@@ -14,7 +14,7 @@
 			<div class="row">
 				<div class="col-md-4">
 					<div >
-						<label>Mã sinh viên </label><input class="form-control"
+						<label>Mã sinh viên/Giảng viên </label><input class="form-control"
 							type="text" name ="maSinhVien" required>
 					</div>
 				</div>
@@ -65,9 +65,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="clearfix" style="float: right;">
-					<button class="btn btn-primary pull-right" type="submit">Thêm</button>
-						<button class="btn btn-primary pull-right" type="button"
-							onclick="#">Cập nhật</button>						
+					<button class="btn btn-primary pull-right" type="submit">Thêm</button>						
 					</div>
 				</div>
 			</div>

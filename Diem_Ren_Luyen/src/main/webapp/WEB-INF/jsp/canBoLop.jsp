@@ -52,7 +52,7 @@
 							id="v-pills-messages-tab" href="/cbl/canbolopdanhgiarenluyen"
 							aria-selected="false">Đánh giá rèn luyện</a>
 							<a class="nav-link ${activedanhsachlop}"
-							id="v-pills-messages-tab" href="/cbl/danhgialan2"
+							id="v-pills-messages-tab" href="/cbl/danhsachsinhvien"
 							aria-selected="false">Danh sách lớp</a>
 							
 					</div>

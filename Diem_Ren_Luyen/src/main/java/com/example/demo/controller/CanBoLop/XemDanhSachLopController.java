@@ -1,6 +1,7 @@
 package com.example.demo.controller.CanBoLop;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,6 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -65,19 +67,52 @@ public class XemDanhSachLopController {
 			
 		}
 		  model.addAttribute("taikhoan", getTaiKhoanDangNhap());
+		  model.addAttribute("listPhieuRenLuyen", listPhieuRenLuyen);
 		  request.getSession().setAttribute("tensinhvien",getTaiKhoanDangNhap().getTen());
 		  model.addAttribute("page", page);
 		  model.addAttribute("activedanhsachlop", "active");
 		return "canBoLop";
 	}
+
+	@RequestMapping(value = { "/duyetmot" }, method = RequestMethod.POST)
+	public String index6(Model model, HttpServletRequest request) {
+		Long idPhieu=Long.parseLong(request.getParameter("idphieu"));
+		phieuRenLuyenService.updateDuyetLan2(idPhieu);
+		String back = request.getHeader("Referer");
+		return "redirect:"+back;
+	}
 	
-//	@RequestMapping(value = { "/capnhat/up" }, method = RequestMethod.POST)
-//	public String index8(Model model, HttpServletRequest request) {
-//	
-//		String back = request.getHeader("Referer");
-//			Long idLop= Long.parseLong(request.getParameter("idlop"));
-//			String idTaiKhoan = request.getParameter("layidtaikhoan");
-//		taiKhoanService.updatelop(idTaiKhoan, idLop);
-//		return "redirect:"+back;
-//	}
+	@RequestMapping(value = { "/{id}" }, method = RequestMethod.GET)
+	public String index(Model model,HttpServletRequest request, @PathVariable Long id) {
+		String page = "/WEB-INF/jsp/CBL/danhgialan2.jsp";
+		  Optional<PhieuRenLuyen> phieuRenLuyen = phieuRenLuyenService.getByID(id);
+		  TaiKhoan taiKhoan= phieuRenLuyen.get().getMaSinhVien();
+		  model.addAttribute("taikhoan", taiKhoan);
+		  
+		  List<ChiTietPhieuRenLuyen> listChiTietPhieuRenLuyen= phieuRenLuyen.get().getChiTietPhieuRenLuyens();
+		  request.getSession().setAttribute("listChiTietPhieuRenLuyen", listChiTietPhieuRenLuyen);
+		  model.addAttribute("page", page);
+		  model.addAttribute("activedanhsachlop", "active");
+		return "canBoLop";
+	}
+	@RequestMapping(value = { "/tinhtongvaduyetphieu" }, method = RequestMethod.POST)
+	public String index22(Model model, HttpServletRequest request) {
+		if (request.getParameter("tinhtong") != null) {
+			int tong=0;
+			for(int i=1; i<Integer.parseInt(request.getParameter("sttcauhoi").toString()); i++) {
+				tong=tong+Integer.parseInt(request.getParameter("diemlan2"+i).toString());
+				chiTietPhieuRenLuyenService.updateDiemLan2(Integer.parseInt(request.getParameter("diemlan2"+i).toString()), Long.parseLong(request.getParameter("idchitietphieurenluyen"+i).toString()));
+			}
+			phieuRenLuyenService.updateTongDiemLan1(tong, Long.parseLong(request.getParameter("idphieu")));
+			String back = request.getHeader("Referer");
+			return "redirect:"+back;
+	    } else if (request.getParameter("duyet") != null) {
+	    	Long idPhieu=Long.parseLong(request.getParameter("idphieu"));
+			phieuRenLuyenService.updateDuyetLan2True(idPhieu);
+			return "redirect:/cbl/danhsachsinhvien";
+	    }
+		
+		return null;
+	}
+
 }
