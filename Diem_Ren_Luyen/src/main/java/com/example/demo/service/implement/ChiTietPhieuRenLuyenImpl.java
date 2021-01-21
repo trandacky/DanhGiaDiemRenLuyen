@@ -76,19 +76,21 @@ public class ChiTietPhieuRenLuyenImpl implements ChiTietPhieuRenLuyenService {
 		
 	}
 	
-	@Override
-	public Optional<ChiTietPhieuRenLuyen> updateDiemLan1Va2(Integer diem1, Long id){
-		// TODO Auto-generated method stub
-		return chiTietPhieuRenLuyenRepository.findById(id).map(chitietphieurenluyen -> {
-			chitietphieurenluyen.setDiemLan1(diem1);
-			return chiTietPhieuRenLuyenRepository.save(chitietphieurenluyen);
-		});
-	}
 
 	@Override
 	public Optional<ChiTietPhieuRenLuyen> updateDiemLan2(Integer diem2, Long id) {
 		return chiTietPhieuRenLuyenRepository.findById(id).map(chitietphieurenluyen -> {
 			chitietphieurenluyen.setDiemLan2(diem2);
+			return chiTietPhieuRenLuyenRepository.save(chitietphieurenluyen);
+		});
+	}
+
+	@Override
+	public Optional<ChiTietPhieuRenLuyen> updateDiemLan1GhiChu(int diem1, String ghichu, long id) {
+		// TODO Auto-generated method stub
+		return chiTietPhieuRenLuyenRepository.findById(id).map(chitietphieurenluyen -> {
+			chitietphieurenluyen.setDiemLan1(diem1);
+			chitietphieurenluyen.setGhiChu(ghichu);
 			return chiTietPhieuRenLuyenRepository.save(chitietphieurenluyen);
 		});
 	}
