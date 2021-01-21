@@ -20,20 +20,19 @@
 				<th>Mã sinh viên</th>
 				<th>Tên</th>
 				<th>Ngày sinh</th>	
-				<th>Duyệt lần 2</th>	
+				<th>Tổng điểm lần 2</th>	
 
 			</tr>
 			<c:forEach items="${listPhieuRenLuyen}" var="phieu">
-				<form action="/cbl/danhsachsinhvien/duyetmot" method="post">
+				<form action="#" method="post">
 					<tr>						
 						<td><input type="hidden" name="idphieu"
 							value="${phieu.getIdPhieuRenLuyen()}"><a
 							href="/cbl/danhsachsinhvien/${phieu.getIdPhieuRenLuyen()}">${phieu.getMaSinhVien().getMaSinhVien()}</a></td>
 						<td>${phieu.getMaSinhVien().getTen()}</td>
 						<td>${phieu.getMaSinhVien().getNgayThangNamSinh()}</td>
-						<td><button type="submit"
-								style="${phieu.getDaDuyetLan2()==true ? 'background-color: lightgreen':'background-color: red'}"
-								class="btn btn-primary">${phieu.getDaDuyetLan2()}</button></td>
+						<td>${phieu.getTongDiemLan2()}</td>
+
 					
 					</tr>
 				</form>

@@ -81,7 +81,7 @@ public class XemDanhSachLopController {
 		String back = request.getHeader("Referer");
 		return "redirect:"+back;
 	}
-	
+	@SuppressWarnings("null")
 	@RequestMapping(value = { "/{id}" }, method = RequestMethod.GET)
 	public String index(Model model,HttpServletRequest request, @PathVariable Long id) {
 		String page = "/WEB-INF/jsp/CBL/danhgialan2.jsp";
@@ -103,12 +103,11 @@ public class XemDanhSachLopController {
 				tong=tong+Integer.parseInt(request.getParameter("diemlan2"+i).toString());
 				chiTietPhieuRenLuyenService.updateDiemLan2(Integer.parseInt(request.getParameter("diemlan2"+i).toString()), Long.parseLong(request.getParameter("idchitietphieurenluyen"+i).toString()));
 			}
-			phieuRenLuyenService.updateTongDiemLan1(tong, Long.parseLong(request.getParameter("idphieu")));
+			phieuRenLuyenService.updateTongDiemLan2(tong, Long.parseLong(request.getParameter("idphieu")));
 			String back = request.getHeader("Referer");
 			return "redirect:"+back;
 	    } else if (request.getParameter("duyet") != null) {
 	    	Long idPhieu=Long.parseLong(request.getParameter("idphieu"));
-			phieuRenLuyenService.updateDuyetLan2True(idPhieu);
 			return "redirect:/cbl/danhsachsinhvien";
 	    }
 		

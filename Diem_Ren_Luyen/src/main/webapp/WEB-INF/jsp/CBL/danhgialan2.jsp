@@ -92,13 +92,14 @@ cancel: function() {alert ('Canceled!')
 					%>
 					<td></td>
 					<td></td>
-					<td></td>
+					
 				</tr>
 				<tr class="text-center">
 
 					<td style="width: 700px"><%=sttcauhoi%>)
 						${phieu.getIdCauHoi().getNoiDungCauHoi()}: (
 						${phieu.getIdCauHoi().getDiemToiDa()}đ )</td>
+						
 					<td>${phieu.getDiemLan1()}</td>
 					<td>
 					<input width="55" class="form-control" name="diemlan2<%=sttcauhoi%>" value="${phieu.getDiemLan2()}" placeholder="${phieu.getDiemLan2()}">
@@ -115,6 +116,7 @@ cancel: function() {alert ('Canceled!')
 			<%
 				}
 			%>
+			<input name="sttcauhoi" value="<%=sttcauhoi%>" type="hidden">
 			<tr class="text-center">
 			<td style="float:right">Tổng điểm:</td>
 			<td>${listChiTietPhieuRenLuyen.get(0).getIdPhieuRenLuyen().getTongDiemLan1()}</td>
@@ -125,9 +127,10 @@ cancel: function() {alert ('Canceled!')
 		
 		<input type="hidden" name="idphieu" value="${listChiTietPhieuRenLuyen.get(0).getIdPhieuRenLuyen().getIdPhieuRenLuyen()}">
 		<div class="clearfix" style="float: right;">
+		<button class="btn btn-primary pull-right" type="submit" name="tinhtong" value="tinhtong">Tính tổng</button>
 						<a href="/cbl/danhsachsinhvien">
 						<button class="btn btn-primary pull-right" type="button">Hủy và Thoát</button></a>
-						<button class="btn btn-primary pull-right" onclick="return confirm('Bạn muốn duyệt phiếu này?');" type="submit">Duyệt</button>
+						<button class="btn btn-primary pull-right" onclick="return confirm('Bạn muốn duyệt phiếu này?');" type="submit" name="duyet" value="duyet">Duyệt</button>
 		</div>
 		</form>
 	</div>
