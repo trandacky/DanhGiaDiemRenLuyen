@@ -56,7 +56,6 @@ public class BoCauHoiController {
 		model.addAttribute("ListBoCauHoi", listBoCauHoi);
 		model.addAttribute("page", page);
 		model.addAttribute("activebocauhoi", "active");
-
 		return "adminMaster";
 	}
 
@@ -75,9 +74,7 @@ public class BoCauHoiController {
 	public String index3(Model model, HttpServletRequest request) {
 		String seachString;
 		seachString = request.getParameter("seach").trim();
-		
 		String page = "/WEB-INF/jsp/admin/bocauhoi.jsp";
-		
 		model.addAttribute("page", page);
 		model.addAttribute("activebocauhoi", "active");
 		if(seachString=="") return "adminMaster";
@@ -111,16 +108,12 @@ public class BoCauHoiController {
 	}
 	@RequestMapping(value = { "/capnhat/{id}" }, method = RequestMethod.GET)
 	public String index6(Model model, HttpServletRequest request, @PathVariable Long id) {
-//		List<BoCauHoi> listBoCauHoi = boCauHoiService.getAll();
-		//model.addAttribute("ListBoCauHoi", listBoCauHoi);
 		Optional<BoCauHoi> boCauHoi = boCauHoiService.getByID(id);
 		List<CauHoi> listCauHoiTrue = cauHoiService.getCauHoiTrue();
 		List<CauHoi> listCauHoiByIDBoCauHoi = cauHoiService.getCauHoiByIDBoCauHoi(id);
 		String page = "/WEB-INF/jsp/admin/updatebocauhoi.jsp";
 		model.addAttribute("page", page);
-		//combobox
 		model.addAttribute("listCauHoi", listCauHoiTrue);
-		//datatable
 		model.addAttribute("ListCauHoi", listCauHoiByIDBoCauHoi);
 		model.addAttribute("activebocauhoi", "active");
 		model.addAttribute("bocauhoi", boCauHoi);

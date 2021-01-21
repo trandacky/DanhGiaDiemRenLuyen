@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,10 +78,6 @@ cancel: function() {alert ('Canceled!')
 			<%
 				{
 				
-				int tongdiemlan1=0;
-				int tongdiemlan2=0;
-				
-				
 			%>
 			<c:forEach items="${listChiTietPhieuRenLuyen}" var="phieu">
 
@@ -102,8 +99,8 @@ cancel: function() {alert ('Canceled!')
 						
 					<td>${phieu.getDiemLan1()}</td>
 					<td>
-					<input width="55" class="form-control" name="diemlan2<%=sttcauhoi%>" value="${phieu.getDiemLan2()}" placeholder="${phieu.getDiemLan2()}">
-						<input type="hidden" class="form-control" name="idchitietphieurenluyen<%=sttcauhoi%>" value="${phieu.getIdChiTietPhieuRenLuyen()}">
+					<input width="55" class="form-control" type="number" max="${phieu.getIdCauHoi().getDiemToiDa()}" min="-20" name="diemlan2<%=sttcauhoi%>" value="${phieu.getDiemLan2()}" placeholder="${phieu.getDiemLan2()}">
+						<input type="hidden" class="form-control"  name="idchitietphieurenluyen<%=sttcauhoi%>" value="${phieu.getIdChiTietPhieuRenLuyen()}">
 					</td>
 					
 					<td style="width: 200px">${phieu.getGhiChu()}</td>

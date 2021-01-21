@@ -96,13 +96,13 @@ cancel: function() {alert ('Canceled!')
 				</tr>
 				<tr class="text-center">
 
-					<td style="width: 700px"><%=sttcauhoi%>)
+					<td style="width: 650px"><%=sttcauhoi%>)
 						${phieu.getIdCauHoi().getNoiDungCauHoi()}: (
 						${phieu.getIdCauHoi().getDiemToiDa()}đ )</td>
 
 
 					<td>
-						<input width="50" class="form-control" name="diemlan1<%=sttcauhoi%>" value="${phieu.getDiemLan1()}" placeholder="${phieu.getDiemLan1()}">
+						<input width="50" class="form-control" max="${phieu.getIdCauHoi().getDiemToiDa()}" min="-20" name="diemlan1<%=sttcauhoi%>" value="${phieu.getDiemLan1()}" placeholder="${phieu.getDiemLan1()}">
 						<input type="hidden" class="form-control" name="idchitietphieurenluyen<%=sttcauhoi%>" value="${phieu.getIdChiTietPhieuRenLuyen()}">
 					</td>
 					<td style="width: 300px">${phieu.getGhiChu()}</td>

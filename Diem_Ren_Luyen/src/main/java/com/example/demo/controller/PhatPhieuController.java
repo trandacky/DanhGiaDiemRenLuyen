@@ -49,7 +49,6 @@ public class PhatPhieuController {
 	@RequestMapping(value = "/send", method = RequestMethod.POST)
 	public String index2(Model model, HttpServletRequest request) {
 		String back = request.getHeader("Referer");
-
 		if (Boolean.parseBoolean(request.getParameter("phattoanbo")) != true) {
 			int hocKy = Integer.parseInt(request.getParameter("hocky"));
 			int namHoc = Integer.parseInt(request.getParameter("namhoc"));
@@ -63,7 +62,6 @@ public class PhatPhieuController {
 			Lop lop = lopService.getByID(idLop).get();
 			List<CauHoi> listCauHoi;
 			List<TaiKhoan> listTaiKhoan = lop.getTaiKhoans();
-
 			// trong lớp sẽ có nhiều tài khoản, mỗi tài khoản sẽ có nhiều bộ câu hỏi, mỗi bộ
 			// câu hỏi có nhiều câu hỏi
 			for (int i = 0; i < listTaiKhoan.size(); i++) {
@@ -85,7 +83,6 @@ public class PhatPhieuController {
 							chiTietPhieuRenLuyen.setIdPhieuRenLuyen(phieuRenLuyenForCauHoi);
 							chiTietPhieuRenLuyenService.setData(chiTietPhieuRenLuyen);
 						}
-
 					}
 				}
 			}

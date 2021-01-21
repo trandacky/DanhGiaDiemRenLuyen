@@ -98,7 +98,7 @@ cancel: function() {alert ('Canceled!')
 				</tr>
 				<tr class="text-center">
 
-					<td style="width: 650px"><%=sttcauhoi%>)
+					<td style="width: 500px"><%=sttcauhoi%>)
 						${phieu.getIdCauHoi().getNoiDungCauHoi()}: (
 						${phieu.getIdCauHoi().getDiemToiDa()}đ )</td>
 

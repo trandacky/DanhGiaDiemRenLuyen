@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +30,10 @@ public class TaiKhoanController {
 	private TaiKhoanService taiKhoanService;
 	@Autowired
 	private LopService lopService;
-
+	 public static String encrytePassword(String password) {
+	        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+	        return encoder.encode(password);
+	    }
 	public TaiKhoan getTaiKhoanDangNhap()
 	{
 		
@@ -105,7 +109,7 @@ public class TaiKhoanController {
 		taiKhoan.setIdLop(lop);
 		}
 		taiKhoan.setMaSinhVien(request.getParameter("maSinhVien"));
-		taiKhoan.setMatKhau(request.getParameter("matKhau").trim());
+		taiKhoan.setMatKhau(encrytePassword(request.getParameter("matKhau").trim()));
 		taiKhoan.setNgayThangNamSinh(LocalDate.parse(request.getParameter("ngaySinh").trim()));
 		taiKhoan.setQuyen(Integer.parseInt(request.getParameter("quyen").trim()));
 		taiKhoan.setTen(request.getParameter("tenTaiKhoan"));

@@ -19,7 +19,8 @@
 			<tr>
 				<th>Mã sinh viên</th>
 				<th>Tên</th>
-				<th>Ngày sinh</th>	
+				<th>Ngày sinh</th>
+				<th>Tổng điểm lần 1</th>		
 				<th>Tổng điểm lần 2</th>	
 
 			</tr>
@@ -31,6 +32,7 @@
 							href="/cbl/danhsachsinhvien/${phieu.getIdPhieuRenLuyen()}">${phieu.getMaSinhVien().getMaSinhVien()}</a></td>
 						<td>${phieu.getMaSinhVien().getTen()}</td>
 						<td>${phieu.getMaSinhVien().getNgayThangNamSinh()}</td>
+						<td>${phieu.getTongDiemLan1()}</td>
 						<td>${phieu.getTongDiemLan2()}</td>
 
 					

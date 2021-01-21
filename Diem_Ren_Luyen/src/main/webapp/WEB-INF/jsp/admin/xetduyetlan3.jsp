@@ -22,6 +22,8 @@ cancel: function() {alert ('Canceled!')
 )
 
 
+
+
 ;
 </style>
 <body>
@@ -31,15 +33,14 @@ cancel: function() {alert ('Canceled!')
 				<div class="row">
 					<div class="col-md-2">
 
-					<div class="form-group">
-						<label>Lớp: </label> 
-						<select class="form-control" name="idlop">
-						<c:forEach items="${lop}" var="lop">
-							<option value="${lop.getIdLop()}">${lop.getTenLop()}</option>
-						</c:forEach>
-						</select>
-						
-					</div>
+						<div class="form-group">
+							<label>Lớp: </label> <select class="form-control" name="idlop">
+								<c:forEach items="${lop}" var="lop">
+									<option value="${lop.getIdLop()}">${lop.getTenLop()}</option>
+								</c:forEach>
+							</select>
+
+						</div>
 					</div>
 					<div class="col-md-2">
 						<div class="form-group">
@@ -111,21 +112,28 @@ cancel: function() {alert ('Canceled!')
 				<th>Mã sinh viên</th>
 				<th>Tổng điểm lần 2</th>
 				<th>Tổng điểm lần 3</th>
+				<th>Duyệt lần 2</th>
 				<th>Duyệt lần 3</th>
 			</tr>
 			<c:forEach items="${listPhieuRenLuyen}" var="phieu">
 				<form action="/quanly/duyetlan3/duyetmot" method="post">
+				
 					<tr>
+					<%String disabled="";%>
 						<td>${phieu.getMaSinhVien().getIdLop().getTenLop()}</td>
 						<td><input type="hidden" name="idphieu"
 							value="${phieu.getIdPhieuRenLuyen()}"><a
 							href="/quanly/duyetlan3/${phieu.getIdPhieuRenLuyen()}">${phieu.getMaSinhVien().getMaSinhVien()}</a></td>
 						<td>${phieu.getTongDiemLan2()}</td>
 						<td>${phieu.getTongDiemLan3()}</td>
-
-						<td><button type="submit"
-								style="${phieu.getDaDuyetLan3()==true ? 'background-color: lightgreen':'background-color: red'}"
-								class="btn btn-primary">${phieu.getDaDuyetLan3()}</button></td>
+						<td><button
+								style="${phieu.getDaDuyetLan2()==true ? 'background-color: lightgreen':'background-color: red'}"
+								class="btn btn-primary" disabled>${phieu.getDaDuyetLan2()}</button></td>
+								<c:if test="${phieu.getDaDuyetLan2()==false}"><% disabled="disabled";%></c:if>
+						<td><button type="submit" 
+								style="${phieu.getDaDuyetLan3()==true ? 'background-color: lightgreen':'background-color: red'} "
+								class="btn btn-primary" <%=disabled %>>${phieu.getDaDuyetLan3()}</button></td>
+				
 					</tr>
 				</form>
 			</c:forEach>

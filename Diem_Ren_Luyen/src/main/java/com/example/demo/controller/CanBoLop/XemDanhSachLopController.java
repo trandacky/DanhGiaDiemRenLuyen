@@ -36,81 +36,84 @@ public class XemDanhSachLopController {
 	private ChiTietPhieuRenLuyenService chiTietPhieuRenLuyenService;
 	@Autowired
 	private PhieuRenLuyenService phieuRenLuyenService;
-	public TaiKhoan getTaiKhoanDangNhap()
-	{
-		
+
+	public TaiKhoan getTaiKhoanDangNhap() {
+
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username;
 		if (principal instanceof UserDetails) {
 			username = ((UserDetails) principal).getUsername();
 		} else {
-		    username = principal.toString();
+			username = principal.toString();
 		}
-		TaiKhoan taiKhoan=new TaiKhoan();
+		TaiKhoan taiKhoan = new TaiKhoan();
 		taiKhoan = taiKhoanService.getByID(username).get();
 		return taiKhoan;
 	}
+
 	@RequestMapping(value = { "", "/" })
 	public String index99(Model model, HttpServletRequest request) {
 
 		String page = "/WEB-INF/jsp/CBL/danhsachsinhvien.jsp";
-			
+
 		List<TaiKhoan> listTaiKhoan = taiKhoanService.getTaiKhoanByIDLop(getTaiKhoanDangNhap().getIdLop().getIdLop());
 		// lấy lớp
 		List<PhieuRenLuyen> listPhieuRenLuyen = listTaiKhoan.get(0).getPhieuRenLuyens();
 		for (int i = 1; i < listTaiKhoan.size(); i++) {
-			listPhieuRenLuyen.addAll(listTaiKhoan.get(i).getPhieuRenLuyens());}
-		for(int i=0;i<listPhieuRenLuyen.size();i++)
-		{
-			if(listPhieuRenLuyen.get(i).getDaDuyetLan2())
-				{listPhieuRenLuyen.remove(i); i--;}
-			
+			listPhieuRenLuyen.addAll(listTaiKhoan.get(i).getPhieuRenLuyens());
 		}
-		  model.addAttribute("taikhoan", getTaiKhoanDangNhap());
-		  model.addAttribute("listPhieuRenLuyen", listPhieuRenLuyen);
-		  request.getSession().setAttribute("tensinhvien",getTaiKhoanDangNhap().getTen());
-		  model.addAttribute("page", page);
-		  model.addAttribute("activedanhsachlop", "active");
+		for (int i = 0; i < listPhieuRenLuyen.size(); i++) {
+			if (listPhieuRenLuyen.get(i).getDaDuyetLan2()) {
+				listPhieuRenLuyen.remove(i);
+				i--;
+			}
+
+		}
+		model.addAttribute("taikhoan", getTaiKhoanDangNhap());
+		model.addAttribute("listPhieuRenLuyen", listPhieuRenLuyen);
+		request.getSession().setAttribute("tensinhvien", getTaiKhoanDangNhap().getTen());
+		model.addAttribute("page", page);
+		model.addAttribute("activedanhsachlop", "active");
 		return "canBoLop";
 	}
 
 	@RequestMapping(value = { "/duyetmot" }, method = RequestMethod.POST)
 	public String index6(Model model, HttpServletRequest request) {
-		Long idPhieu=Long.parseLong(request.getParameter("idphieu"));
+		Long idPhieu = Long.parseLong(request.getParameter("idphieu"));
 		phieuRenLuyenService.updateDuyetLan2(idPhieu);
 		String back = request.getHeader("Referer");
-		return "redirect:"+back;
+		return "redirect:" + back;
 	}
-	@SuppressWarnings("null")
+
 	@RequestMapping(value = { "/{id}" }, method = RequestMethod.GET)
-	public String index(Model model,HttpServletRequest request, @PathVariable Long id) {
+	public String index(Model model, HttpServletRequest request, @PathVariable Long id) {
 		String page = "/WEB-INF/jsp/CBL/danhgialan2.jsp";
-		  Optional<PhieuRenLuyen> phieuRenLuyen = phieuRenLuyenService.getByID(id);
-		  TaiKhoan taiKhoan= phieuRenLuyen.get().getMaSinhVien();
-		  model.addAttribute("taikhoan", taiKhoan);
-		  
-		  List<ChiTietPhieuRenLuyen> listChiTietPhieuRenLuyen= phieuRenLuyen.get().getChiTietPhieuRenLuyens();
-		  request.getSession().setAttribute("listChiTietPhieuRenLuyen", listChiTietPhieuRenLuyen);
-		  model.addAttribute("page", page);
-		  model.addAttribute("activedanhsachlop", "active");
+		PhieuRenLuyen phieuRenLuyen = phieuRenLuyenService.getByID(id).get();
+		TaiKhoan taiKhoan = phieuRenLuyen.getMaSinhVien();
+		model.addAttribute("taikhoan", taiKhoan);
+
+		List<ChiTietPhieuRenLuyen> listChiTietPhieuRenLuyen = phieuRenLuyen.getChiTietPhieuRenLuyens();
+		request.getSession().setAttribute("listChiTietPhieuRenLuyen", listChiTietPhieuRenLuyen);
+		model.addAttribute("page", page);
+		model.addAttribute("activedanhsachlop", "active");
 		return "canBoLop";
 	}
+
 	@RequestMapping(value = { "/tinhtongvaduyetphieu" }, method = RequestMethod.POST)
 	public String index22(Model model, HttpServletRequest request) {
-		if (request.getParameter("tinhtong") != null) {
-			int tong=0;
-			for(int i=1; i<Integer.parseInt(request.getParameter("sttcauhoi").toString()); i++) {
-				tong=tong+Integer.parseInt(request.getParameter("diemlan2"+i).toString());
-				chiTietPhieuRenLuyenService.updateDiemLan2(Integer.parseInt(request.getParameter("diemlan2"+i).toString()), Long.parseLong(request.getParameter("idchitietphieurenluyen"+i).toString()));
+		if (request.getParameter("duyet") != null) {
+			int tong = 0;
+			for (int i = 1; i < Integer.parseInt(request.getParameter("sttcauhoi").toString()); i++) {
+				tong = tong + Integer.parseInt(request.getParameter("diemlan2" + i).toString());
+				chiTietPhieuRenLuyenService.updateDiemLan2(
+						Integer.parseInt(request.getParameter("diemlan2" + i).toString()),
+						Long.parseLong(request.getParameter("idchitietphieurenluyen" + i).toString()));
 			}
 			phieuRenLuyenService.updateTongDiemLan2(tong, Long.parseLong(request.getParameter("idphieu")));
-			String back = request.getHeader("Referer");
-			return "redirect:"+back;
-	    } else if (request.getParameter("duyet") != null) {
-	    	Long idPhieu=Long.parseLong(request.getParameter("idphieu"));
+
 			return "redirect:/cbl/danhsachsinhvien";
-	    }
-		
+		}
+
 		return null;
 	}
 

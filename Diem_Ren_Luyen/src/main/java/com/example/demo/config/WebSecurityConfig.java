@@ -54,7 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// Nếu chưa login, nó sẽ redirect tới trang /login.
 		http.authorizeRequests().antMatchers("/sv/*").access("hasAnyRole('ROLE_USER','ROLE_CANBO')");
 		
-		http.authorizeRequests().antMatchers("/canbolop/*").access("hasRole('ROLE_CANBO')");
+		http.authorizeRequests().antMatchers("/cbl/*").access("hasRole('ROLE_CANBO')");
 		
         http.authorizeRequests().antMatchers("/gvhd/*").access("hasRole('ROLE_GIANGVIEN')");
 
